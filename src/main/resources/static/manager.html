@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homebanking</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<main  id="app">
+    <header></header>
+    <body>
+        <div class="d-flex">
+          <div class="mt-5 w-50 d-flex flex-column align-content-center">
+            <h1>Client Manager</h1>
+            <div class="col-md-6 ms-3">
+              <form @submit.prevent="addClient" class="ms-2">
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">Name</label>
+                  <input v-model="clientData.firstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+                </div>
+                <div class="mb-3">
+                  <label for="last-name" class="form-label">Apellido</label>
+                  <input v-model="clientData.lastName" type="text" class="form-control" id="last-name" placeholder="Last Name">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input v-model="clientData.email" type="email" class="form-control" id="email" placeholder="Email">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Client</button>
+              </form>
+            </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="client of clients">
+                  <td>{{ client.firstName }}</td>
+                  <td>{{ client.lastName }}</td>
+                  <td>{{ client.email }}</td>
+                  <td>
+                    <button type="button" class="btn btn-primary"  @click="updateClients(client._links.client.href)">
+                      <i class="fas fa-pencil-alt"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger ms-2" @click="deleteClients(client._links.client.href)">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <h2>Client Rest Response</h2>
+            <pre>{{ clientRestResponse }}</pre>
+          </div>
+        </div>
+      </body>
+      
+
+<footer></footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./manager.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</main>
+</html>
