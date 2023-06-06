@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homebanking | Home</title>
+
+   
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+<header>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#"><img src="../images/Logo_Banco.png" alt="logo" id="logoBank"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">News</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Transfers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Accounts</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Settings</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <i class="bi bi-person-circle"></i> <img src="../images/img_Perfil.avif" alt="Imagen de perfil" id="iconPerfil">
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+</header>
+    <main  id="app">
+        <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion">
+
+            <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard">
+                <div class="card-body"  id="FondoPerfil">
+                  <div class="profile-images">
+                    <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
+                  </div>    
+                </div>
+                <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }}</h5>
+                <div class="card-text">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p class="text-secondary">E-mail:</p>
+                    <p class="text-secondary">{{ clients.email }}</p>
+                    </div>
+                    <p class="text-secondary">Accounts:</p>
+                    <ul class="list-unstyled">
+                    <li v-for="acc of clients.accounts" class="d-flex justify-content-between align-items-center mt-2">
+                        <p><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
+                        <p><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
+                        <p><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
+                    </li>
+                    </ul>
+                </div>
+                <a :href="`./details.html?id=${clients._id}`" class="btn btn-secondary">Details</a>
+                </article>
+                <p class="text-secondary">préstamos o inversiones</p>
+        </section>
+    
+    </main>
+    <footer class="mt-5">
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <h4>Síguenos en nuestras redes sociales</h4>
+              <p>
+                <a href="https://www.facebook.com/" target="_blank">
+                  <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank">
+                  <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+                </a>
+                <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+                  <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+                </a>
+              </p>              
+              <p>All rights reserved  &copy; 2023 HomeBanking</p>
+            </div>
+          </div>
+        </div>
+    </footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../javascript/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
