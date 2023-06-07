@@ -1,0 +1,77 @@
+body{
+    min-height: 70vh;
+    background: #23242a!important;
+  }
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+  .social-icons {
+    font-size: 20px!important;
+    margin-right: 10px!important;
+  }
+  
+  #iconSocial{
+    height: 30px!important;
+    width: 30px!important;
+  }
+  
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+  #divFooter{
+    background: #23242a!important;
+  }
+
+  #iconPerfil{
+    height: 50px!important;
+    object-fit: contain!important;
+    border-radius:50px!important;
+  }
+  #imgPerfil{
+    height: 130px!important;
+    border-radius:130px!important;
+  }
+  
+  
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+  
+  h2, p, li {
+    color: #e0e0e0!important;
+  }
+  
+  #imgNews{
+    height: 350px!important;
+    width: 350px!important;
+  }
+
+
+  
+  #imgNews {
+    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    color: #f0f0f0;
+  }
+  
+  #imgNews:hover {
+    box-shadow: 0px 8px 15px -5px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+  
+  

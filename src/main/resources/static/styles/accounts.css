@@ -10,7 +10,15 @@ footer {
   color: #45f3ff!important;
   padding: 20px 0!important;
 }
+#formulario{
+  background-color: #1c1c1c!important;
+  padding: 1rem!important;
+  height: 55vh;
+}
 
+#labelFormDolar{
+  color: #45f3ff!important;
+}
 .social-icons {
   font-size: 20px!important;
   margin-right: 10px!important;
@@ -81,3 +89,33 @@ footer p {
 .card-text, .card-title{
   padding: 1rem!important;
 }
+
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 3; /* Agregado el z-index */
+}
+
+
+#formulario {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #1c1c1c;
+  /*#333333*/
+  /*#1c1c1c*/
+  color: #f0f0f0;
+}
+
+#formulario:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+

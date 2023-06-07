@@ -1,37 +1,42 @@
-// https://mindhub-xj03.onrender.com/api/amazing
+const { createApp } = Vue;
 
-const { createApp } = Vue
+createApp({
+  data() {
+    return {
+      clients: [],
+      dolarOficial: []
+    }
+  },
+  mounted() {
+    const cantidadPesos = document.getElementById("cantidad-pesos");
+    const tipoCambio = document.getElementById("tipo-cambio");
+    const cantidadDolares = document.getElementById("cantidad-dolares");
+    const formulario = document.getElementById("formulario");
 
-  createApp({
-    // Propiedades reactivas
-    data() {
-      return {
-        clients:[]
-      }
+    formulario.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const cantidad = parseFloat(cantidadPesos.value);
+      const cambio = parseFloat(tipoCambio.value);
+      const resultado = cantidad * cambio;
+      cantidadDolares.value = resultado.toFixed(2);
+    });
 
-    },
-
-    created(){
-        /* this.loadData(); */
-        axios.get('http://localhost:8080/api/clients/1')
-        .then(res=> {
+    axios.get('http://localhost:8080/api/clients/1')
+      .then(res => {
         this.clients = res.data;
         console.log(this.clients);
-        })
-    },
+      })
+      .catch(error => {
+        console.error(error);
+      });
 
-    methods:{
-
-        hasTwoAccounts(client) {
-          return client.accounts.length >= 2;
-        }
-/*     
-          hasTwoAccounts(client) {
-            const accountKeys = Object.keys(client.accounts);
-            return accountKeys.length >= 2;
-          } */
-        
-    }
-
-
-  }).mount('#app')
+    axios.get("https://www.dolarsi.com/api/api.php?type=valoresprincipales")
+      .then(res => {
+        this.dolarOficial = res.data[0].casa.compra;
+        console.log(this.dolarOficial);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  },
+}).mount('#app');
