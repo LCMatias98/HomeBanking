@@ -32,12 +32,12 @@ public class ClientDTO{
         this.accounts = client.getAccounts().stream().map(AccountDTO::new).collect(Collectors.toSet());
     }
 
+    public ClientDTO(){}
 
     public Set<AccountDTO> getAccounts() {
         return accounts;
     }
 
-    public ClientDTO(){}
 
     public ClientDTO(Account account) {
     }
