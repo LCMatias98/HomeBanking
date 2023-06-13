@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible">
     <title>Homebanking | Home</title>
 
    
@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
-    <link rel="stylesheet" href="../styles/accounts.css">
+    <link rel="stylesheet" href="../styles/account.css">
 </head>
 <body>
         <header>
@@ -54,52 +54,26 @@
             </nav>
         </header>
         <main  id="app">
-            <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion">
 
-                <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard">
-                    <div class="card-body"  id="FondoPerfil">
-                    <div class="profile-images">
-                        <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
-                    </div>    
-                    </div>
-                    <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }}</h5>
-                    <div class="card-text">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                        <p class="text-secondary">E-mail:</p>
-                        <p class="text-secondary">{{ clients.email }}</p>
-                        </div>
-                        <p class="text-secondary">Accounts:</p>
-                        <ul class="list-unstyled">
-                        <li v-for="acc of clients.accounts" class="d-flex justify-content-between align-items-center mt-2">
-                            <p><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
-                            <p><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
-                            <p><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
-                        </li>
-                        </ul>
-                        <a v-for="acc of clients.accounts" :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
-                
-                    </div>
-                    
-                    </article>
-    <!--                 <p class="text-secondary">préstamos o inversiones</p> -->  
-    <!--                   <h1>Conversión de pesos a dólares</h1> -->
-                    <form id="formulario" class=" d-flex flex-column justify-content-between mt-4">
-                        <div class="form-group">
-                        <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
-                        <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
-                        </div>
-                        <div class="form-group">
-                        <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
-                        <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
-                        </div>                    
-                        <div class="form-group">
-                        <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
-                        <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
-                        </div>
-                        <button type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
-                    </form>
-            </section>
-        
+            <table class="table table-dark table-hover table-bordered table-responsive" id="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="transact of transaction">
+                    <td v-if="transact.type == 'CREDIT'" class="text-success">{{transact.type}}</td>
+                    <td v-if="transact.type == 'DEBIT'" class="text-danger">{{transact.type}}</td>
+                    <td>{{transact.amount}}</td>
+                    <td>{{transact.description}}</td>
+                    <td>{{transact.date.slice(length, -7).replace('T',' ')}}</td>
+                  </tr>
+                </tbody>
+              </table>
         </main>
         <footer class="mt-5">
             <div class="container">
@@ -127,7 +101,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="../javascript/index.js"></script>
+<script src="../javascript/account.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

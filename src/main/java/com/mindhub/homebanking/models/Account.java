@@ -1,5 +1,6 @@
 package com.mindhub.homebanking.models;
 
+import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -23,17 +24,17 @@ public class Account {
     private Client client;
 
     @OneToMany(mappedBy="account", fetch=FetchType.EAGER)
-    private Set<Transaction> transactions = new HashSet<>();
+    Set<Transaction> transactions = new HashSet<>();
+
 
     public Account() { }
-    public Account(String number, LocalDate creationDate, double balance, Client client) {
+    public Account(String number, LocalDate creationDate, double balance) {
         this.number = number;
         this.creationDate = creationDate;
         this.balance = balance;
-        this.client = client;
-
     }
 
+    @JsonIgnore
     public Client getClient() {
         return client;
     }
@@ -46,9 +47,6 @@ public class Account {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getNumber() {
         return number;

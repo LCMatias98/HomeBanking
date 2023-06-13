@@ -5,7 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+@Entity
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -15,22 +17,22 @@ public class Transaction {
     private double amount;
     private String description;
 
-    private LocalDate date;
+    private LocalDateTime date;
 
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="account")
+    @JoinColumn(name="accounts")
     private Account account;
 
     public Transaction() {
     }
 
-    public Transaction(TransactionType type, double amount, String description, LocalDate date, Account account) {
+    public Transaction(TransactionType type, double amount, String description, LocalDateTime date) {
         this.type = type;
         this.amount = amount;
         this.description = description;
         this.date = date;
-        this.account = account;
+
     }
 
 
@@ -62,7 +64,7 @@ public class Transaction {
         this.description = description;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -74,7 +76,7 @@ public class Transaction {
         return description;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 

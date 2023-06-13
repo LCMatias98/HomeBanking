@@ -21,7 +21,7 @@ createApp({
       cantidadDolares.value = resultado.toFixed(2);
     });
 
-    axios.get('http://localhost:8080/api/clients/1')
+    axios.get('/api/clients/1')
       .then(res => {
         this.clients = res.data;
         console.log(this.clients);
