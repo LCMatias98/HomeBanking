@@ -4,7 +4,8 @@ createApp({
   data() {
     return {
       clients: [],
-      dolarOficial: []
+      dolarOficial: [],
+      loans:[]
     }
   },
   mounted() {
@@ -24,7 +25,8 @@ createApp({
     axios.get('/api/clients/1')
       .then(res => {
         this.clients = res.data;
-        console.log(this.clients);
+        this.loans = this.clients.loans;
+        console.log(this.loans);
       })
       .catch(error => {
         console.error(error);
@@ -38,5 +40,7 @@ createApp({
       .catch(error => {
         console.error(error);
       });
+
+
   },
 }).mount('#app');
