@@ -39,7 +39,7 @@
                         <a class="nav-link" href="#">Accounts</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./settings.html">Settings</a>
+                        <a class="nav-link" href="./cards.html">Cards</a>
                     </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -57,7 +57,7 @@
             <div class=" d-flex flex-wrap justify-content-around">
             <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion">
 
-                <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard">
+                <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard"  v-for="acc of clients.accounts">
                     <div class="card-body"  id="FondoPerfil">
                     <div class="profile-images">
                         <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
@@ -71,35 +71,16 @@
                         </div>
                         <p class="text-secondary">Accounts:</p>
                         <ul class="list-unstyled">
-                        <li v-for="acc of clients.accounts" class="d-flex justify-content-between align-items-center mt-2">
+                        <li class="d-flex justify-content-between align-items-center mt-2">
                             <p><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
                             <p><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
                             <p><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
                         </li>
                         </ul>
-                        <a v-for="acc of clients.accounts" :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
+                        <a :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
                 
                     </div>
-
-
-                    
-
-                    
-                    </article>
-
-                    <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4 d-flex flex-column justify-content-center" id="articleCard">    
-                        <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }} LOANS:</h5>
-                        <div class="card-text">
-                            <p class="text-secondary">Loans:</p>
-                            <ul class="list-unstyled">
-                            <li v-for="loan of loans" class="d-flex justify-content-between align-items-center mt-2">
-                                <p><strong id="detallesCuenta">Amount <br></strong> {{ loan.amount }}</p>
-                                <p><strong id="detallesCuenta">Payments <br></strong> {{ loan.payments }}</p>
-                                <p><strong id="detallesCuenta">Name <br></strong> {{ loan.name }}</p>
-                            </li>
-                            </ul>
-                        </div>
-                    </article>
+                </article>
                     
     <!--                 <p class="text-secondary">préstamos o inversiones</p> -->  
     <!--                   <h1>Conversión de pesos a dólares</h1> -->
@@ -121,6 +102,20 @@
 
 
             </section>
+
+            <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4 d-flex flex-column align-items-center" id="articleCard">    
+                <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }} LOANS:</h5>
+                <div class="card-text">
+                    <p class="text-secondary">Loans:</p>
+                    <ul class="list-unstyled">
+                    <li v-for="loan of loans" class="d-flex justify-content-between align-items-center mt-2">
+                        <p><strong id="detallesCuenta">Amount <br></strong> {{ loan.amount }}</p>
+                        <p><strong id="detallesCuenta">Payments <br></strong> {{ loan.payments }}</p>
+                        <p><strong id="detallesCuenta">Name <br></strong> {{ loan.name }}</p>
+                    </li>
+                    </ul>
+                </div>
+            </article>
         </div>
         </main>
         <footer class="mt-5">

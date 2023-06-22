@@ -1,35 +1,42 @@
 package com.mindhub.homebanking.models;
 
+import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native") // strategia para generar pk auto
+    @GenericGenerator(name = "native", strategy = "native") //strategia por defecto db
     private long id;
     private String firstName;
     private String lastName;
     private String email;
-    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="client", fetch=FetchType.LAZY) //traetodo
     private Set<Account> accounts = new HashSet<>();
-    @OneToMany(mappedBy="client", fetch=FetchType.EAGER)
+    @OneToMany(mappedBy="client", fetch=FetchType.LAZY)
     private List<ClientLoan> clientLoans = new ArrayList<>();
 
+    @OneToMany(mappedBy="client", fetch=FetchType.LAZY)
+    private Set<Card> cards = new HashSet<>();
     public Client() { }
     public Client(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
-
+    @JsonIgnore
+    public Set<Card> getCards() {
+        return cards;
+    }
+    public void addCard(Card card) {
+        card.setClient(this);
+        cards.add(card);
+    }
+    @JsonIgnore
     public List<ClientLoan> getClientLoans() {
         return clientLoans;
     }
@@ -38,7 +45,7 @@ public class Client {
         clientLoan.setClient(this);
         clientLoans.add(clientLoan);
     }
-
+    @JsonIgnore
     public Set<Account> getAccounts() {
         return accounts;
     }
@@ -84,5 +91,18 @@ public class Client {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return getId() == client.getId() && Objects.equals(getFirstName(), client.getFirstName()) && Objects.equals(getLastName(), client.getLastName()) && Objects.equals(getEmail(), client.getEmail()) && Objects.equals(getAccounts(), client.getAccounts()) && Objects.equals(getClientLoans(), client.getClientLoans()) && Objects.equals(getCards(), client.getCards());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getAccounts(), getClientLoans(), getCards());
     }
 }

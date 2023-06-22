@@ -1,6 +1,8 @@
 package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.models.*;
+import com.mindhub.homebanking.models.Enums.CardColor;
+import com.mindhub.homebanking.models.Enums.CardType;
 import com.mindhub.homebanking.models.Enums.TransactionType;
 import com.mindhub.homebanking.repositories.*;
 import org.springframework.boot.CommandLineRunner;
@@ -21,10 +23,12 @@ public class HomebankingApplication {
 
 
 	@Bean
-	public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository) {
+	public CommandLineRunner initData(ClientRepository clientRepository, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 		return (args) -> {
 			LocalDate today =  LocalDate.now();
 			LocalDate tomorrow = today.plusDays(1);
+			LocalDate after5years = today.plusYears(5);
+
 			LocalDateTime todayTime = LocalDateTime.now();
 			LocalDateTime tomorrowTime = todayTime.plusDays(1);
 
@@ -72,6 +76,20 @@ public class HomebankingApplication {
 			client1.addClientLoan(clientLoan1);
 			loan1.addClientLoan(clientLoan1);
 			clientLoanRepository.save(clientLoan1);
+
+			String fullName = client1.getFirstName()+" "+client1.getLastName();
+			String fullName2 = client2.getFirstName()+" "+client2.getLastName();
+			Card card1 = new Card(fullName, CardType.DEBIT, CardColor.GOLD,"1234-1234-1234-1234",(short) 987,after5years,today);
+			client1.addCard(card1);
+			cardRepository.save(card1);
+
+			Card card2 = new Card(fullName, CardType.CREDIT, CardColor.TITANIUM,"4321-4321-4321-4321",(short) 481,after5years,today);
+			client1.addCard(card2);
+			cardRepository.save(card2);
+
+			Card card3 = new Card(fullName2, CardType.CREDIT, CardColor.SILVER,"2625-2625-7491-4841",(short) 481,after5years,today);
+			client2.addCard(card3);
+			cardRepository.save(card3);
 		};
 	}
 
