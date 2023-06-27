@@ -1,0 +1,35 @@
+.toastify {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+  }
+  
+  .toastify.show {
+    opacity: 1;
+  }
+  
+  .toastify.success {
+    background-color: #4caf50;
+    padding: 20px 30px; /* Ajusta el tamaño del padding según tus preferencias */
+    font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
+    width: 350px; /* Ajusta el ancho del elemento según tus preferencias */
+  }
+  
+  .toastify.error {
+    background-color: #f44336;
+    padding: 20px 30px; /* Ajusta el tamaño del padding según tus preferencias */
+    font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
+    width: 350px; /* Ajusta el ancho del elemento según tus preferencias */
+  }
+  
+  .toastify.warning {
+    background-color: #ff9800;
+  }
+  

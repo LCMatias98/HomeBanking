@@ -15,6 +15,7 @@ public class Client {
     private String firstName;
     private String lastName;
     private String email;
+    private String password;
     @OneToMany(mappedBy="client", fetch=FetchType.LAZY) //traetodo
     private Set<Account> accounts = new HashSet<>();
     @OneToMany(mappedBy="client", fetch=FetchType.LAZY)
@@ -23,10 +24,11 @@ public class Client {
     @OneToMany(mappedBy="client", fetch=FetchType.LAZY)
     private Set<Card> cards = new HashSet<>();
     public Client() { }
-    public Client(String firstName, String lastName, String email) {
+    public Client(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.password = password;
     }
     @JsonIgnore
     public Set<Card> getCards() {
@@ -54,6 +56,14 @@ public class Client {
     public void addAccount(Account account) {
         account.setClient(this);
         accounts.add(account);
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public long getId() {

@@ -22,11 +22,12 @@ createApp({
       cantidadDolares.value = resultado.toFixed(2);
     });
 
-    axios.get('/api/clients/1')
+    axios.get('/api/clients/current')
       .then(res => {
+        console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
-        console.log(this.loans);
+        
       })
       .catch(error => {
         console.error(error);
@@ -43,4 +44,16 @@ createApp({
 
 
   },
+
+  methods:{
+    logOut(){
+      axios.post('/api/logout')
+      .then(res => {
+        window.location.href = './index.html';
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
+  }
 }).mount('#app');

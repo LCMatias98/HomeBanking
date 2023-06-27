@@ -13,7 +13,7 @@ createApp({
 
     methods:{
         loadData(){
-            axios.get('http://localhost:8080/api/clients/1')
+            axios.get('http://localhost:8080/api/clients/current')
                 .then(res=> {
                 this.client = res.data;
                 this.cards = this.client.cards;
@@ -24,11 +24,15 @@ createApp({
                     console.error(error);
                   });
         },
-
-
+        logOut(){
+          axios.post('/api/logout')
+          .then(res => {
+            window.location.href = './index.html';
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        }
     },
-
-
-
 })
 .mount('#app');

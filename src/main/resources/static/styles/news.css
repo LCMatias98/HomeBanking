@@ -14,7 +14,19 @@ body{
     font-size: 20px!important;
     margin-right: 10px!important;
   }
+
   
+  .paddingIcon {
+    padding: 0px;
+    background-color: #6c757d;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+
   #iconSocial{
     height: 30px!important;
     width: 30px!important;
