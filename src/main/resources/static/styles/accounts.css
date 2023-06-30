@@ -67,18 +67,6 @@ footer p {
   background-repeat: no-repeat!important;
 }
 
-/* #iconPerfil{
- 
-  
-} */
-
-/* .paddingIcon{
-  padding: 0px!important;
-  background-color: #6c757d; 
-  border-radius: 8px!important;
-} */
-/* #4e5050d3 */
-
 .paddingIcon {
   padding: 0px;
   background-color: #6c757d;
@@ -135,7 +123,6 @@ footer p {
   z-index: 3; /* Agregado el z-index */
 }
 
-
 #formulario {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
@@ -150,3 +137,31 @@ footer p {
   transform: scale(1.05);
 }
 
+#table{
+  margin-top: 2rem!important;
+  background-color:  #1c1c1c!important;
+  width: 200px!important;
+}
+
+#table {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #1c1c1c;
+  /*#333333*/
+  /*#1c1c1c*/
+  color: #f0f0f0;
+}
+
+#table:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+
+.tr, th, td{
+  background-color:  #1c1c1c!important;
+}
+
+.title-cell {
+  text-align: center!important;
+}

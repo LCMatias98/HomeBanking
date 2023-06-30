@@ -5,7 +5,8 @@ createApp({
     return {
       clients: [],
       dolarOficial: [],
-      loans:[]
+      loans:[],
+      accounts:[]
     }
   },
   mounted() {
@@ -27,7 +28,8 @@ createApp({
         console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
-        
+        this.accounts = this.clients.accounts;
+        console.log(this.accounts)
       })
       .catch(error => {
         console.error(error);
@@ -41,19 +43,51 @@ createApp({
       .catch(error => {
         console.error(error);
       });
-
-
   },
-
+/*   /clients/current/accounts */
   methods:{
-    logOut(){
+
+    logOut() {
       axios.post('/api/logout')
-      .then(res => {
-        window.location.href = './index.html';
-      })
-      .catch(error => {
-        console.error(error);
-      });
+        .then(response => {
+          window.location.href = './index.html';
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    },
+
+    crearAccount() {
+      axios.post('/api/clients/current/accounts')
+        .then(response => {
+          this.showNotification('Account Created', 'success');
+          setTimeout(() => {
+            window.location.href = './accounts.html'; // Redireccionar después de un retraso
+          }, 700);
+          console.log(response.status)
+        })
+        .catch(error => {
+          // Manejo de errores
+          console.error(error);
+        });
+    },
+
+    showNotification(message, type) {
+      const toast = document.createElement('div');
+      toast.classList.add('toastify', type); // Agregar la clase "type"
+      toast.textContent = message;
+      document.body.appendChild(toast);
+    
+      setTimeout(() => {
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => {
+            document.body.removeChild(toast);
+          }, 300);
+        }, 2000);
+      }, 100);
     }
+    
   }
 }).mount('#app');

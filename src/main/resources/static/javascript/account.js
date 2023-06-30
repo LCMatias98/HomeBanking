@@ -23,6 +23,7 @@ createApp({
           .then(res => {
             this.data = res.data;
             this.transaction = this.data.transaction;
+            console.log(this.data)
           })
           .catch(error => {
             console.error(error);

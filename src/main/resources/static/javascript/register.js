@@ -26,11 +26,14 @@ createApp({
         .then(response => {
           this.status = response.status;
 
-          
-          if (this.status === 201) {
-            this.showNotification('Registered Client', 'success');
+          if (this.status === 201) {        
+          this.showNotification('Registered Client', 'success');
+          setTimeout(() => {
+            window.location.href = './index.html'; // Redireccionar después de un retraso
+          }, 700);
           }
-          
+
+          //this.crearAccount();
           this.email = '';
           this.password = '';
           this.firstName = '';
@@ -42,8 +45,23 @@ createApp({
           console.log(this.err)
           this.showNotification(this.err, 'error');
         });
-    }
-    ,
+
+    },
+
+
+
+/*     crearAccount() {
+      axios.post('/api/clients/current/accounts')
+        .then(response => {
+         
+        })
+        .catch(error => {
+          // Manejo de errores
+          console.error(error);
+        });
+    }, */
+
+
     
     showNotification(message, type) {
       const toast = document.createElement('div');

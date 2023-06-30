@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
     <link rel="stylesheet" href="../styles/accounts.css">
+
+    <link rel="stylesheet" href="../styles/toastify.css">
 </head>
 <body id="app">
         <header>
@@ -42,34 +44,34 @@
                                 <a class="nav-link" href="./cards.html">Cards</a>
                             </li>
                             <li class="nav-item paddingIcon ms-3">
-                                <a @Click="logOut()" class="nav-link paddingIcon" href="#">
+                                <a @click="logOut()" class="nav-link paddingIcon" href="#">
                                   <i class="fas fa-power-off fa-2x paddingIcon"></i> Log Out
                                 </a>
                             </li>
                               
                         </ul>
-<!--                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="bi bi-person-circle"></i> <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="iconPerfil">
-                                </a>
-                            </li> -->
-
                     </div>
                 </div>
             </nav>
             
         </header>
-        <main  >
-            <div class=" d-flex flex-wrap justify-content-around">
-            <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion">
+        <main >
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button v-if="accounts.length<3" @click="crearAccount(); showNotification('Account Created', 'success')" class="btn btn-secondary mt-5">Create Account</button>
 
+            </div>
+
+            <div class=" d-flex flex-wrap justify-content-around">
+
+            <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion"> 
                 <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard"  v-for="acc of clients.accounts">
-                    <div class="card-body"  id="FondoPerfil">
-                    <div class="profile-images">
-                        <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
-                    </div>    
+                    <div class="card-body" id="FondoPerfil">
+                        <div class="profile-images">
+                            <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
+                        </div>
                     </div>
-                    <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }} ACCOUNTS:</h5>
+                    
+                    <h5 class="card-title">Accounts Of: {{ clients.firstName }} {{ clients.lastName }} </h5>
                     <div class="card-text">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                         <p class="text-secondary">E-mail:</p>
@@ -84,44 +86,46 @@
                         </li>
                         </ul>
                         <a :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
-                
                     </div>
                 </article>
-                    
-    <!--                 <p class="text-secondary">préstamos o inversiones</p> -->  
-    <!--                   <h1>Conversión de pesos a dólares</h1> -->
-                    <form id="formulario" class=" d-flex flex-column justify-content-between mt-4">
-                        <div class="form-group">
-                        <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
-                        <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
-                        </div>
-                        <div class="form-group">
-                        <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
-                        <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
-                        </div>                    
-                        <div class="form-group">
-                        <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
-                        <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
-                        </div>
-                        <button type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
-                    </form>
-
-
             </section>
 
-            <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4 d-flex flex-column align-items-center" id="articleCard">    
-                <h5 class="card-title">{{ clients.firstName }} {{ clients.lastName }} LOANS:</h5>
-                <div class="card-text">
-                    <p class="text-secondary">Loans:</p>
-                    <ul class="list-unstyled">
-                    <li v-for="loan of loans" class="d-flex justify-content-between align-items-center mt-2">
-                        <p><strong id="detallesCuenta">Amount <br></strong> {{ loan.amount }}</p>
-                        <p><strong id="detallesCuenta">Payments <br></strong> {{ loan.payments }}</p>
-                        <p><strong id="detallesCuenta">Name <br></strong> {{ loan.name }}</p>
-                    </li>
-                    </ul>
+
+            <table class="table table-dark table-hover table-bordered table-responsive" id="table">
+                <thead>
+                    <tr>
+                        <th class="title-cell" colspan="4">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
+                    </tr>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Payments</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="loan of loans" >
+                        <th scope="col">{{ loan.amount }}</th>
+                        <th scope="col">{{ loan.payments }}</th>
+                        <th scope="col">{{ loan.name }}</th>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <form id="formulario" class=" d-flex flex-column justify-content-between mt-4">
+                <div class="form-group">
+                <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
+                <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
                 </div>
-            </article>
+                <div class="form-group">
+                <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
+                <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
+                </div>                    
+                <div class="form-group">
+                <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
+                <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
+                </div>
+                <button type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
+            </form>
         </div>
         </main>
         <footer class="mt-5">

@@ -60,7 +60,6 @@
         
     </header>
         <main>
-
             <table class="table table-dark table-hover table-bordered table-responsive" id="table">
                 <thead>
                   <tr>
@@ -68,15 +67,17 @@
                     <th scope="col">Amount</th>
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
+                    <th scope="col">Time Of Transaction</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr v-for="transact of transaction">
                     <td v-if="transact.type == 'CREDIT'" class="text-success">{{transact.type}}</td>
                     <td v-if="transact.type == 'DEBIT'" class="text-danger">{{transact.type}}</td>
-                    <td>{{transact.amount}}</td>
+                    <td>${{ (transact.amount.toFixed(2)).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}</td>
                     <td>{{transact.description}}</td>
-                    <td>{{transact.date.slice(length, -7).replace('T',' ')}}</td>
+                    <td>{{transact.date.slice(length, -16).replace('T',' ')}}</td>
+                    <td>{{ transact.date.slice(11, 19) }}</td> <!-- 11 es el indice de inicio -->
                   </tr>
                 </tbody>
               </table>

@@ -57,6 +57,9 @@
 <!--     GOLD,
     SILVER,
     TITANIUM -->
+    <div class="d-grid gap-2 col-3 mx-auto"> 
+        <a href="./create-cards.html" class="btn btn-secondary mt-5">Create Cards</a>
+    </div>
     <section  v-for="card of cards">
         <h2>{{card.type}}</h2>
         <div class="card d-flex justify-content-center"  v-if="card.color =='GOLD'">
@@ -110,7 +113,7 @@
 
         <div class="card d-flex justify-content-center"  v-if="card.color =='TITANIUM'">
             <div class="card-inner">
-                <div class=" front"   style="background-image: linear-gradient(45deg, #252522c5, #bba1a1);">
+                <div class=" front"   style="background-image: linear-gradient(45deg, #000000c5, #030303);">
                     <img src="https://i.ibb.co/PYss3yv/map.png" class="map-img">
                     <div class="d-flex align-items-center justify-content-between row">
                         <img src="https://i.ibb.co/G9pDnYJ/chip.png" width="60px" class="imgCard">
@@ -207,8 +210,6 @@
         </div>
     </section>
   
-
-
     <footer class="mt-5">
         <div class="container">
           <div class="row">

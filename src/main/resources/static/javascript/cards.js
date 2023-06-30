@@ -12,6 +12,7 @@ createApp({
     },
 
     methods:{
+      
         loadData(){
             axios.get('http://localhost:8080/api/clients/current')
                 .then(res=> {
