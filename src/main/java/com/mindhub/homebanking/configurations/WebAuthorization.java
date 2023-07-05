@@ -21,11 +21,12 @@ public class WebAuthorization{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/web/index.html","web/style/**","web/javascript/**","/api/login","/web/register.html").permitAll()
-                .antMatchers("/api/accounts.html","/web/accounts.html","/web/account.html","/web/cards.html","/web/create-cards.html","/web/news.html","/web/aboutUs.html","/api/clients/current").hasAuthority("CLIENT")
+                .antMatchers("/api/accounts.html","/web/accounts.html","/web/transfer.html","/web/account.html","/web/cards.html","/web/create-cards.html","/web/news.html","/web/aboutUs.html","/api/clients/current").hasAuthority("CLIENT")
                 .antMatchers("/h2-console/**","/rest/**","/web/**","/api/accounts.html").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.POST,"/api/clients/current/account","/api/clients/current/cards").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.POST,"/api/clients/current/account","/api/clients/current/cards","api/transactions").hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.POST,"/api/clients").permitAll();
 
+//.anyRequest().denyAll();
 //"/web/account.html?id={id}"  "/web/accounts.html","/web/account.html","/web/account.html?id={id}",
         http.formLogin()
                 .usernameParameter("email")
@@ -35,39 +36,42 @@ public class WebAuthorization{
         //Elimina Cookies al cerrar sesion
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
 
-        // turn off checking for CSRF tokens
-
+        // desactivar la comprobación de tokens CSRF
         http.csrf().disable();
-        //disabling frameOptions so h2-console can be accessed
+
+        // deshabilitar frameOptions para que se pueda acceder a h2-console
         http.headers().frameOptions().disable();
 
 //        HttpSecurity.headers().frameOptions().disable();
 
-        // if user is not authenticated, just send an authentication failure response
+        // si el usuario no está autenticado, simplemente envíe una respuesta de falla de autenticación (401 - Unauthorized)
 
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-        // if login is successful, just clear the flags asking for authentication
+        // si el inicio de sesión es exitoso, simplemente borre las banderas que solicitan autenticación
 
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
 
-        // if login fails, just send an authentication failure response
+        // si falla el inicio de sesión, simplemente envíe una respuesta de falla de autenticación
 
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
 
-        // if logout is successful, just send a success response
+        // si el cierre de sesión es exitoso, simplemente envíe una respuesta exitosa
 
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
 
         return http.build();
     }
 
+    //    eliminar los atributos relacionados con la autenticación de una sesión HTTP
     private void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
-
         if (session != null) {
             session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-
         }
+        // Al eliminar este atributo, se borra cualquier información relacionada con
+        // la excepción de autenticación almacenada en la sesión.
     }
+
 }
+

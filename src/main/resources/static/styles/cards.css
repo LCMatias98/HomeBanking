@@ -65,7 +65,9 @@ body{
   
   
 
- 
+ .card{
+  border: none!important;
+ }
   
   .title {
     font-size: 11px;

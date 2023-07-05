@@ -43,7 +43,6 @@ public class AccountController {
                 .map(AccountDTO::new)
                 .orElse(null);
     }
-
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
     public ResponseEntity<Object> createAccount(Authentication authentication) {
         Client client = clientRepository.findByEmail(authentication.getName());

@@ -58,20 +58,35 @@ createApp({
     },
 
     crearAccount() {
-      axios.post('/api/clients/current/accounts')
-        .then(response => {
-          this.showNotification('Account Created', 'success');
-          setTimeout(() => {
-            window.location.href = './accounts.html'; // Redireccionar después de un retraso
-          }, 700);
-          console.log(response.status)
-        })
-        .catch(error => {
-          // Manejo de errores
-          console.error(error);
-        });
-    },
+      $('#confirmationModal').modal('show');
+    
+      $('#confirmButton').on('click', () => {
+        axios.post('/api/clients/current/accounts')
+          .then(response => {
+            $('#confirmationModal').modal('hide'); // Cerrar el modal después de la confirmación
+            this.showNotification('Account Created', 'success');
+            setTimeout(() => {
+              window.location.href = './accounts.html'; // Redireccionar después de un retraso
+            }, 700);
+            console.log(response.status);
+          })
+          .catch(error => {
+            // Manejo de errores
+            console.error(error);
+          });
 
+         
+      });
+      $('#cancelButton').on('click', () => {
+        this.cancelTransfer(); // Llamar al método cancelTransfer cuando se haga clic en el botón de cancelación
+      });
+    
+    },
+    
+    cancelTransfer() {
+      $('#confirmationModal').modal('hide'); // Ocultar el modal cuando se cancele
+    },
+    
     showNotification(message, type) {
       const toast = document.createElement('div');
       toast.classList.add('toastify', type); // Agregar la clase "type"
@@ -88,6 +103,7 @@ createApp({
         }, 2000);
       }, 100);
     }
+    
     
   }
 }).mount('#app');
