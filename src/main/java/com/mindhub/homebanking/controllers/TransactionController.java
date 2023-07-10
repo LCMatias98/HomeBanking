@@ -8,6 +8,9 @@ import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.repositories.TransactionRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,19 +30,19 @@ import java.util.stream.Collectors;
 public class TransactionController {
 
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
     @Autowired
-    private TransactionRepository  transactionRepository;
+    private TransactionService transactionService;
 
     @Transactional
     @RequestMapping(path = "/transactions", method = RequestMethod.POST)
     public ResponseEntity<Object> sendTransactions(Authentication authentication, @RequestBody TransferDTO transferDTO){
 
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account originAccount = accountRepository.findByNumber(transferDTO.getAccountOrigin());
-        Account destinationAccount = accountRepository.findByNumber(transferDTO.getAccountDestination());
+        Client client = clientService.findByEmail(authentication.getName());
+        Account originAccount = accountService.getAccountByNumber(transferDTO.getAccountOrigin());
+        Account destinationAccount = accountService.getAccountByNumber(transferDTO.getAccountDestination());
         Double amount = transferDTO.getAmount();
         String description = transferDTO.getDescription();
 
@@ -81,12 +84,12 @@ public class TransactionController {
         destinationAccount.addTransaction(transaction);
         originAccount.addTransaction(transaction1);
 
-        transactionRepository.save(transaction);
-        transactionRepository.save(transaction1);
+        transactionService.saveTransaction(transaction);
+        transactionService.saveTransaction(transaction1);
 
-        accountRepository.save(originAccount);
-        accountRepository.save(destinationAccount);
+        accountService.saveAccount(originAccount);
+        accountService.saveAccount(destinationAccount);
 
-        return new ResponseEntity<>("Transactions succes",HttpStatus.CREATED);
+        return new ResponseEntity<>("Transactions Success",HttpStatus.CREATED);
     }
 }

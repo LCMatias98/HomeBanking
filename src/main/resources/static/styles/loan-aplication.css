@@ -1,6 +1,6 @@
 body{
     min-height: 70vh;
-
+ 
   }
   header{
     min-height: 15vh!important;
@@ -10,6 +10,14 @@ body{
     color: #45f3ff!important;
     padding: 20px 0!important;
   }
+
+
+  .phone-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
   .social-icons {
     font-size: 20px!important;
     margin-right: 10px!important;
@@ -28,17 +36,6 @@ body{
     background: #23242a!important;
   }
   
-  .paddingIcon {
-    padding: 0px;
-    padding-top: 2px;
-    background-color: #6c757d;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .paddingIcon:hover {
-    background-color: #848484;
-  }
   #iconPerfil{
     height: 50px!important;
     object-fit: contain!important;
@@ -48,8 +45,7 @@ body{
     height: 130px!important;
     border-radius:130px!important;
   }
-  
-  
+ 
   .navbar {
     background-color: #1c1c1c!important;
   }
@@ -63,37 +59,30 @@ body{
     height: 100px!important;
   }
   
-  h2, p, li {
-    color: #e0e0e0!important;
+  .card-text, .card-title{
+    padding: 1rem!important;
   }
   
-  #imgNews{
-    height: 350px!important;
-    width: 350px!important;
+  
+  .title {
+    font-size: 11px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .paddingIcon {
+    padding: 0px;
+    padding-top: 2px;
+    background-color: #6c757d;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paddingIcon:hover {
+    background-color: #848484;
   }
 
-
-  
-  #imgNews {
-    box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    color: #f0f0f0;
+  .paddingText{
+    margin-bottom: 5px;
   }
-  
-  #imgNews:hover {
-    box-shadow: 0px 8px 15px -5px rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
-  }
-  
-  
-  .carousel-inner .carousel-image {
-    height: 50vh;
-    object-fit: cover;
-    object-position: 50% 30%;
-}
-
-.carousel-inner .carousel-image {
-    height: 50vh;
-    object-fit: contain;
-    object-position: 50% 30%;
-}

@@ -13,7 +13,7 @@ createApp({
         this.params = new URLSearchParams(location.search).get("id");
         console.log(this.params);
         this.cuentaCliente();
-
+        this.cuentaCliente();
   },
 
   methods: {
@@ -22,7 +22,7 @@ createApp({
         axios.get(`/api/accounts/`+this.params)
           .then(res => {
             this.data = res.data;
-            this.transaction = this.data.transaction;
+            this.transaction = this.data.transaction.sort((a , b) => b.id - a.id );
             console.log(this.data)
           })
           .catch(error => {

@@ -13,11 +13,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 
+    <link rel="stylesheet" href="../styles/toastify.css">
     <link rel="stylesheet" href="../styles/accounts.css">
 
-    <link rel="stylesheet" href="../styles/toastify.css">
 </head>
-<body id="app">
+<body>
+<div id="app">
         <header>
             
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -43,9 +44,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./cards.html">Cards</a>
                             </li>
-                            <li class="nav-item paddingIcon ms-3">
+                            <li class="nav-item  ms-3">
                                 <a @click="logOut()" class="nav-link paddingIcon" href="#">
-                                  <i class="fas fa-power-off fa-2x paddingIcon"></i> Log Out
+                                  <i class="fas fa-power-off fa-2x"></i> Log Out
                                 </a>
                             </li>
                               
@@ -55,104 +56,96 @@
             </nav>
             
         </header>
-        <main >
-            <!-- BOTON PARA CREAR CUENTAS -->
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <button v-if="accounts.length < 3" @click="crearAccount()" class="btn btn-secondary mt-5">Create Account</button>
-            </div>
-
-        <div class=" d-flex flex-wrap justify-content-around">
-                <!-- SECCION DE CUENTAS -->
-            <section class="mt-4 gap-3 d-flex flex-wrap justify-content-around col-xl-12" id="idseccion"> 
-                <article class="card col-10 col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles mt-4" id="articleCard"  v-for="acc of clients.accounts">
-                    <div class="card-body" id="FondoPerfil">
-                        <div class="profile-images">
-                            <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="imgPerfil">
-                        </div>
-                    </div>
-                    
-                    <h5 class="card-title">Accounts Of: {{ clients.firstName }} {{ clients.lastName }} </h5>
+        <main>
+            <div class="d-flex justify-content-between col-12">
+              <!-- DIV IZQUIERDO -->
+              <div class="d-flex flex-column flex-wrap justify-content-around col-6">
+                <!-- BOTON PARA CREAR CUENTAS -->
+                <div class="d-grid gap-2 col-12 d-flex align-items-center justify-content-center">
+                  <button v-if="accounts.length < 3" @click="crearAccount()" class="btn btn-secondary mt-5">Create Account</button>
+                </div>
+          <!-- col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles -->
+                <div class="d-flex flex-wrap justify-content-around col-12">
+                  <article class="card col-5  mt-4" id="articleCard" v-for="acc of clients.accounts">
+                    <h5 class="card-title">Accounts Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
                     <div class="card-text">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
+                      <div class="d-flex justify-content-between align-items-center mb-3">
                         <p class="text-secondary">E-mail:</p>
                         <p class="text-secondary">{{ clients.email }}</p>
-                        </div>
-                        <p class="text-secondary">Accounts:</p>
-                        <ul class="list-unstyled">
+                      </div>
+                      <p class="text-secondary">Accounts:</p>
+                      <ul class="list-unstyled">
                         <li class="d-flex justify-content-between align-items-center mt-2">
-                            <p><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
-                            <p><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
-                            <p><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
+                          <p><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
+                          <p><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
+                          <p><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
                         </li>
-                        </ul>
-                        <a :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
+                      </ul>
+                      <a :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
                     </div>
-                </article>
-            </section>
-
-                <!-- TABLA DE PRESTAMOS -->
-            <table class="table table-dark table-hover table-bordered table-responsive" id="table">
-                <thead>
-                    <tr>
-                        <th class="title-cell" colspan="4">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
-                    </tr>
-                    <tr>
-                        <th>Amount</th>
-                        <th>Payments</th>
-                        <th>Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="loan of loans" >
-                        <th scope="col">{{ loan.amount }}</th>
-                        <th scope="col">{{ loan.payments }}</th>
-                        <th scope="col">{{ loan.name }}</th>
-                    </tr>
-                </tbody>
-            </table>
-            
-                 <!-- FORMULARIO DE DIVISA -->
-            <form id="formulario" class=" d-flex flex-column justify-content-between mt-4">
-                <div class="form-group">
-                <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
-                <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
-                </div>
-                <div class="form-group">
-                <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
-                <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
-                </div>                    
-                <div class="form-group">
-                <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
-                <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
-                </div>
-                <button type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
-            </form>
-        </div>
-
-
-
-         <!-- MODAL BOOTSTRAP -->
-         <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="confirmationModalLabel">Confirmación de transferencia</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to create an Account?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelButton">Cancelar</button>
-                  <button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
+                  </article>
                 </div>
               </div>
-            </div>
-          </div>
           
-        </main>
+              <!-- DIV DERECHO -->
+              <div class="d-flex flex-column flex-wrap col-6">
+                <!-- BOTON PARA SOLICITAR PRESTAMO -->
+                <div class="d-grid gap-2 col-6 mx-auto align-self-center">
+                  <a href="loan-aplication.html" class="btn btn-secondary mt-5">Loan Application</a>
+                </div>
+          
+                <!-- TABLA DE PRESTAMOS -->
+                <table class="table table-dark table-hover table-bordered table-responsive mt-5" id="table">
+                  <thead>
+                    <tr>
+                      <th class="title-cell" colspan="4">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
+                    </tr>
+                    <tr>
+                      <th>Amount of loan with interest</th>
+                      <th>Payments</th>
+                      <th>Name</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="loan of loans">
+                      <th scope="col">{{ loan.amount }}</th>
+                      <th scope="col">{{ loan.payments }}</th>
+                      <th scope="col">{{ loan.name }}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+                        <!-- FORMULARIO DE DIVISA -->
+                        <div class="d-flex justify-content-center col-12">
+                        <form id="formulario" class="d-flex flex-column justify-content-between mt-4 col-8">
+                            <div class="form-group">
+                              <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
+                              <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
+                            </div>
+                            <div class="form-group">
+                              <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
+                              <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
+                            </div>
+                            <div class="form-group">
+                              <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
+                              <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
+                            </div>
+                            <button type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
+                          </form>
+                        </div>
+            <!-- MODAL DE CONFIRMACION -->
+            <div v-if="showConfirmation" class="confirmation-message">
+              <p>¿Estás seguro de que deseas continuar?</p>
+              <div class="btn-wrapper">
+                <button @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                <button @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+              </div>
+            </div>
+          </main>
+          
+</div>        
         <footer class="mt-5">
             <div class="container">
             <div class="row">

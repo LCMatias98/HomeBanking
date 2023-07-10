@@ -1,48 +1,53 @@
-body{
+body {
   min-height: 70vh;
-  /* background: #23242a!important; */
+/*   background: #23242a; */
 }
-header{
-  min-height: 15vh!important;
+
+header {
+  min-height: 15vh;
 }
+
 footer {
-  background-color: #1c1c1c!important;
-  color: #45f3ff!important;
-  padding: 20px 0!important;
+  background-color: #1c1c1c;
+  color: #45f3ff;
+  padding: 20px 0;
 }
-#formulario{
-  background-color: #1c1c1c!important;
-  padding: 1rem!important;
+
+#formulario {
+  background-color: #1c1c1c;
+  padding: 1rem;
   height: 55vh;
 }
 
-#labelFormDolar{
-  color: #45f3ff!important;
-}
-.social-icons {
-  font-size: 20px!important;
-  margin-right: 10px!important;
+#labelFormDolar {
+  color: #45f3ff;
 }
 
-#iconSocial{
-  height: 30px!important;
-  width: 30px!important;
+.social-icons {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+#iconSocial {
+  height: 30px;
+  width: 30px;
 }
 
 footer p {
-  margin-bottom: 10px!important;
+  margin-bottom: 10px;
 }
 
-#divFooter{
-  background: #23242a!important;
+#divFooter {
+  background: #23242a;
 }
+
 #articleCard {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   background: #1c1c1c;
-  /*#333333*/
-  /*#1c1c1c*/
   color: #f0f0f0;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 #articleCard:hover {
@@ -50,25 +55,27 @@ footer p {
   transform: scale(1.05);
 }
 
-#loanCard{
+#loanCard {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   background: #1c1c1c;
-  /*#333333*/
-  /*#1c1c1c*/
   color: #f0f0f0;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
-#FondoPerfil{
+
+#FondoPerfil {
   background-image: url("../images/bandera_Argentina.avif");
   object-fit: cover;
-  height: 180px!important;
+  height: 180px;
   background-position: center left;
   opacity: 0.8;
-  background-repeat: no-repeat!important;
+  background-repeat: no-repeat;
 }
 
 .paddingIcon {
   padding: 0px;
+  padding-top: 2px;
   background-color: #6c757d;
   border-radius: 8px;
   transition: background-color 0.3s ease;
@@ -77,59 +84,59 @@ footer p {
 .paddingIcon:hover {
   background-color: #848484;
 }
+
 #iconPerfil {
-  height: 50px!important;
-  object-fit: contain!important;
-  border-radius:50px!important;
-  vertical-align:top!important;
-}
-#imgPerfil{
-  height: 130px!important;
-  border-radius:130px!important;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50px;
+  vertical-align: top;
 }
 
-#detallesCuenta{
-  color: #45f3ff!important;
+#imgPerfil {
+  height: 130px;
+  border-radius: 130px;
+}
+
+#detallesCuenta {
+  color: #45f3ff;
 }
 
 .navbar {
-  background-color: #1c1c1c!important;
+  background-color: #1c1c1c;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: #45f3ff!important;
+  color: #45f3ff;
 }
 
-#logoBank{
-  height: 100px!important;
+#logoBank {
+  height: 100px;
 }
 
-.card-text, .card-title{
-  padding: 1rem!important;
+.card-text,
+.card-title {
+  padding: 1rem;
 }
-
 
 .btn {
   display: block;
-  width: 100%;
   padding: 10px;
-  
   color: #ffffff;
   font-size: 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  z-index: 3; /* Agregado el z-index */
+  z-index: 3;
 }
 
 #formulario {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   background: #1c1c1c;
-  /*#333333*/
-  /*#1c1c1c*/
   color: #f0f0f0;
+  padding: 1rem;
+  margin-top: 1rem;
 }
 
 #formulario:hover {
@@ -137,19 +144,18 @@ footer p {
   transform: scale(1.05);
 }
 
-#table{
-  margin-top: 2rem!important;
-  background-color:  #1c1c1c!important;
-  width: 200px!important;
+#table {
+  margin-top: 2rem;
+  background-color: #1c1c1c;
+  width: 100%;
 }
 
 #table {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   background: #1c1c1c;
-  /*#333333*/
-  /*#1c1c1c*/
   color: #f0f0f0;
+  margin-top: 1rem;
 }
 
 #table:hover {
@@ -157,11 +163,31 @@ footer p {
   transform: scale(1.05);
 }
 
-
-.tr, th, td{
-  background-color:  #1c1c1c!important;
+.tr,
+th,
+td {
+  background-color: #1c1c1c;
 }
 
 .title-cell {
-  text-align: center!important;
+  text-align: center;
+}
+
+/* Ajustes adicionales */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.articles {
+  flex: 1 1 45%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .articles {
+    flex: 1 1 100%;
+  }
 }

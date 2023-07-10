@@ -5,6 +5,8 @@ import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,40 +27,47 @@ import static java.util.stream.Collectors.toList;
 @RequestMapping("/api")
 public class AccountController {
     @Autowired
-    private AccountRepository accountRepository;
+    private AccountService accountService;
     @Autowired
-    private ClientRepository clientRepository;
+    private ClientService clientService;
 
     @RequestMapping("/accounts")
     public List<AccountDTO> getAccounts(){
-        return accountRepository.findAll()
-                .stream()
-                .map(AccountDTO::new)
-                .collect(toList());
+        return accountService.getAccounts();
     }
 
     @RequestMapping("/accounts/{id}")
-    public AccountDTO getAccount(@PathVariable Long id){
-        return accountRepository.findById(id)
-                .map(AccountDTO::new)
-                .orElse(null);
+    public ResponseEntity<Object> getAccount(@PathVariable Long id, Authentication authentication){
+        Client client = clientService.findByEmail(authentication.getName());
+        // cuando busca en la base de datos guarda sino null
+        Account account = accountService.findById(id);
+
+        if (account == null){
+            return new ResponseEntity<>("Account not Exist", HttpStatus.FORBIDDEN);
+        }
+        if (!client.getAccounts().contains(account)){
+            return new ResponseEntity<>("Account is not yours", HttpStatus.FORBIDDEN);
+        }
+        return new ResponseEntity<>(new AccountDTO(account),HttpStatus.ACCEPTED);
     }
+
+
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
     public ResponseEntity<Object> createAccount(Authentication authentication) {
-        Client client = clientRepository.findByEmail(authentication.getName());
+        Client client = clientService.findByEmail(authentication.getName());
         Set<Account> accountsAuth = client.getAccounts();
         String numberRandom;
 
         do{
             Random random = new Random();
             numberRandom = "VIN-" + random.nextInt(9999999);
-        }while (accountRepository.findByNumber(numberRandom) !=null);
+        }while (accountService.getAccountByNumber(numberRandom) !=null);
         if (accountsAuth.size() == 3 ) {
             return new ResponseEntity<>("Limit Accounts", HttpStatus.FORBIDDEN);
         }else {
            Account account = new Account(numberRandom, LocalDate.now(),0.0);
            client.addAccount(account);
-           accountRepository.save(account);
+            accountService.saveAccount(account);
            return new ResponseEntity<>("Account Created",HttpStatus.CREATED);
         }
     }

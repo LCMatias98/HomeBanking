@@ -19,7 +19,8 @@
 
     <link rel="stylesheet" href="../styles/toastify.css">
 </head>
-<body id="app">
+<body>
+<div id="app">
         <header>
             
             <nav class="navbar navbar-expand-lg navbar-dark">
@@ -45,9 +46,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="./cards.html">Cards</a>
                             </li>
-                            <li class="nav-item paddingIcon ms-3">
+                            <li class="nav-item ms-3">
                                 <a @Click="logOut()" class="nav-link paddingIcon" href="#">
-                                  <i class="fas fa-power-off fa-2x paddingIcon"></i> Log Out
+                                  <i class="fas fa-power-off fa-2x"></i> Log Out
                                 </a>
                             </li>
                               
@@ -96,6 +97,7 @@
                           </div>
                         
                           <input type="submit" value="Enviar" class="btn btn-primary">
+                          
                         </form>
                         
                         
@@ -107,30 +109,19 @@
               </section>
 
 
-              
-              <!-- MODAL BOOTSTRAP -->
-              <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="confirmationModalLabel">Confirmación de transferencia</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      Are you sure you want to create the card?
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelButton">Cancelar</button>
-                      <button type="button" class="btn btn-primary" id="confirmButton">Confirmar</button>
-                    </div>
-                  </div>
+               <!-- MODAL  -->
+              <div v-if="showConfirmation" class="confirmation-message">
+                <p>¿Estás seguro de que deseas continuar?</p>
+                <div class="btn-wrapper">
+                  <button @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
                 </div>
               </div>
 
+                   
+
         </main>
-     
+</div>
         <footer class="mt-5">
             <div class="container">
             <div class="row">

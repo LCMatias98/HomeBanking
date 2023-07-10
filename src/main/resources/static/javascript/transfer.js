@@ -6,6 +6,7 @@ createApp({
       clients: [],
       loans: [],
       accounts: [],
+      accountsFilter:[],
       transferDTO: {
         amount: 0.0,
         accountOrigin: '',
@@ -13,7 +14,8 @@ createApp({
         description: ''
       },
       selectOption:'',
-      err: ''
+      err: '',
+      showConfirmation: false
     };
   },
 
@@ -23,55 +25,57 @@ createApp({
         console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
-        this.accounts = this.clients.accounts;
+        this.accounts = this.clients.accounts.sort((a , b) => a.id - b.id );
+        
         console.log(this.accounts);
       })
       .catch(error => {
         console.error(error);
       });
   },
+/*   computed(){
+    this.accountsFilter = accounts.filter(acc => acc.number !== this.transferDTO.accountOrigin);
+  }, */
 
   methods: {
+
     makeTransfer(event) {
       event.preventDefault();
+      this.showConfirmation = true
+    },
 
-      const transferData = {
-        amount: this.transferDTO.amount,
-        accountOrigin: this.transferDTO.accountOrigin,
-        accountDestination: this.transferDTO.accountDestination,
-        description: this.transferDTO.description
-      };
-
-      $('#confirmationModal').modal('show');
-
-      $('#confirmButton').on('click', () => {
-        axios.post('http://localhost:8080/api/transactions', transferData)
-          .then(res => {
-            console.log(res);
-            this.status = res.status;
-            if (this.status === 201) {
-              this.showNotification('Transaction success', 'success');
-              setTimeout(() => {
-                $('#confirmationModal').modal('hide');
+      confirmCreateCard() { 
+        this.showConfirmation = false; 
+        
+        const transferData = {
+          amount: this.transferDTO.amount,
+          accountOrigin: this.transferDTO.accountOrigin,
+          accountDestination: this.transferDTO.accountDestination,
+          description: this.transferDTO.description
+        };
+          axios.post('http://localhost:8080/api/transactions', transferData)
+            .then(res => {
+              console.log(res);
+              this.status = res.status;
+              if (this.status === 201) {
+                this.showNotification('Transaction success', 'success');
+                setTimeout(() => {window.location.href = './accounts.html';
               }, 700);
-            }
-          })
-          .catch(error => {
-            console.error(error);
-            this.err = error.response.data;
-            console.log(this.err);
-            this.showNotification(this.err, 'error');
-          });
-      });
-
-      $('#cancelButton').on('click', () => {
-        this.cancelTransfer();
-      });
-    },
-
-    cancelTransfer() {
-      $('#confirmationModal').modal('hide');
-    },
+              }
+            })
+            .catch(error => {
+              console.error(error);
+              this.err = error.response.data;
+              console.log(this.err);
+              this.showNotification(this.err, 'error');
+            });
+      
+      },
+     
+      cancelCreateCard() {
+        this.showConfirmation = false;
+      },
+      
 
     logOut() {
       axios.post('/api/logout')

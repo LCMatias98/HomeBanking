@@ -24,10 +24,9 @@
 }
 
 
-body{
-    min-height: 70vh;
-    /* background: #23242a!important; */
-  }
+main{
+  min-height: 19rem!important;
+}
   header{
     min-height: 15vh!important;
   }
@@ -95,6 +94,7 @@ body{
 
   .paddingIcon {
     padding: 0px;
+    padding-top: 2px;
     background-color: #6c757d;
     border-radius: 8px;
     transition: background-color 0.3s ease;
