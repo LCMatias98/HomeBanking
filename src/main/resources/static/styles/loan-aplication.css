@@ -86,3 +86,8 @@ body{
   .paddingText{
     margin-bottom: 5px;
   }
+
+  [v-cloak] {
+    display: none;
+    }
+    

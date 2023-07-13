@@ -17,7 +17,7 @@ createApp({
             axios.get('http://localhost:8080/api/clients/current')
                 .then(res=> {
                 this.client = res.data;
-                this.cards = this.client.cards;
+                this.cards = this.client.cards.sort((a , b) => a.id - b.id )
                 console.log(this.client);
                 console.log(this.cards);
                 })

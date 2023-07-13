@@ -69,18 +69,18 @@
             <h1 class="d-flex justify-content-center mt-3"> Transfers</h1>  
 
             <!-- OPTION TYPE ACCOUNT -->
-            <div class="d-flex flex-column justify-content-center align-items-center">
+            <div v-cloak class="d-flex flex-column justify-content-center align-items-center">
               <label for="selectOption">Select Account Type:</label>
-              <select v-model="selectOption" name="selectOption" id="selectOption" class="w-50">
+              <select v-cloak v-model="selectOption" name="selectOption" id="selectOption" class="w-50">
                 <option value="own">Own Accounts</option>
                 <option value="third">Third Accounts</option>
               </select>
             </div>            
           
-            <section class=" text-center text-lg-start mt-3 d-flex justify-content-around d-flex flex-wrap">
+            <section v-cloak class=" text-center text-lg-start mt-3 d-flex justify-content-around d-flex flex-wrap">
                 
                 <!-- FORM OWN -->
-                <div v-if="selectOption == 'own'" class="card mb-3 col-12 col-md-5 mt-4">
+                <div v-cloak v-if="selectOption == 'own'" class="card mb-3 col-12 col-md-5 mt-4">
                   <div class="row g-0 d-flex align-items-center">
                    <!--  <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
@@ -90,15 +90,15 @@
                     <div class="col-lg-12">
                       <div class="card-body py-5 px-md-5">
                   
-                        <form @submit.prevent="makeTransfer">
+                        <form v-cloak @submit.prevent="makeTransfer">
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount</label>
-                                <input v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
+                                <input v-cloak v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
                             </div>
 
-                            <div class="form-group">
+                            <div v-cloak class="form-group">
                                 <label class="form-label" for="accountOrigin">Account Origin</label>
-                                <select v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
+                                <select v-cloak v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
                                     <option v-for="acc in accounts" :value="acc.number">{{acc.number}}</option>
                                 </select>                              
                             </div>
@@ -132,7 +132,7 @@
 
     <!--  --------------------------------------------------------------------------------------------------------- -->
                 <!-- FORM THIRD -->
-                <div v-if="selectOption == 'third'"  class="card mb-3 col-12 col-md-5 mt-4">
+                <div v-cloak v-if="selectOption == 'third'"  class="card mb-3 col-12 col-md-5 mt-4">
                   <div class="row g-0 d-flex align-items-center">
                    <!--  <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
@@ -142,7 +142,7 @@
                     <div class="col-lg-12">
                       <div class="card-body py-5 px-md-5">
                   
-                        <form @submit.prevent="makeTransfer">
+                        <form v-cloak @submit.prevent="makeTransfer">
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount</label>
                                 <input v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
@@ -177,11 +177,11 @@
 
 
               <!-- MODAL  -->
-              <div v-if="showConfirmation" class="confirmation-message">
+              <div v-cloak v-if="showConfirmation" class="confirmation-message">
                 <p>¿Estás seguro de que deseas continuar?</p>
                 <div class="btn-wrapper">
-                  <button @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
-                  <button @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
                 </div>
               </div>
 

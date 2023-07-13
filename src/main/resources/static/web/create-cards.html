@@ -69,7 +69,7 @@
            
             <section class=" text-center text-lg-start mt-3">
 
-                <div class="card mb-3">
+                <div v-cloak class="card mb-3">
                   <div class="row g-0 d-flex align-items-center">
                     <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
@@ -78,10 +78,10 @@
                     <div class="col-lg-8">
                       <div class="card-body py-5 px-md-5">
                   
-                        <form @submit.prevent="createCard">
+                        <form v-cloak @submit.prevent="createCard">
                           <div class="form-group">
                             <label class="form-label" for="payment-type">Card Type:</label>
-                            <select v-model="cardType" class="form-select" id="payment-type" name="payment-type">
+                            <select v-cloak v-model="cardType" class="form-select" id="payment-type" name="payment-type">
                               <option value="DEBIT">DEBIT</option>
                               <option value="CREDIT">CREDIT</option>
                             </select>
@@ -89,7 +89,7 @@
                         
                           <div class="form-group">
                             <label class="form-label" for="card-color">Color Type:</label>
-                            <select v-model="cardColor" class="form-select" id="card-color" name="card-color">
+                            <select v-cloak v-model="cardColor" class="form-select" id="card-color" name="card-color">
                               <option value="GOLD">GOLD</option>
                               <option value="TITANIUM">TITANIUM</option>
                               <option value="SILVER">SILVER</option>
@@ -110,11 +110,11 @@
 
 
                <!-- MODAL  -->
-              <div v-if="showConfirmation" class="confirmation-message">
+              <div v-cloak v-if="showConfirmation" class="confirmation-message">
                 <p>¿Estás seguro de que deseas continuar?</p>
                 <div class="btn-wrapper">
-                  <button @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
-                  <button @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
                 </div>
               </div>
 

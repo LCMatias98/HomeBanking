@@ -96,3 +96,8 @@ main{
   .tr, th, td{
     background-color:  #1c1c1c!important;
   }
+
+  [v-cloak] {
+    display: none;
+    }
+    

@@ -131,3 +131,7 @@ main{
     height: 100px!important;
   }
   
+  [v-cloak] {
+    display: none;
+    }
+    
