@@ -3,32 +3,37 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
-      cardType: "",
-      cardColor: "",
-      showConfirmation: false
+        clients: [],
+        accountType: "",
+        showConfirmation: false,
+        err: ''
     }
   },
   methods: {
-    createCard() {
+    createAccount() {
       this.showConfirmation = true
     },
-    confirmCreateCard() {
+    confirmCreateAccount() {
       this.showConfirmation = false;
-  
-      axios.post('/api/clients/current/cards', `cardType=${this.cardType}&cardColor=${this.cardColor}`)
+        /* console.log(this.accountType) */
+      axios.post('/api/clients/current/accounts', `accountType=${this.accountType}`)
         .then((res) => {
           if (res.status === 201) {
-            this.showNotification('Card Created', 'success');
+            this.showNotification('Account Created', 'success');
             setTimeout(() => {
-              window.location.href = './cards.html';
+              window.location.href = './accounts.html';
             }, 700);
           }
         })
-        .catch((error) => {
-          console.error(error);
-        });
+        .catch(error => {
+            console.error(error);
+            this.err = error.response.data;
+            console.log(this.err)
+            this.showNotification(this.err, 'error');
+          });
+    
     },
-    cancelCreateCard() {
+    cancelCreateAccount() {
       this.showConfirmation = false;
     },
     logOut() {

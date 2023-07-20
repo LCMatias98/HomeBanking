@@ -9,4 +9,6 @@ public interface CardService {
 
     void saveCard(Card card);
     Card findByClientAndColorAndType(Client client, CardColor color, CardType type);
+
+    Card findById(long id);
 }

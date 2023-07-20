@@ -19,7 +19,7 @@ public class Transaction {
 
     private LocalDateTime date;
 
-
+    private Boolean hidden;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="accounts")
     private Account account;
@@ -27,14 +27,21 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(TransactionType type, double amount, String description, LocalDateTime date) {
+    public Transaction(TransactionType type, double amount, String description, LocalDateTime date, Boolean hidden) {
         this.type = type;
         this.amount = amount;
         this.description = description;
         this.date = date;
-
+        this.hidden = hidden;
     }
 
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
+    }
 
     public Account getAccount() {
         return account;

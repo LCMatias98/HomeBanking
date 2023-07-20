@@ -62,9 +62,22 @@
                     </p>
                 </div>
             </div>
-            <div v-cloak class="d-flex justify-content-center">
+            <!-- ----------------------------  FILTRO  --------------------------- -->
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h2>Print transactions</h2>
+                    <div class="filter-container">
+                        <input type="date" id="fechaInicio">
+                        <input type="date" id="fechaFin">
+                        <button class="btn btn-primary filter-btn" onclick="filtrarTabla()">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ----------------------------  TABLA  --------------------------- -->
+            <div v-cloak class="d-flex justify-content-center" v-if="data.hidden == false">
                 <div class="table-responsive">
-                    <table class="table table-dark table-hover table-bordered" id="table">
+                    <table class="table table-dark table-hover table-bordered" id="table" >
                         <thead>
                         <tr>
                             <th scope="col">Type</th>
@@ -74,7 +87,7 @@
                             <th scope="col">Time Of Transaction</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                         <tr v-for="transact of transaction">
                             <td v-if="transact.type == 'CREDIT'" class="text-success">{{transact.type}}</td>
                             <td v-if="transact.type == 'DEBIT'" class="text-danger">{{transact.type}}</td>

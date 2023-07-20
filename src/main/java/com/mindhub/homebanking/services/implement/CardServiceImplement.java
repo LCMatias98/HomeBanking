@@ -24,4 +24,11 @@ public class CardServiceImplement implements CardService {
     public Card findByClientAndColorAndType(Client client, CardColor color, CardType type) {
         return cardRepository.findByClientAndColorAndType(client, color, type);
     }
+
+    @Override
+    public Card findById(long id) {
+        return cardRepository.findById(id).orElse(null);
+    }
+
+
 }

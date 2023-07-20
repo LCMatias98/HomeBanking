@@ -15,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,18 +36,20 @@ public class LoanController {
     @Autowired
     private TransactionService transactionService;
 
+
+    //    @GetMapping(“”)
+//@PostMapping(“”)
     @Autowired
     private ClientLoanRepository clientLoanRepository;
-    @RequestMapping(path = "/loans", method = RequestMethod.POST)
+    @PostMapping(path = "/loans")
     public ResponseEntity<Object> claimLoan(Authentication authentication, @RequestBody LoanApplicationDTO loanApplicationDTO){
         Client client = clientService.findByEmail(authentication.getName());
         Set<Account> accountsAuth = client.getAccounts();
+        List<Loan> allLoans = loanService.getAllLoans();
 
         if (loanApplicationDTO.getAmount() == null || loanApplicationDTO.getPayment() == null || loanApplicationDTO.getDestinationAccount() == null) {
             return new ResponseEntity<>("Please provide all the required information", HttpStatus.FORBIDDEN);
         }
-
-
 
         if (loanApplicationDTO.getAmount() <= 0 || loanApplicationDTO.getPayment() <= 0) {
             return new ResponseEntity<>("Please enter valid loan amount and payment", HttpStatus.FORBIDDEN);
@@ -84,18 +83,19 @@ public class LoanController {
             return new ResponseEntity<>("Destination account does not belong to the authenticated client", HttpStatus.FORBIDDEN);
         }
 
+        loanApplicationDTO.getName().equals(allLoans.stream().map(loan1 -> loan1.getName()));
         //Se debe crear una solicitud de préstamo con el monto solicitado sumando el 20% del mismo
-        double loanAmount = loanApplicationDTO.getAmount() * 1.2;
+        double loanAmount = loanApplicationDTO.getAmount() + loanApplicationDTO.getAmount()* loan.getInterest();
 //        Loan newLoan = new Loan(loanAmount, loanApplicationDTO.getPayment());
 //        loanRepository.save(newLoan);
-        ClientLoan newLoan = new ClientLoan(loanAmount, loanApplicationDTO.getPayment());
+        ClientLoan newLoan = new ClientLoan(loanAmount, loanApplicationDTO.getPayment(),loanAmount, loanApplicationDTO.getPayment());
 
 
 
         //Se debe crear una transacción “CREDIT” asociada a la cuenta de destino (el monto debe quedar positivo) con la descripción concatenando el nombre del préstamo y la frase “loan approved”
         // public Transaction(TransactionType type, double amount, String description, LocalDateTime date)
         String description = loan.getName() + " loan approved";
-        Transaction transaction = new Transaction(TransactionType.CREDIT, loanApplicationDTO.getAmount(), description, LocalDateTime.now());
+        Transaction transaction = new Transaction(TransactionType.CREDIT, loanApplicationDTO.getAmount(), description, LocalDateTime.now(),false);
         destinationAccount.addTransaction(transaction);
         // Actualizar la cuenta de destino sumando el monto solicitado
         destinationAccount.setBalance(destinationAccount.getBalance() + loanApplicationDTO.getAmount());
@@ -111,11 +111,52 @@ public class LoanController {
         return new ResponseEntity<>("Loan application successful", HttpStatus.CREATED);
     }
 
-    @RequestMapping("/loans")
+    @GetMapping("/loans")
     public List<LoanDTO> getLoans(){
         return loanService.getLoans();
     }
 
+
+    @PostMapping(path = "/loans/create")
+    public ResponseEntity<Object> createLoan(Authentication authentication, @RequestBody LoanDTO loanDTO) {
+        Client client = clientService.findByEmail(authentication.getName());
+        List<Loan> allLoans = loanService.getAllLoans();
+
+        Loan existingLoan = loanService.findByName(loanDTO.getName());
+        if (existingLoan != null) {
+            return new ResponseEntity<>("Loan already exists", HttpStatus.FORBIDDEN);
+        }
+
+        if (loanDTO.getName().isBlank()) {
+            return new ResponseEntity<>("Loan Name can not be Blank", HttpStatus.FORBIDDEN);
+        }
+
+        if (loanDTO.getAmount() <= 0) {
+            return new ResponseEntity<>("Enter Valid Amount", HttpStatus.FORBIDDEN);
+        }
+
+        if (loanDTO.getPayment().isEmpty()) {
+            return new ResponseEntity<>("Enter Payments", HttpStatus.FORBIDDEN);
+        }
+
+        if (loanDTO.getPayment().stream().anyMatch(payment -> payment <= 0 || !(payment instanceof Integer))) {
+            return new ResponseEntity<>("Invalid Payments", HttpStatus.FORBIDDEN);
+        }
+
+        if (loanDTO.getInterest() <= 0)  {
+            return new ResponseEntity<>("Enter Valid Interest", HttpStatus.FORBIDDEN);
+        }
+
+        Loan newLoan = new Loan();
+        newLoan.setName(loanDTO.getName());
+        newLoan.setMaxAmount(loanDTO.getAmount());
+        newLoan.setPayments(loanDTO.getPayment());
+        newLoan.setInterest(loanDTO.getInterest()/100);
+
+        loanService.saveLoan(newLoan);
+
+        return new ResponseEntity<>("Loan created successfully", HttpStatus.CREATED);
+    }
 }
 
 //    @RequestMapping(path = "/loans", method = RequestMethod.GET)

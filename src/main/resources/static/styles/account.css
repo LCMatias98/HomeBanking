@@ -101,3 +101,17 @@ main{
     display: none;
     }
     
+
+    .filter-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+  }
+
+  .filter-container input {
+      width: 150px;
+  }
+
+  .filter-btn {
+      margin-top: 10px;
+  }

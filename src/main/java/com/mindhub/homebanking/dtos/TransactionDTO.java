@@ -15,6 +15,8 @@ public class TransactionDTO {
 
     private LocalDateTime date;
 
+    private Boolean hidden;
+
     private Account account;
     public TransactionDTO() {}
 
@@ -30,9 +32,17 @@ public class TransactionDTO {
 
         this.date = transaction.getDate();
 
+        this.hidden = transaction.getHidden();
 
     }
 
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
 
     public long getId() {
         return id;

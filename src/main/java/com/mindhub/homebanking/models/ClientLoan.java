@@ -20,11 +20,32 @@ public class ClientLoan {
     @JoinColumn(name = "loan_id")
     private Loan loan;
 
+    private Double remainingAmount;
+    private Integer remainingPayments;
+
     public ClientLoan() {}
 
-    public ClientLoan(Double amount, Integer payments) {
+    public ClientLoan(Double amount, Integer payments, Double remainingAmount,Integer remainingPayments) {
         this.amount = amount;
         this.payments = payments;
+        this.remainingAmount = remainingAmount;
+        this.remainingPayments = remainingPayments;
+    }
+
+    public Double getRemainingAmount() {
+        return remainingAmount;
+    }
+
+    public void setRemainingAmount(Double remainingAmount) {
+        this.remainingAmount = remainingAmount;
+    }
+
+    public Integer getRemainingPayments() {
+        return remainingPayments;
+    }
+
+    public void setRemainingPayments(Integer remainingPayments) {
+        this.remainingPayments = remainingPayments;
     }
 
     public void setAmount(Double amount) {

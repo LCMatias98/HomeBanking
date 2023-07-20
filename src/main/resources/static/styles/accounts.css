@@ -191,3 +191,27 @@ main {
     flex: 1 1 100%;
   }
 }
+main {
+  padding: 20px;
+}
+/* Estilos para main */
+main {
+  padding: 20px;
+}
+
+/* Estilos para las columnas de main */
+main .col-lg-6 {
+  padding: 10px;
+}
+
+/* Ajuste adicional para pantallas pequeñas */
+@media (max-width: 992px) {
+  main .col-lg-6 {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.no-underline {
+  text-decoration: none;
+}

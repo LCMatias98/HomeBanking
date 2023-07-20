@@ -20,6 +20,7 @@ public class CardDTO {
     private Short ccv;
     private LocalDate thruDate;
     private LocalDate fromDate;
+    private Boolean hidden;
     private Client client;
 
     public CardDTO(Card card) {
@@ -40,6 +41,12 @@ public class CardDTO {
 
         this.fromDate = card.getFromDate();
 
+        this.hidden = card.getHidden();
+
+    }
+
+    public Boolean getHidden() {
+        return hidden;
     }
 
     public long getId() {

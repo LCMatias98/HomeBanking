@@ -76,8 +76,6 @@ main{
   }
   
 
-  
-
 
 
 /* --------------------------CREDIT CARD-------------------------- */
@@ -99,8 +97,8 @@ main{
 
 
 .card {
-    width: 500px!important;
-    height: 300px!important;
+    width: 350px!important;
+    height: 250px!important;
     color: #fff!important;
     cursor: pointer!important;
     perspective: 1000px!important;
@@ -156,13 +154,13 @@ main{
 }
 
 .card-no {
-    font-size: 18px!important;
-    margin-top: 30px!important;
+    font-size: 23px!important;
+    margin-top: 20px!important;
 }
 
 .card-holder {
-    font-size: 12px!important;
-    margin-top: 40px!important;
+    font-size: 15px!important;
+    margin-top: 20px!important;
 }
 
 .name {
@@ -228,3 +226,16 @@ main{
   display: none;
   }
   
+
+.expirated {
+  margin-top: 10px;
+  border: 3px solid red;
+  box-shadow: 0px 0px 8px red;
+  transform: scale(0.97); /* Reducir el tamaño para dar un efecto visual */
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+/* :class="{ 'expirated': card.status === 'expirated' }" */
+/* .activated {
+    border: 2px solid yellow; 
+} */

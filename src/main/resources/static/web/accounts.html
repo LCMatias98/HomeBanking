@@ -58,93 +58,111 @@
             
         </header>
         <main>
-            <div v-cloak class="d-flex justify-content-between col-12">
-              <!-- DIV IZQUIERDO -->
-              <div v-cloak class="d-flex flex-column flex-wrap justify-content-around col-6">
-                <!-- BOTON PARA CREAR CUENTAS -->
-                <div v-cloak class="d-grid gap-2 col-12 d-flex align-items-center justify-content-center">
-                  <button v-cloak v-if="accounts.length < 3" @click="crearAccount()" class="btn btn-secondary mt-5">Create Account</button>
-                </div>
-          <!-- col-md-5 col-lg-4 col-xl-3 col-xxl-4 articles -->
-                <div class="d-flex flex-wrap justify-content-around col-12">
-                  <article class="card col-5  mt-4" id="articleCard" v-for="acc of clients.accounts">
-                    <h5 v-cloak class="card-title">Accounts Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
-                    <div class="card-text">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <p class="text-secondary">E-mail:</p>
-                        <p v-cloak class="text-secondary">{{ clients.email }}</p>
+          <div class="container">
+            <div class="row">
+              <!-- Columna Izquierda - Cuentas -->
+              <div class="col-lg-6">
+                <div v-cloak class="d-flex flex-column flex-wrap justify-content-around col-12">
+                  <!-- BOTON PARA CREAR CUENTAS --> <!--  v-if="accounts.length < 3" @click="crearAccount()" -->
+                  <div v-if="accounts.length < 3" v-cloak class="d-grid gap-2 col-12 d-flex align-items-center justify-content-center">
+                    <a href="create-account.html" class="btn btn-secondary mt-5">Create Account</a>
+                  </div>
+                 
+                  <div class="row row-cols-1 row-cols-md-2 g-4 mt-3" v-for="acc of accountsNotHidden">
+                    <div class="col w-100">
+                      <div class="card h-100">
+                        <div class="card-body">
+         <!--                  <h5 class="card-title">Account Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
+                          <div class="mb-3">
+                            <span class="text-secondary">E-mail: </span>
+                            <span v-cloak class="text-secondary">{{ clients.email }}</span>
+                          </div> -->
+                          <p class="text-secondary">Details of Account:</p>
+                          <ul class="list-unstyled">
+                            <li :key="acc.number" class="mb-3">
+                              <strong class="text-secondary">Type of Account:</strong> {{ acc.accountType }}<br>
+                              <strong class="text-secondary">Account:</strong> {{ acc.number }}<br>
+                              <strong class="text-secondary">Created:</strong> {{ acc.creationDate }}<br>
+                              <strong class="text-secondary">Balance:</strong> {{ acc.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}
+                              <a v-cloak :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of Transfer</a>
+                              <a v-cloak :href="'../web/disable-account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Account</a>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
-                      <p class="text-secondary">Accounts:</p>
-                      <ul class="list-unstyled">
-                        <li class="d-flex justify-content-between align-items-center mt-2">
-                          <p v-cloak><strong id="detallesCuenta">Account <br></strong> {{ acc.number }}</p>
-                          <p v-cloak><strong id="detallesCuenta">Created <br></strong> {{ acc.creationDate }}</p>
-                          <p v-cloak><strong id="detallesCuenta">Balance <br></strong> {{ acc.balance }}</p>
-                        </li>
-                      </ul>
-                      <a v-cloak :href="'../web/account.html?id='+acc.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Details Of {{ acc.number }}</a>
                     </div>
-                  </article>
+                  </div>
                 </div>
               </div>
-          
-              <!-- DIV DERECHO -->
-              <div v-cloak class="d-flex flex-column flex-wrap col-6">
-                <!-- BOTON PARA SOLICITAR PRESTAMO -->
-                <div class="d-grid gap-2 col-6 mx-auto align-self-center">
-                  <a href="loan-aplication.html" class="btn btn-secondary mt-5">Loan Application</a>
+        
+              <!-- Columna Derecha - Préstamos -->
+              <div class="col-lg-6">
+                <div v-cloak class="d-flex flex-column flex-wrap col-12">
+                  <!-- BOTON PARA SOLICITAR PRESTAMO -->
+                  <div class="d-grid gap-2 col-6 mx-auto align-self-center">
+                    <a href="./loan-aplication.html" class="btn btn-secondary mt-5">Loan Application</a>
+                  </div>
                 </div>
-          
+        
                 <!-- TABLA DE PRESTAMOS -->
                 <table v-cloak class="table table-dark table-hover table-bordered table-responsive mt-5" id="table">
                   <thead>
                     <tr>
-                      <th v-cloak class="title-cell" colspan="4">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
+                      <th v-cloak class="title-cell" colspan="5">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
                     </tr>
                     <tr>
-                      <th>Amount of loan with interest</th>
-                      <th>Payments</th>
+            
                       <th>Name</th>
+<!--                       <th>Amount of loan</th> -->
+                      <th>Amount whit Interest</th>
+                      <th>Payments</th>
+                      <th>Pay Loan</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr v-cloak v-for="loan of loans">
-                      <th v-cloak scope="col">{{ loan.amount }}</th>
-                      <th v-cloak scope="col">{{ loan.payments }}</th>
                       <th v-cloak scope="col">{{ loan.name }}</th>
+<!--                       <th v-cloak scope="col">{{ loan.name }}</th> -->
+                      <th v-cloak scope="col">${{ loan.remainingAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')  }}</th> <!-- Este tiene Interes -->
+                      <th v-cloak scope="col">{{ loan.remainingPayments }}</th>
+                      <th><a class="text-success no-underline" :href="'../web/pay-loan.html?id='+loan.id">Pay</a></th>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-
-                        <!-- FORMULARIO DE DIVISA -->
-                        <div v-cloak class="d-flex justify-content-center col-12">
-                        <form v-cloak id="formulario" class="d-flex flex-column justify-content-between mt-4 col-8">
-                            <div v-cloak class="form-group">
-                              <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
-                              <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
-                            </div>
-                            <div v-cloak class="form-group">
-                              <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
-                              <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
-                            </div>
-                            <div v-cloak class="form-group">
-                              <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
-                              <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
-                            </div>
-                            <button v-cloak type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
-                          </form>
-                        </div>
+        
+            <!-- FORMULARIO DE DIVISA -->
+            <div v-cloak class="d-flex justify-content-center col-12">
+              <form v-cloak id="formulario" class="d-flex flex-column justify-content-between mt-4 col-8">
+                <div v-cloak class="form-group">
+                  <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
+                  <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
+                </div>
+                <div v-cloak class="form-group">
+                  <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
+                  <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
+                </div>
+                <div v-cloak class="form-group">
+                  <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
+                  <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
+                </div>
+                <button v-cloak type="submit" id="calcular" class="btn btn-secondary mt-4">Calcular</button>
+              </form>
+            </div>
+        
             <!-- MODAL DE CONFIRMACION -->
-            <div v-cloak v-if="showConfirmation" class="confirmation-message">
+            <div v-cloak v-if="showConfirmation" class="confirmation-message mt-3">
               <p>¿Estás seguro de que deseas continuar?</p>
               <div class="btn-wrapper">
-                <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
-                <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
               </div>
             </div>
-          </main>
+            
+          </div>
+        </main>
+        
           
 </div>        
         <footer class="mt-5">

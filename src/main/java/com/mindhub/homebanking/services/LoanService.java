@@ -13,4 +13,6 @@ public interface LoanService {
     List<LoanDTO> getLoans();
 
     Loan findByName(String name);
+
+    List<Loan> getAllLoans();
 }

@@ -7,7 +7,9 @@ createApp({
       dolarOficial: [],
       loans:[],
       accounts:[],
-      showConfirmation: false
+      accountsNotHidden:[],
+      showConfirmation: false,
+      err: ''
     }
   },
   mounted() {
@@ -28,8 +30,9 @@ createApp({
         console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
+        this.accountsNotHidden = this.clients.accounts.filter(account => account.hidden === false).sort((a , b) => a.id - b.id );
         this.accounts = this.clients.accounts.sort((a , b) => a.id - b.id )
-        console.log(this.accounts)
+       
       })
       .catch(error => {
         console.error(error);
@@ -77,6 +80,9 @@ createApp({
       })
       .catch(error => {
         console.error(error);
+        this.err = error.response.data;
+        console.log(this.err)
+        this.showNotification(this.err, 'error');
       });
 
     },

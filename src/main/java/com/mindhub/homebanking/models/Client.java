@@ -52,6 +52,13 @@ public class Client {
         return accounts;
     }
 
+    public void setClientLoans(List<ClientLoan> clientLoans) {
+        this.clientLoans = clientLoans;
+    }
+
+    public void setCards(Set<Card> cards) {
+        this.cards = cards;
+    }
 
     public void addAccount(Account account) {
         account.setClient(this);

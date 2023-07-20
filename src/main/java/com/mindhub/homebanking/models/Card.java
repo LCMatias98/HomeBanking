@@ -20,13 +20,15 @@ public class Card {
     private Short ccv;
     private LocalDate thruDate;
     private LocalDate fromDate;
+    private Boolean hidden;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client_id")
     private Client client;
 
     public Card() {}
 
-    public Card(String cardHolder, CardType type, CardColor color, String number, Short ccv, LocalDate thruDate, LocalDate fromDate) {
+    public Card(String cardHolder, CardType type, CardColor color, String number, Short ccv, LocalDate thruDate, LocalDate fromDate, Boolean hidden) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.color = color;
@@ -34,7 +36,15 @@ public class Card {
         this.ccv = ccv;
         this.thruDate = thruDate;
         this.fromDate = fromDate;
+        this.hidden = hidden;
+    }
 
+    public Boolean getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(Boolean hidden) {
+        this.hidden = hidden;
     }
 
     public long getId() {

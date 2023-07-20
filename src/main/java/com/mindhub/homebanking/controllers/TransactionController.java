@@ -16,10 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.stream.Collectors;
@@ -35,9 +32,11 @@ public class TransactionController {
     private ClientService clientService;
     @Autowired
     private TransactionService transactionService;
+    //    @GetMapping(“”)
+//@PostMapping(“”)
 
     @Transactional
-    @RequestMapping(path = "/transactions", method = RequestMethod.POST)
+    @PostMapping(path = "/transactions")
     public ResponseEntity<Object> sendTransactions(Authentication authentication, @RequestBody TransferDTO transferDTO){
 
         Client client = clientService.findByEmail(authentication.getName());
@@ -74,8 +73,8 @@ public class TransactionController {
         if(originAccount.getBalance() < transferDTO.getAmount() ){
             return new ResponseEntity<>("You don't have enough funds",HttpStatus.FORBIDDEN);
         }
-        Transaction transaction = new Transaction(TransactionType.CREDIT,amount,transferDTO.getAccountOrigin() +": " + description, LocalDateTime.now());
-        Transaction transaction1 = new Transaction(TransactionType.DEBIT,Double.parseDouble("-" + amount),transferDTO.getAccountDestination() +": " +description, LocalDateTime.now());
+        Transaction transaction = new Transaction(TransactionType.CREDIT,amount,transferDTO.getAccountOrigin() +": " + description, LocalDateTime.now(),false);
+        Transaction transaction1 = new Transaction(TransactionType.DEBIT,Double.parseDouble("-" + amount),transferDTO.getAccountDestination() +": " +description, LocalDateTime.now(),false);
 
 
         originAccount.setBalance(originAccount.getBalance() - amount);

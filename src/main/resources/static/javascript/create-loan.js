@@ -8,21 +8,31 @@ createApp({
       accounts: [],
       accountsNotHidden:[],
       accountsFilter:[],
-      transferDTO: {
+      loanDTO: {
+        name: '',
         amount: 0.0,
-        accountOrigin: '',
-        accountDestination: '',
-        description: ''
+        payment: [],
+        interest: 0.0
       },
-      selectOption:'',
+      interest:[],
       err: '',
       showConfirmation: false
     };
   },
+/* const listaInput = document.getElementById("listaInput").value;
+            const numeros = listaInput.split(",").map(Number);
 
+
+    private String name;
+    private Double amount;
+    private List<Integer> payment;
+
+    private Double interest;
+             */
   created() {
     axios.get('/api/clients/current')
       .then(res => {
+        
         console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
@@ -33,34 +43,44 @@ createApp({
       .catch(error => {
         console.error(error);
       });
+
+/*       this.interest = this.loanDTO.payment.split(',').map((payment) => parseInt(payment.trim(), 10));
+      console.log(interest) */
+   
   },
 /*   computed(){
     this.accountsFilter = accounts.filter(acc => acc.number !== this.transferDTO.accountOrigin);
   }, */
 
   methods: {
+ 
+        createLoan(event) {
+          event.preventDefault();
+          this.showConfirmation = true;
+        },
 
-    makeTransfer(event) {
-      event.preventDefault();
-      this.showConfirmation = true
-    },
-
-      confirmCreateCard() { 
-        this.showConfirmation = false; 
         
+
+    confirmCreateCard() { 
+        this.showConfirmation = false; 
+
+        this.interest = this.loanDTO.payment.split(',').map((payment) => parseInt(payment.trim(), 10));
+        console.log(interest)
+/*         payment: this.loanDTO.payment.split(',').map((payment) => parseInt(payment.trim(), 10)), */
         const transferData = {
-          amount: this.transferDTO.amount,
-          accountOrigin: this.transferDTO.accountOrigin,
-          accountDestination: this.transferDTO.accountDestination,
-          description: this.transferDTO.description
+          name: this.loanDTO.name,
+          amount: this.loanDTO.amount,
+          payment: this.interest,
+          interest: this.loanDTO.interest
         };
-          axios.post('http://localhost:8080/api/transactions', transferData)
+        console.log(this.transferData)
+          axios.post('/api/loans/create', transferData)
             .then(res => {
               console.log(res);
               this.status = res.status;
               if (this.status === 201) {
                 this.showNotification('Transaction success', 'success');
-                setTimeout(() => {window.location.href = './accounts.html';
+                setTimeout(() => {window.location.href = './pay-loan.html';
               }, 700);
               }
             })
@@ -73,7 +93,7 @@ createApp({
       
       },
      
-      cancelCreateCard() {
+    cancelCreateCard() {
         this.showConfirmation = false;
       },
       

@@ -9,7 +9,13 @@ public class TransferDTO {
 
     private String description;
 
+    private Boolean hidden;
+
     public TransferDTO() {
+    }
+
+    public Boolean getHidden() {
+        return hidden;
     }
 
     public Double getAmount() {

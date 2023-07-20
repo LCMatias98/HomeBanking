@@ -34,4 +34,9 @@ public class LoanServiceImplement implements LoanService {
     public Loan findByName(String name) {
         return loanRepository.findByName(name);
     }
+
+    @Override
+    public List<Loan> getAllLoans() {
+        return loanRepository.findAll();
+    }
 }

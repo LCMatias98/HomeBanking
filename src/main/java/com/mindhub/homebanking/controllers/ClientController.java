@@ -3,6 +3,7 @@ package com.mindhub.homebanking.controllers;
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.models.Enums.AccountType;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.services.AccountService;
@@ -19,7 +20,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 
-import static java.util.stream.Collectors.toList;
+import static com.mindhub.homebanking.utils.Utilities.getNumberRandom;
+
 
 @RestController
 @RequestMapping("/api")
@@ -32,17 +34,19 @@ public class ClientController {
     @Autowired
     private AccountService accountService;
 
-    @RequestMapping("/clients")
+    //    @GetMapping(“”)
+//@PostMapping(“”)
+    @GetMapping("/clients")
     public List<ClientDTO> getClient(){
         return clientService.getClientsDTO();
     }
 
-    @RequestMapping("/clients/{id}")
+    @GetMapping("/clients/{id}")
     public ClientDTO getClient(@PathVariable Long id){
         return clientService.getClientDTO(id);
     }
 
-    @RequestMapping(path = "/clients", method = RequestMethod.POST)
+    @PostMapping(path = "/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
             @RequestParam String email, @RequestParam String password) {
@@ -72,10 +76,10 @@ public class ClientController {
         String numberRandom;
         do {
             Random random = new Random();
-            numberRandom = "VIN-" + random.nextInt(9999999);
+            numberRandom = getNumberRandom(random);
         } while (accountService.getAccountByNumber(numberRandom) != null);
 
-        Account account = new Account(numberRandom, LocalDate.now(), 0.0);
+        Account account = new Account(numberRandom, LocalDate.now(), 0.0,false, AccountType.CURRENT);
         client.addAccount(account);
         accountService.saveAccount(account);
 
@@ -97,8 +101,11 @@ public class ClientController {
 //        clientRepository.save(new Client(firstName,lastName,email,passwordEncoder.encode(password)));
 //        return new ResponseEntity<>(HttpStatus.CREATED);
 //    }
-    @RequestMapping("/clients/current")
+    @GetMapping("/clients/current")
     public ClientDTO getAuthClient(Authentication authentication){
         return new ClientDTO(clientService.findByEmail(authentication.getName()));
     }
+
+
+
 }

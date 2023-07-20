@@ -66,105 +66,33 @@
         </header>
         <main >
               
-            <h1 class="d-flex justify-content-center mt-3"> Transfers</h1>  
-
-            <!-- OPTION TYPE ACCOUNT -->
-            <div v-cloak class="d-flex flex-column justify-content-center align-items-center">
-              <label for="selectOption">Select Account Type:</label>
-              <select v-cloak v-model="selectOption" name="selectOption" id="selectOption" class="w-50">
-                <option value="own">Own Accounts</option>
-                <option value="third">Third Accounts</option>
-              </select>
-            </div>            
-          
+            <h1 class="d-flex justify-content-center mt-3">Pay Loan</h1>           
             <section v-cloak class=" text-center text-lg-start mt-3 d-flex justify-content-around d-flex flex-wrap">
-                
-                <!-- FORM OWN -->
-                <div v-cloak v-if="selectOption == 'own'" class="card mb-3 col-12 col-md-5 mt-4">
+    <!--  --------------------------------------------------------------------------------------------------------- -->
+                <!-- FORM THIRD -->
+                <div v-cloak class="card mb-3 col-12 col-md-5 mt-4">
                   <div class="row g-0 d-flex align-items-center">
                    <!--  <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
                         class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
                     </div> -->
-                    <h2 class="d-flex justify-content-center">Transfers to own accounts</h2>
+                    <h2 class="d-flex justify-content-center">Complete Features </h2>
                     <div class="col-lg-12">
                       <div class="card-body py-5 px-md-5">
-                  
-                        <form v-cloak @submit.prevent="makeTransfer">
+             <!--            {{accountToPay}} -->
+                        <form v-cloak @submit.prevent="payLoanAmount">
                             <div class="form-group">
-                                <label class="form-label" for="amount">Amount</label>
-                                <input v-cloak v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
-                            </div>
-
+                                <label class="form-label" for="amount">Amount of 1 Loan payment</label>
+                                <input type="text" id="amount" name="amount" :value="filteredLoans[0].amount / filteredLoans[0].payments" class="form-control" disabled />
+                              </div>
+                              
                             <div v-cloak class="form-group">
-                                <label class="form-label" for="accountOrigin">Account Origin</label>
-                                <select v-cloak v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
-                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}}</option>
+                                <label class="form-label" for="accountToPay">Account To Pay</label>
+                                <select  v-model="accountToPay" v-cloak  class="form-select" id="accountToPay" name="accountToPay">
+                                    <option  v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}}</option>
                                 </select>                              
                             </div>
                     
-                            <div class="form-group">
-                                <label class="form-label" for="accountDestination">Account Destination</label>
-                                <select v-model="transferDTO.accountDestination" class="form-select" id="accountDestination" name="accountDestination">
-                                    <option v-for="acc in accountsNotHidden.filter(acc => acc.number !== this.transferDTO.accountOrigin)" :value="acc.number">{{acc.number}}</option>
-                                </select>
-                            </div>
-
-    <!--                                                     <div class="form-group">
-                              <label class="form-label" for="accountDestination">Account Destination</label>
-                              <select v-model="transferDTO.accountDestination" class="form-select" id="accountDestination" name="accountDestination">
-                                <option v-for="acc in filteredAccounts" :value="acc.number">{{ acc.number }}</option>
-                              </select>
-                            </div> -->
-
-                            <div class="form-group">
-                                <label class="form-label" for="description">Description</label>
-                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control" />                    
-                            </div>
-                        
-                          <input type="submit" value="Enviar" class="btn btn-primary">
-                        </form>
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-    <!--  --------------------------------------------------------------------------------------------------------- -->
-                <!-- FORM THIRD -->
-                <div v-cloak v-if="selectOption == 'third'"  class="card mb-3 col-12 col-md-5 mt-4">
-                  <div class="row g-0 d-flex align-items-center">
-                   <!--  <div class="col-lg-4 d-none d-lg-flex">
-                      <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
-                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
-                    </div> -->
-                    <h2 class="d-flex justify-content-center">Transfers to third party accounts</h2>
-                    <div class="col-lg-12">
-                      <div class="card-body py-5 px-md-5">
-                  
-                        <form v-cloak @submit.prevent="makeTransfer">
-                            <div class="form-group">
-                                <label class="form-label" for="amount">Amount</label>
-                                <input v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-label" for="accountOrigin">Account Origin</label>
-                                <select v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
-                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}}</option>
-                                </select>                              
-                            </div>
-
-                            <div class="form-group">
-                              <label class="form-label" for="accountDestination">Account Destination</label>
-                              <input v-model="transferDTO.accountDestination" type="text" id="accountDestination" name="accountDestination" class="form-control" />                    
-                          </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label" for="description">Description</label>
-                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control" />                    
-                            </div>
-                        
                           <input type="submit" value="Enviar" class="btn btn-primary">
                         </form>
                         
@@ -180,8 +108,8 @@
               <div v-cloak v-if="showConfirmation" class="confirmation-message">
                 <p>¿Estás seguro de que deseas continuar?</p>
                 <div class="btn-wrapper">
-                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
-                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+                  <button v-cloak @click="confirmPayLoan" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelPayLoan" class="btn cancel-btn">Cancelar</button>
                 </div>
               </div>
 
@@ -214,7 +142,7 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-<script src="../javascript/transfer.js"></script>
+<script src="../javascript/pay-loan.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

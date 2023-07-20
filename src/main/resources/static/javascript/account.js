@@ -5,6 +5,7 @@ createApp({
     return {
       data: [],
       transaction:[],
+/*       transactionsNotHidden:[], */
       params: "",
     }
   },
@@ -23,6 +24,7 @@ createApp({
           .then(res => {
             this.data = res.data;
             this.transaction = this.data.transaction.sort((a , b) => b.id - a.id );
+            /* this.transactionsNotHidden = this.data.hidden.filter(transac => transac.hidden === false).sort((a , b) => a.id - b.id ); */
             console.log(this.data)
           })
           .catch(error => {
