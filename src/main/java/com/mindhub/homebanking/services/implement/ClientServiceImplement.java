@@ -1,6 +1,7 @@
 package com.mindhub.homebanking.services.implement;
 
 import com.mindhub.homebanking.dtos.ClientDTO;
+import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.ClientService;
@@ -43,4 +44,5 @@ public class ClientServiceImplement implements ClientService {
     public Client findByEmail(String email) {
         return clientRepository.findByEmail(email);
     }
+
 }

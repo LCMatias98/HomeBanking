@@ -16,7 +16,8 @@ createApp({
       },
       selectOption:'',
       err: '',
-      showConfirmation: false
+      showConfirmation: false,
+      actualBalance:[]
     };
   },
 
@@ -26,20 +27,19 @@ createApp({
         console.log(res);
         this.clients = res.data;
         this.loans = this.clients.loans;
-        this.accounts = this.clients.accounts.sort((a , b) => a.id - b.id );
-        this.accountsNotHidden = this.clients.accounts.filter(account => account.hidden === false).sort((a , b) => a.id - b.id );
-        console.log(this.accounts);
+        this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id);
+        this.accountsNotHidden = this.clients.accounts.filter(account => account.hidden === false).sort((a, b) => a.id - b.id);
+        
+        this.actualBalance = this.accountsNotHidden.filter(acc => acc.number == this.transferDTO.accountOrigin);
+        console.log(this.actualBalance)
       })
       .catch(error => {
         console.error(error);
       });
   },
-/*   computed(){
-    this.accountsFilter = accounts.filter(acc => acc.number !== this.transferDTO.accountOrigin);
-  }, */
+
 
   methods: {
-
     makeTransfer(event) {
       event.preventDefault();
       this.showConfirmation = true

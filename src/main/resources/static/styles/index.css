@@ -93,36 +93,7 @@
   font-size: 20px;
 }
 
-#login_button {
-  position: relative;
-  width: 100%;
-  height: 40px;
-  transition: 1s;
-  margin-top: 70px;
-}
 
-#login_button a {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  z-index: 10;
-  cursor: pointer;
-  font-size: 20px;
-  letter-spacing: 2px;
-  border: 1px solid #00ccff;
-  border-radius: 50px;
-  background-color: #0c1022;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#login_button a:hover {
-  background-color: #00ccff;
-  color: #0c1022;
-}
- */
 
 
  .rounded-t-5 {
@@ -138,4 +109,175 @@
   .rounded-bl-lg-5 {
     border-bottom-left-radius: 0.5rem;
   }
+}
+
+/* .form-container {
+  max-width: 400px; 
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+ */
+ h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+/* Ajustamos la sombra del contenedor del texto e imagen */
+.card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustamos la sombra del formulario */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+
+.card-Form{
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+
+}
+.card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+
+.form-control-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.nav{
+  background-color: #1c1c1c!important;
+}
+.header {
+  background-color: #1c1c1c;
+  /* Alternatively, 
+  /* background-image: url("path/to/your/image.jpg"); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+}
+
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main{
+  min-height: 20rem!important;
+}
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+  
+
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+
+  
+  
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  /*     background-color: #1c1c1c!important; */
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+/* 
+  #table{
+    margin-top: 2rem;
+    background-color:  #1c1c1c!important;
+  }
+
+
+  .tr, th, td{
+    background-color:  #1c1c1c!important;
+  } */
+
+  [v-cloak] {
+    display: none;
+    }
+    
+
+    .filter-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+  }
+
+  .filter-container input {
+      width: 150px;
+  }
+
+  .filter-btn {
+      margin-top: 10px;
+  }
+
+  .header{
+    background-color: #1c1c1c!important;
+  }
+  
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
 }

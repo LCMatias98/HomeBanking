@@ -107,18 +107,24 @@ public class TransactionController {
 
 
     @PostMapping(path = "/transactions/PDF")
-    public void transactionsPDF(HttpServletResponse response, @RequestBody TransactionPDFExportDTO date) throws DocumentException, IOException {
+    public void transactionsPDF(HttpServletResponse response, @RequestBody TransactionPDFExportDTO date) throws DocumentException, IOException  {
+//        Client client = clientService.findByEmail(authentication.getName());
+//        if (client == null){
+//            return new ResponseEntity<>("The Client does not exist", HttpStatus.FORBIDDEN);
+//        }
+        Account accountToPrint = accountService.findById(date.getId());
+        Client clientOwnTransactions = accountToPrint.getClient();
         response.setContentType("application/pdf");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        String currentDateTime = dateFormat.format(new Date());
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+//        String currentDateTime = dateFormat.format(new Date());
+//        String headerKey = "Content-Disposition";
+//        String headerValue = "attachment; filename=transactions"+currentDateTime + ".pdf";
 
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=transactions_"+currentDateTime + ".pdf";
-
-        List<Transaction> listTransactions = this.transactionService.getTransactionsByDate(date.getLocalDateTimeStart(),date.getLocalDateTimeEnd());
-
-        TransactionsPDFExporter exporter = new TransactionsPDFExporter(listTransactions);
+        List<Transaction> listTransactions = this.transactionService.getTransactionsByDate(date.getLocalDateTimeStart(),date.getLocalDateTimeEnd(),accountToPrint);
+        TransactionsPDFExporter exporter = new TransactionsPDFExporter(listTransactions,accountToPrint,clientOwnTransactions);
         exporter.export(response);
+
+//        return new ResponseEntity<>("Printing completed transactions", HttpStatus.OK);
     }
 
 

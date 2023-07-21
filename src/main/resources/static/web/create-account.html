@@ -40,7 +40,7 @@
                             </li>
                             <li class="nav-item ms-3">
                                 <a @click="logOut()" class="nav-link paddingIcon" href="#">
-                                  <i class="fas fa-power-off fa-2x"></i> Log Out
+                                  <i class="fas fa-power-off fa-2x"></i>
                                 </a>
                             </li>
                               
@@ -63,10 +63,10 @@
             
                 <div class="row mt-1">
                     <!-- Account Information -->
-                    <div class="col-md-6 mt-3">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">Account Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
+                    <div class="col-md-6 mt-3 ">
+                        <div class="card h-100 form-container">
+                            <div class="card-body ">
+                                <h5 class="card-title">Example of Account: {{ clients.firstName }} {{ clients.lastName }}</h5>
                                 <div class="mb-3">
                                     <span class="text-secondary">E-mail: </span>
                                     <span v-cloak class="text-secondary">{{ clients.email }}</span>
@@ -86,31 +86,28 @@
             
                     <!-- Account Creation Form -->
                     <div class="col-md-6 mt-3">
-                        <div v-cloak class="card mb-3">
+                        <div v-cloak class="card mb-3 form-container">
                             <div class="card-body py-5 px-md-5">
                                 <form v-cloak @submit.prevent="createAccount">
                                     <div class="form-group">
-                                        <label class="form-label" for="payment-type">Select Account Type:</label>
-      <!--                                   <select v-cloak v-model="cardType" class="form-select" id="payment-type" name="payment-type">
-                                            <option value="DEBIT">DEBIT</option>
-                                            <option value="CREDIT">CREDIT</option>
-                                        </select> -->
+                                        <label class="form-label text-secondary" for="payment-type"><strong>Select Account Type:</strong></label>
                                     </div>
-            
+                    
                                     <div class="form-group">
-                                        <label class="form-label" for="account-type">Account Types:</label>
-                                        <select v-cloak v-model="accountType" class="form-select" id="account-type" name="account-type">
+                                        <label class="form-label text-secondary" for="account-type">Account Types:</label>
+                                        <select v-cloak v-model="accountType" class="form-select form-control-strong-shadow " id="account-type" name="account-type">
                                             <option value="CURRENT">Current account</option>
                                             <option value="SAVINGS">Savings account</option>
                                         </select>
                                     </div>
-            
-                                    <input type="submit" value="Enviar" class="btn btn-primary">
-            
+                    
+                                    <input type="submit" value="Enviar" class="btn btn-success col-6 d-block mx-auto">
+                    
                                 </form>
                             </div>
                         </div>
                     </div>
+                    
                 </div>
 <!--             
                 <div class="d-grid col-12 mt-4">
@@ -129,28 +126,35 @@
         </main>
         
 </div>
-        <footer class="mt-5">
-            <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                <h4>Síguenos en nuestras redes sociales</h4>
-                <p>
-                    <a href="https://www.facebook.com/" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
-                    </a>
-                </p>              
-                <p>All rights reserved  &copy; 2023 HomeBanking</p>
-                </div>
-            </div>
-            </div>
-        </footer>
-
+<footer class="mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center d-flex justify-content-between">
+          <div>
+            <h4>Follow us on social media</h4>
+            <p>
+              <a href="https://www.facebook.com/" target="_blank">
+                <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+              </a>
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+                <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+              </a>
+            </p>
+          </div>
+          <div class="text-center align-self-center">
+            <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+          </div>
+          <div>
+            <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

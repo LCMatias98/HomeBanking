@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="../styles/account.css">
+    <link rel="stylesheet" href="../styles/toastify.css">
+    
 </head>
 <body>
 <div id="app">
@@ -35,7 +37,7 @@
                         </li>
                         <li class="nav-item  ms-3">
                             <a @click="logOut()" class="nav-link paddingIcon" href="#">
-                                <i class="fas fa-power-off fa-2x"></i> Log Out
+                                <i class="fas fa-power-off fa-2x"></i>
                             </a>
                         </li>
                     </ul>
@@ -52,7 +54,7 @@
                         <strong>Balance:</strong> {{data.balance}}
                     </p>
                     <p v-cloak>
-                        <strong>Fecha de creación:</strong> {{data.creationDate}}
+                        <strong>Creation date:</strong> {{data.creationDate}}
                     </p>
                     <p v-cloak>
                         <strong>Number of Transactions made:</strong> {{data.transaction.length}}
@@ -65,20 +67,25 @@
             <!-- ----------------------------  FILTRO  --------------------------- -->
             <div class="card mt-4">
                 <div class="card-body">
-                    <h2>Print transactions</h2>
+                    <h2>Filter and Print transactions</h2>
                     <div class="filter-container">
-                        <input type="date" id="fechaInicio">
-                        <input type="date" id="fechaFin">
-                        <button class="btn btn-primary filter-btn" onclick="filtrarTabla()">Filtrar</button>
+                        <input type="datetime-local" v-model="dateWhitAccount.dateStart" id="fechaInicio">
+                        <input type="datetime-local" v-model="dateWhitAccount.dateEnd" id="fechaFin">
+                        <button class="btn btn-success filter-btn" @click="print()">Print</button>
                     </div>
                 </div>
             </div>
-
+         <!--    {{dateWhitAccount}} -->
             <!-- ----------------------------  TABLA  --------------------------- -->
-            <div v-cloak class="d-flex justify-content-center" v-if="data.hidden == false">
+            <div v-cloak class="d-flex justify-content-center mt-3" v-if="data.hidden == false">
+               
                 <div class="table-responsive">
-                    <table class="table table-dark table-hover table-bordered" id="table" >
-                        <thead>
+                    <h1 class="d-flex justify-content-center">Details of Transactions</h1>
+                   <table class="table table-dark table-hover table-bordered">
+                    <thead>
+                        <tr scope="col">
+                            <th colspan="5" scope="col" style="text-align: center;">Transactions</th>
+                        </tr>
                         <tr>
                             <th scope="col">Type</th>
                             <th scope="col">Amount</th>
@@ -86,8 +93,9 @@
                             <th scope="col">Date</th>
                             <th scope="col">Time Of Transaction</th>
                         </tr>
-                        </thead>
-                        <tbody >
+                    </thead>
+                    <tbody>
+                        <!-- Rows for transactions -->
                         <tr v-for="transact of transaction">
                             <td v-if="transact.type == 'CREDIT'" class="text-success">{{transact.type}}</td>
                             <td v-if="transact.type == 'DEBIT'" class="text-danger">{{transact.type}}</td>
@@ -96,38 +104,57 @@
                             <td>{{transact.date.slice(length, -16).replace('T',' ')}}</td>
                             <td>{{ transact.date.slice(11, 19) }}</td>
                         </tr>
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
+                
                 </div>
             </div>
         </div>
+
+
+         <!-- MODAL DE CONFIRMACION -->
+         <div v-cloak v-if="showConfirmation" class="confirmation-message mt-3">
+            <p>¿Estás seguro de que deseas continuar?</p>
+            <div class="btn-wrapper">
+                <button v-cloak @click="confirmPrint" class="btn confirm-btn">Confirmar</button>
+                <button v-cloak @click="cancelPrint" class="btn cancel-btn">Cancelar</button>
+            </div>
+          </div>
     </main>
     <footer class="mt-5">
         <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h4>Síguenos en nuestras redes sociales</h4>
-                    <p>
-                        <a href="https://www.facebook.com/" target="_blank">
-                            <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
-                        </a>
-                        <a href="https://www.instagram.com/" target="_blank">
-                            <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
-                        </a>
-                        <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
-                            <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
-                        </a>
-                    </p>
-                    <p>All rights reserved &copy; 2023 HomeBanking</p>
-                </div>
+          <div class="row">
+            <div class="col-md-12 text-center d-flex justify-content-between">
+              <div>
+                <h4>Follow us on social media</h4>
+                <p>
+                  <a href="https://www.facebook.com/" target="_blank">
+                    <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+                  </a>
+                  <a href="https://www.instagram.com/" target="_blank">
+                    <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+                  </a>
+                  <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+                    <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+                  </a>
+                </p>
+              </div>
+              <div class="text-center align-self-center">
+                <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+              </div>
+              <div>
+                <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+                <p>Phone: +1 (123) 456-7890</p>
+              </div>
             </div>
+          </div>
         </div>
-    </footer>
-
+      </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="../javascript/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
 </div>
 </body>
 </html>

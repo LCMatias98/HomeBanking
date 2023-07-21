@@ -95,7 +95,6 @@ main{
   .paddingIcon {
     padding: 0px;
     padding-top: 2px;
-    background-color: #6c757d;
     border-radius: 8px;
     transition: background-color 0.3s ease;
   }
@@ -139,4 +138,27 @@ main{
 .border{
   border: solid 2px black;
   border-radius: 15px;
+}
+
+
+
+
+
+
+
+
+
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+.form-control-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }

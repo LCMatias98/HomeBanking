@@ -9,6 +9,7 @@ createApp({
       accounts:[],
       accountsNotHidden:[],
       showConfirmation: false,
+      cards:[],
       err: ''
     }
   },
@@ -32,7 +33,8 @@ createApp({
         this.loans = this.clients.loans;
         this.accountsNotHidden = this.clients.accounts.filter(account => account.hidden === false).sort((a , b) => a.id - b.id );
         this.accounts = this.clients.accounts.sort((a , b) => a.id - b.id )
-       
+        this.cards = this.clients.cards.sort((a , b) => a.id - b.id )
+        console.log(this.cards);
       })
       .catch(error => {
         console.error(error);

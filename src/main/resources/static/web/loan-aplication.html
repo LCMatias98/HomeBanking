@@ -43,7 +43,7 @@
                         </li>
                         <li class="nav-item ms-3">
                             <a @click="logOut()" class="nav-link paddingIcon" href="#">
-                              <i class="fas fa-power-off fa-2x "></i> Log Out
+                              <i class="fas fa-power-off fa-2x "></i>
                             </a>
                         </li>
                     </ul>
@@ -62,8 +62,7 @@
         <h1 class="d-flex justify-content-center mt-3">Claim Loan</h1>
        
         <section class=" text-center text-lg-start mt-3">
-
-            <div class="card mb-3">
+            <div class="card mb-3 card-Form">
               <div class="row g-0 d-flex align-items-center">
                 <div class="col-lg-4 d-none d-lg-flex">
                   <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
@@ -74,25 +73,26 @@
               
                     <!-- 6,12,24,36,48,60 Hipotecario Personal Automotriz -->
                     <!--  -->
+                    <div class="form-container">
                     <form @submit.prevent>
 
                         <div class="form-group">
                             <label class="form-label" for="number">Destination Account</label>
-                            <select v-model="destinationAccount" class="form-select" id="number" name="number">
+                            <select v-model="destinationAccount" class="form-select form-control-strong-shadow" id="number" name="number">
                               <option v-for="account of accounts" :value="account.number">{{account.number}}</option>
                             </select>
                         </div>
 
                       <div class="form-group">
                         <label class="form-label" for="name">Loan Type</label>
-                        <select v-model="selecterLoan" class="form-select" id="name" name="name">
+                        <select v-model="selecterLoan" class="form-select form-control-strong-shadow" id="name" name="name">
                           <option v-for="loan of claimLoans" :value="loan">{{loan.name}}</option>
                         </select>
                       </div>
                     
                       <div class="form-group">
                         <label class="form-label" for="payment">Loan Payments:</label>
-                        <select v-model="payment" class="form-select" id="payment" name="payment">
+                        <select v-model="payment" class="form-select form-control-strong-shadow" id="payment" name="payment">
                           <option v-for="loan of selecterLoan.payment" :value="loan">{{loan}}</option>
                         </select>
                       </div>
@@ -100,13 +100,13 @@
 
                       <div class="form-group">
                         <label class="form-label" for="amount">Loan Amount:</label>
-                        <input v-model="amount" type="text" id="amount" name="amount" class="form-control" />
+                        <input v-model="amount" type="text" id="amount" name="amount" class="form-control form-control-strong-shadow" />
                       </div>
 
                     
-                      <input type="submit" value="Enviar" @click="claimLoan()" class="btn btn-primary">
+                      <input type="submit" value="Enviar" @click="claimLoan()" class="btn btn-success mt-3 col-4 d-block mx-auto">
                     </form>              
-          
+                  </div>
                   </div>
                 </div>
               </div>
@@ -128,27 +128,35 @@
 
     </main>
 </div>
-    <footer class="mt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col text-center">
-              <h4>Síguenos en nuestras redes sociales</h4>
-              <p>
-                <a href="https://www.facebook.com/" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
-                </a>
-                <a href="https://www.instagram.com/" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
-                </a>
-              </p>              
-              <p>All rights reserved  &copy; 2023 HomeBanking</p>
-            </div>
-          </div>
+<footer class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center d-flex justify-content-between">
+        <div>
+          <h4>Follow us on social media</h4>
+          <p>
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+              <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+            </a>
+          </p>
         </div>
-    </footer>
+        <div class="text-center align-self-center">
+          <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+        </div>
+        <div>
+          <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+          <p>Phone: +1 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

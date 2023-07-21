@@ -38,7 +38,7 @@
                         </li>
                         <li class="nav-item ms-3">
                             <a @Click="logOut()" class="nav-link paddingIcon" href="#">
-                              <i class="fas fa-power-off fa-2x"></i> Log Out
+                              <i class="fas fa-power-off fa-2x"></i>
                             </a>
                         </li>
                     </ul>
@@ -58,18 +58,18 @@
     SILVER,
     TITANIUM -->
     <div v-cloak class="d-grid gap-2 col-3 mx-auto"> 
-        <a v-cloak href="./create-cards.html" class="btn btn-secondary mt-5">Create Cards</a>
+        <a v-cloak href="./create-cards.html" class="btn btn-success col-6 mt-5 mx-auto">Create Cards</a>
     </div>
     
 
-        <div v-cloak class="container">
+        <div v-cloak class="container bg-info mt-3 mb-3">
             <div class="row ">
             <div  v-for="card of cardStatus" class="col-md-6 d-flex justify-content-center align-items-center">
                 <!-- Debit cards -->
                 <div v-if="card.type === 'DEBIT'">
                     <div  v-if="(card.color === 'GOLD' && !card.hidden)"  :class="{ 'expirated': card.status === 'expirated' }">
                         <h2 class=" d-flex justify-content-center" v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        
                         <div v-cloak class="card d-flex justify-content-center" >
                             <div class="card-inner">
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #ccf80ac5, #080808);">
@@ -118,11 +118,12 @@
                                 
                             </div>
                         </div>
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
                     
                     <div  v-if="(card.color === 'TITANIUM' && !card.hidden)" :class="{ 'expirated': card.status === 'expirated' }">
-                        <h2 v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        <h2 class="d-flex justify-content-center" v-cloak>{{card.type}}</h2>
+                       
                         <div v-cloak class="card d-flex justify-content-center">
                             <div class="card-inner">
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #000000c5, #030303);">
@@ -170,12 +171,12 @@
                                 </div>
                             </div>
                         </div>
-                
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
 
                     <div v-if="(card.color === 'SILVER' && !card.hidden)"  :class="{ 'expirated': card.status === 'expirated' }">
-                        <h2 v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        <h2 class="d-flex justify-content-center" v-cloak>{{card.type}}</h2>
+                        
                         <div v-cloak class="card d-flex justify-content-center">
                             <div class="card-inner">   
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #8c8d8523, #080808);">
@@ -223,14 +224,15 @@
                                 </div>
                             </div>
                         </div>
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
                 </div>
         
                 <!-- Credit cards -->
                 <div v-if="card.type === 'CREDIT'">
                     <div  v-if="(card.color === 'GOLD' && !card.hidden)"  :class="{ 'expirated': card.status === 'expirated' }">
-                        <h2 v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        <h2 class="d-flex justify-content-center" v-cloak>{{card.type}}</h2>
+                        
                         <div v-cloak class="card d-flex justify-content-center" >
                             <div class="card-inner">
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #ccf80ac5, #080808);">
@@ -278,11 +280,13 @@
                                 </div>
                             </div>
                         </div>
+
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
                     
                     <div  v-if="(card.color === 'TITANIUM' && !card.hidden)"  :class="{ 'expirated': card.status === 'expirated' }">
-                        <h2 v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        <h2 class="d-flex justify-content-center" v-cloak>{{card.type}}</h2>
+                        
                         <div v-cloak class="card d-flex justify-content-center">
                             <div class="card-inner">
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #000000c5, #030303);">
@@ -330,12 +334,12 @@
                                 </div>
                             </div>
                         </div>
-                
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
 
                     <div v-if="(card.color === 'SILVER' && !card.hidden)"  :class="{ 'expirated': card.status === 'expirated' }">
-                        <h2 v-cloak>{{card.type}}</h2>
-                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="btn btn-secondary btn-sm btn-block btn-card mt-4">Disable Card</a>
+                        <h2 class="d-flex justify-content-center" v-cloak>{{card.type}}</h2>
+                        
                         <div v-cloak class="card d-flex justify-content-center">
                             <div class="card-inner">   
                                 <div class=" front"   style="background-image: linear-gradient(45deg, #8c8d8523, #080808);">
@@ -369,10 +373,6 @@
                                         <p>this is a virtual card design using HTML and CSS. You can aslo design something like this.</p>
                                     </div>
                                     <div class="d-flex justify-content-between ">
-                <!--                         <div class="d-flex align-items-center ">
-                                            <p>VALID TILL</p>
-                                            <p>10 / 25</p>
-                                        </div> -->
                                         <div class="d-flex flex-column">       
                                             <p>Issued in</p>
                                             <p>{{card.fromDate}}</p>
@@ -383,6 +383,7 @@
                                 </div>
                             </div>
                         </div>
+                        <a v-cloak :href="'../web/disable-card.html?id='+card.id" class="d-flex justify-content-center mx-auto col-6 btn btn-danger btn-sm btn-block btn-card mt-4">Disable Card</a>
                     </div>
                 </div>
             </div>
@@ -396,28 +397,35 @@
 </main>
 
 
-    <footer class="mt-5">
-        <div class="container">
-          <div class="row">
-            <div class="col text-center">
-              <h4>Síguenos en nuestras redes sociales</h4>
-              <p>
-                <a href="https://www.facebook.com/" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
-                </a>
-                <a href="https://www.instagram.com/" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
-                  <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
-                </a>
-              </p>              
-              <p>All rights reserved  &copy; 2023 HomeBanking</p>
-            </div>
+<footer class="mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center d-flex justify-content-between">
+          <div>
+            <h4>Follow us on social media</h4>
+            <p>
+              <a href="https://www.facebook.com/" target="_blank">
+                <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+              </a>
+              <a href="https://www.instagram.com/" target="_blank">
+                <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+              </a>
+              <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+                <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+              </a>
+            </p>
+          </div>
+          <div class="text-center align-self-center">
+            <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+          </div>
+          <div>
+            <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+            <p>Phone: +1 (123) 456-7890</p>
           </div>
         </div>
-       
-    </footer>
+      </div>
+    </div>
+  </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

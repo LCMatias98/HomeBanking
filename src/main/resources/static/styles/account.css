@@ -9,27 +9,19 @@ main{
     color: #45f3ff!important;
     padding: 20px 0!important;
   }
-  .social-icons {
-    font-size: 20px!important;
-    margin-right: 10px!important;
-  }
+
   .paddingIcon {
     padding: 0px;
     padding-top: 2px;
-    background-color: #6c757d;
+   /*  background-color: #6c757d; */
     border-radius: 8px;
     transition: background-color 0.3s ease;
   }
-  
   .paddingIcon:hover {
     background-color: #848484;
   }
   
-  #iconSocial{
-    height: 30px!important;
-    width: 30px!important;
-  }
-  
+
   footer p {
     margin-bottom: 10px!important;
   }
@@ -86,7 +78,7 @@ main{
   #logoBank{
     height: 100px!important;
   }
-
+/* 
   #table{
     margin-top: 2rem;
     background-color:  #1c1c1c!important;
@@ -95,7 +87,7 @@ main{
 
   .tr, th, td{
     background-color:  #1c1c1c!important;
-  }
+  } */
 
   [v-cloak] {
     display: none;
@@ -115,3 +107,52 @@ main{
   .filter-btn {
       margin-top: 10px;
   }
+
+  .header{
+    background-color: #1c1c1c!important;
+  }
+  
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+
+
+
+@media (max-width: 576px) {
+  .social-icons {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  /* Alineación de elementos en una sola columna */
+  .footer .row {
+    flex-direction: column;
+  }
+
+  .footer .col-md-12 {
+    text-align: center;
+  }
+
+  .rights-reserved {
+    font-size: 12px;
+  }
+}
+h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+
+
+

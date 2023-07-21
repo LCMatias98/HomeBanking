@@ -19,5 +19,5 @@ public interface TransactionService {
 
     List<Transaction> getTransactions();
 
-    List<Transaction> getTransactionsByDate(LocalDateTime dateTimeStart, LocalDateTime dateTimeEnd);
+    List<Transaction> getTransactionsByDate(LocalDateTime dateStart, LocalDateTime dateEnd, Account account);
 }

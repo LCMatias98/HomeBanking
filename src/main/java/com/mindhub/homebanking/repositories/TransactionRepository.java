@@ -3,6 +3,7 @@ package com.mindhub.homebanking.repositories;
 import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Transaction;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.time.LocalDateTime;
@@ -15,5 +16,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
         Transaction findByAccount(Account account);
         Transaction findByDate(LocalDateTime date);
 
-        List<Transaction> findByDateBetween(LocalDateTime dateStart, LocalDateTime dateEnd);
+//        @Query("SELECT t FROM Transaction t WHERE t.date BETWEEN :dateStart AND :dateEnd AND t.account = :account")
+        List<Transaction> findByDateBetweenAndAccount(LocalDateTime dateStart, LocalDateTime dateEnd, Account account);
+
 }

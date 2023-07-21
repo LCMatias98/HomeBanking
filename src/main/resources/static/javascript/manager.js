@@ -23,9 +23,9 @@ const { createApp } = Vue
 
     methods:{
         loadData(){
-            axios.get('http://localhost:8080/api/clients')
+            axios.get('/api/clients')
                 .then(res=> {
-                this.clients = res.data._embedded.clients;
+                this.clients = res.data;
                 this.clientRestResponse = res.data;
                 console.log(this.clients);
                 })

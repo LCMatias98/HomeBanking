@@ -43,6 +43,7 @@ public class HomebankingApplication {
 
 			LocalDateTime todayTime = LocalDateTime.now();
 			LocalDateTime tomorrowTime = todayTime.plusDays(1);
+			LocalDateTime beforeDays = todayTime.minusDays(10);
 			String password1 = "Lucas123456";
 			String password2 = "Mauri123456";
 			String encodedPassword1 = this.passwordEnconder.encode(password1);
@@ -77,8 +78,10 @@ public class HomebankingApplication {
 			Transaction transaction3 = new Transaction(TransactionType.CREDIT, 3000.00,"Buyed",todayTime,false);
 			Transaction transaction4 = new Transaction(TransactionType.DEBIT, -4000.00,"Buyed",tomorrowTime,false);
 			Transaction transaction5 = new Transaction(TransactionType.DEBIT, 500000.00,"Herramientas",todayTime,false);
+			Transaction transaction6 = new Transaction(TransactionType.CREDIT,15000.00,"PRUEBA DE FILTRO",beforeDays,false);
 			account1.addTransaction(transaction1);
 			account1.addTransaction(transaction5);
+			account1.addTransaction(transaction6);
 			account2.addTransaction(transaction2);
 			account3.addTransaction(transaction3);
 			account4.addTransaction(transaction4);
@@ -87,6 +90,7 @@ public class HomebankingApplication {
 			transactionRepository.save(transaction3);
 			transactionRepository.save(transaction4);
 			transactionRepository.save(transaction5);
+			transactionRepository.save(transaction6);
 
 			List<Integer> list1 = List.of(12,24,36,48,60);
 			Loan loan1 = new Loan("Hipotecario",500000.00, list1,0.4);

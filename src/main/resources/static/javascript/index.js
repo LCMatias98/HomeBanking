@@ -19,7 +19,13 @@ createApp({
       axios.post('/api/login', `email=${this.email}&password=${this.password}`)
         .then(response => {
 /*           console.log(response.data); */
-          window.location.href = './accounts.html';
+
+          if(this.email.includes("admin")){
+            window.location.href = './manager.html';
+          } else {
+            window.location.href= './accounts.html';
+          }
+
         })
         .catch(error => {
           console.error(error);

@@ -48,7 +48,7 @@
                             </li>
                             <li class="nav-item  ms-3">
                                 <a @Click="logOut()" class="nav-link paddingIcon" href="#">
-                                  <i class="fas fa-power-off fa-2x "></i> Log Out
+                                  <i class="fas fa-power-off fa-2x "></i>
                                 </a>
                             </li>
                               
@@ -81,31 +81,38 @@
                 
                 <!-- FORM OWN -->
                 <div v-cloak v-if="selectOption == 'own'" class="card mb-3 col-12 col-md-5 mt-4">
-                  <div class="row g-0 d-flex align-items-center">
+                  <div class="row g-0 d-flex align-items-center form-control-strong-shadow">
                    <!--  <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
                         class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
                     </div> -->
-                    <h2 class="d-flex justify-content-center">Transfers to own accounts</h2>
+                    <h2 class="d-flex justify-content-center">Transfers to own accounts </h2>
                     <div class="col-lg-12">
                       <div class="card-body py-5 px-md-5">
                   
+                        <div v-cloak class="form-container">
                         <form v-cloak @submit.prevent="makeTransfer">
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount</label>
-                                <input v-cloak v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
+                                <input v-cloak v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control form-control-strong-shadow " />                    
                             </div>
 
                             <div v-cloak class="form-group">
                                 <label class="form-label" for="accountOrigin">Account Origin</label>
-                                <select v-cloak v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
-                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}}</option>
+                                <select v-cloak v-model="transferDTO.accountOrigin" class="form-select form-control form-control-strong-shadow" id="accountOrigin" name="accountOrigin">
+                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}} / Balance: ${{acc.balance}}</option>
                                 </select>                              
                             </div>
-                    
+                            
+<!--                             <div class="form-group">
+                              <label class="form-label" for="actualBalance">ACTUAL BALANCE</label>
+                              <input type="text" id="actualBalance" name="actualBalance" :value="actualBalance.amount" class="form-control" />
+                            </div> -->
+                            
+
                             <div class="form-group">
                                 <label class="form-label" for="accountDestination">Account Destination</label>
-                                <select v-model="transferDTO.accountDestination" class="form-select" id="accountDestination" name="accountDestination">
+                                <select v-model="transferDTO.accountDestination" class="form-select form-control form-control-strong-shadow" id="accountDestination" name="accountDestination">
                                     <option v-for="acc in accountsNotHidden.filter(acc => acc.number !== this.transferDTO.accountOrigin)" :value="acc.number">{{acc.number}}</option>
                                 </select>
                             </div>
@@ -119,12 +126,13 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="description">Description</label>
-                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control" />                    
+                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control form-control-strong-shadow" />                    
                             </div>
                         
-                          <input type="submit" value="Enviar" class="btn btn-primary">
+                          <input type="submit" value="Send" class="btn btn-success">
                         </form>
-                        
+                      </div>
+
                       </div>
                     </div>
                   </div>
@@ -133,7 +141,7 @@
     <!--  --------------------------------------------------------------------------------------------------------- -->
                 <!-- FORM THIRD -->
                 <div v-cloak v-if="selectOption == 'third'"  class="card mb-3 col-12 col-md-5 mt-4">
-                  <div class="row g-0 d-flex align-items-center">
+                  <div class="row g-0 d-flex align-items-center form-control-strong-shadow">
                    <!--  <div class="col-lg-4 d-none d-lg-flex">
                       <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
                         class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
@@ -141,33 +149,33 @@
                     <h2 class="d-flex justify-content-center">Transfers to third party accounts</h2>
                     <div class="col-lg-12">
                       <div class="card-body py-5 px-md-5">
-                  
+                        <div v-cloak class="form-container">
                         <form v-cloak @submit.prevent="makeTransfer">
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount</label>
-                                <input v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control" />                    
+                                <input v-model="transferDTO.amount" type="number" id="amount" name="amount" class="form-control form-control form-control-strong-shadow" />                    
                             </div>
 
                             <div class="form-group">
                                 <label class="form-label" for="accountOrigin">Account Origin</label>
-                                <select v-model="transferDTO.accountOrigin" class="form-select" id="accountOrigin" name="accountOrigin">
-                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}}</option>
+                                <select v-model="transferDTO.accountOrigin" class="form-select form-control-strong-shadow" id="accountOrigin" name="accountOrigin">
+                                    <option v-for="acc in accountsNotHidden" :value="acc.number">{{acc.number}} / Balance: ${{acc.balance}}</option>
                                 </select>                              
                             </div>
 
                             <div class="form-group">
                               <label class="form-label" for="accountDestination">Account Destination</label>
-                              <input v-model="transferDTO.accountDestination" type="text" id="accountDestination" name="accountDestination" class="form-control" />                    
+                              <input v-model="transferDTO.accountDestination" type="text" id="accountDestination" name="accountDestination" class="form-control form-control-strong-shadow" />                    
                           </div>
                             
                             <div class="form-group">
                                 <label class="form-label" for="description">Description</label>
-                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control" />                    
+                                <input v-model="transferDTO.description" type="text" id="description" name="description" class="form-control form-control-strong-shadow" />                    
                             </div>
                         
-                          <input type="submit" value="Enviar" class="btn btn-primary">
+                          <input type="submit" value="Send" class="btn btn-success">
                         </form>
-                        
+                       </div>
                       </div>
                     </div>
                   </div>
@@ -187,27 +195,35 @@
 
         </main>
 </div>
-        <footer class="mt-5">
-            <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                <h4>Síguenos en nuestras redes sociales</h4>
-                <p>
-                    <a href="https://www.facebook.com/" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
-                    </a>
-                    <a href="https://www.instagram.com/" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
-                    </a>
-                    <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
-                    <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
-                    </a>
-                </p>              
-                <p>All rights reserved  &copy; 2023 HomeBanking</p>
-                </div>
-            </div>
-            </div>
-        </footer>
+<footer class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center d-flex justify-content-between">
+        <div>
+          <h4>Follow us on social media</h4>
+          <p>
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+              <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+            </a>
+          </p>
+        </div>
+        <div class="text-center align-self-center">
+          <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+        </div>
+        <div>
+          <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+          <p>Phone: +1 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
 
