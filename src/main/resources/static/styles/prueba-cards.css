@@ -1,91 +1,314 @@
-/* Estilos adicionales para la tarjeta */
-.card {
-    width: 300px;
-    height: 200px;
-    border-radius: 10px;
-    background-color: #f7f7f7;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: relative; 
-    transition: transform 0.3s;
+/* body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+} */
+
+.container {
+    position: relative;
 }
 
-/* Efecto de giro al pasar el ratón sobre la tarjeta */
+.card-wrapper {
+    perspective: 1000px;
+}
+
+.card {
+    width: 300px;
+    height: 180px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+
+}
+
+.card-front {
+ /*    background-color: #fff; */
+    background-size: cover;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.card-back {
+    /* background-color: #f1f1f1; */
+    background-size: cover;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.card-GOLD {
+    background-image: linear-gradient(45deg, rgba(204, 248, 10, 0.8), rgba(8, 8, 8, 0.8)), url('https://i.ibb.co/PYss3yv/map.png');
+    
+}
+
+.card-TITANIUM {
+    background-image: linear-gradient(45deg, rgba(64, 64, 64, 0.8), rgba(0, 0, 128, 0.8)), url('https://i.ibb.co/PYss3yv/map.png');
+}
+
+.card-SILVER {
+    background-image: linear-gradient(45deg, rgba(192, 192, 192, 0.8), rgba(128, 128, 128, 0.8)), url('https://i.ibb.co/PYss3yv/map.png');
+}
+
+.card-logo {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+}
+
+.card-chip {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+}
+
+.card-number {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.card-holder {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.card-holder2 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 0px;
+}
+
+.card-holder.top-left {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
+
+.card-holder.bottom-right {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+.card-expiry {
+    position: absolute;
+    bottom: 10px;
+    right: 60px;
+    font-size: 14px;
+}
+.card-expiry2 {
+    position: absolute;
+    bottom: 45px;
+    right: 60px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.card-expiryDate {
+    position: absolute;
+    bottom: 25px;
+    right: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.card-ccv {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 40px;
+    text-align: center;
+    color: #000;
+}
+
 .card:hover {
     transform: rotateY(180deg);
 }
-
-/* Frente de la tarjeta */
-.front {
-    /* Eliminar el posicionamiento absoluto */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column; /* Cambiamos a dirección vertical */
-    align-items: stretch;
-    justify-content: flex-start; /* Alinear contenido en la parte superior */
-    transform: rotateY(0deg);
-    background-image: url("https://i.ibb.co/PYss3yv/map.png"); /* Agregamos la imagen como fondo */
-    background-size: cover; /* Ajustar el tamaño del fondo */
-    background-position: center; /* Centrar la imagen del fondo */
-    z-index: 1; /* Asegurar que la imagen de fondo esté por debajo del contenido */
+.imgBarraBack{
+    width: 113%!important;
 }
 
+[v-cloak] {
+    display: none;
+    }
+    
+  
+  .expirated {
+    margin-top: 10px;
+    border: 3px solid red;
+    box-shadow: 0px 0px 8px red;
+    transform: scale(0.97); /* Reducir el tamaño para dar un efecto visual */
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  }
 
-/* Dorso de la tarjeta */
-.back {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotateY(180deg);
+
+  .footer {
+    background-color: #1c1c1c!important;
+    padding: 20px 0;
+  }
+  
+  .social-icons {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+  }
+
+
+
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+
+  main{
+    min-height: 20rem!important;
+  }
+    .phone-box {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+  
+    .social-icons {
+      font-size: 20px!important;
+      margin-right: 10px!important;
+    }
+    
+    #iconSocial{
+      height: 30px!important;
+      width: 30px!important;
+    }
+    
+    footer p {
+      margin-bottom: 10px!important;
+    }
+    
+    #divFooter{
+      background: #23242a!important;
+    }
+    
+    #iconPerfil{
+      height: 50px!important;
+      object-fit: contain!important;
+      border-radius:50px!important;
+    }
+    #imgPerfil{
+      height: 130px!important;
+      border-radius:130px!important;
+    }
    
-}
-
-/* Contenido de la tarjeta */
-.card-content {
-    text-align: center;
-    position: relative; /* Asegurar que el contenido respete el posicionamiento relativo de la tarjeta */
-    z-index: 2; 
-}
-
-/* Estilo para la imagen en el frente de la tarjeta */
 
 
-/* Estilo para la imagen en el dorso de la tarjeta */
-.back .map-img {
-    width: 90%; /* Ajustar al ancho de la tarjeta */
-    height: 40%; /* Ajustar a la altura de la tarjeta */
-    object-fit: cover; /* Escalar la imagen para llenar el área */
-}
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
 
-/* Estilo adicional para centrar horizontalmente la imagen */
-.card-content {
-    justify-content: center;
-}
+  .paddingIcon {
+    padding: 0px;
+    padding-top: 2px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+  
 
-h2 {
+  [v-cloak] {
+    display: none;
+    }
+    
+  
+  /* Ajustes para dispositivos pequeños */
+  @media (max-width: 576px) {
+    .social-icons {
+      width: 20px;
+      height: 20px;
+      margin: 5px;
+    }
+  
+    /* Alineación de elementos en una sola columna */
+    .footer .row {
+      flex-direction: column;
+    }
+  
+    .footer .col-md-12 {
+      text-align: center;
+    }
+  
+    .rights-reserved {
+      font-size: 12px;
+    }
+  }
+  
+  h2 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
-    font-size: 24px;
+  }
 
-}
-
-.imgCard {
-    width: 50px!important;
-    object-fit: contain;
-}
-
-.h6deIzquierda {
+  h1 {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
-    margin-left: 10px!important;
-    margin-top: 10px!important;
+  }
+
+  #fondoTarjetas{
+  background-color:#fcf7d3;
+  border-radius: 45px!important;
 }
 
-.h6deDerecha{
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
-    margin-right: 10px!important;
-    margin-top: 10px!important;
-}
+#fondoTarjetasDEBIT{
+    background-color:#dee8be;
+    border-radius: 45px!important;
+  
+  }
+
+  #fondoTarjetasCREDIT{
+    background-color:#b7d1a3;
+    border-radius: 45px!important;
+  
+  }
+
+  #checkboxCards{
+    background-color: #fcf7d3;
+    border-radius: 15px;
+    border: 2px solid #b7d1a3;
+  }
+/*   background-image: linear-gradient(45deg, #ccf80ac5, #080808), url('https://i.ibb.co/PYss3yv/map.png'); */
+    /* background-image: linear-gradient(45deg, #404040, #000080), url('https://i.ibb.co/PYss3yv/map.png'); */
+
+  /*   background-image: linear-gradient(45deg, #ccf80ac5, #080808), url('https://i.ibb.co/PYss3yv/map.png'); */
+   /* background-image: linear-gradient(45deg, #404040, #000080), url('https://i.ibb.co/PYss3yv/map.png'); */

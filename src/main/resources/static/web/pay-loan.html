@@ -83,7 +83,7 @@
                         <form v-cloak @submit.prevent="payLoanAmount">
                             <div class="form-group">
                                 <label class="form-label" for="amount">Amount of 1 Loan payment</label>
-                                <input type="text" id="amount" name="amount" :value="filteredLoans[0].amount / filteredLoans[0].payments" class="form-control" disabled />
+                                <input type="text" id="amount" name="amount" :value="(filteredLoans[0].amount / filteredLoans[0].payments).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')" class="form-control" disabled />
                               </div>
                               
                             <div v-cloak class="form-group">

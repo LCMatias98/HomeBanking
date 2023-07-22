@@ -63,30 +63,61 @@
        
         <section class=" text-center text-lg-start mt-3">
             <div class="card mb-3 card-Form">
-              <div class="row g-0 d-flex align-items-center">
+              <div class="row g-0 d-flex align-items-center justify-content-around">
                 <div class="col-lg-4 d-none d-lg-flex">
                   <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
                     class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
                 </div>
-                <div class="col-lg-8">
+                <div class="col-lg-4">
                   <div class="card-body py-5 px-md-5">
               
                     <!-- 6,12,24,36,48,60 Hipotecario Personal Automotriz -->
                     <!--  -->
-                    <div class="form-container">
-                    <form @submit.prevent>
+                    <div class="form-container ">
+                      <form @submit.prevent class="d-none d-lg-block">
+
+                        <div class="form-group ">
+                          <label class="form-label" for="number">Destination Account</label>
+                          <select v-model="destinationAccount" class="form-select form-control-strong-shadow" id="number" name="number">
+                            <option v-for="account of accounts" :value="account.number">{{account.number}}</option>
+                          </select>
+                        </div>
+                      
+                        <div class="form-group ">
+                          <label class="form-label" for="name">Loan Type / Max amount</label>
+                          <select v-model="selecterLoan" class="form-select form-control-strong-shadow" id="name" name="name">
+                            <option v-for="loan of claimLoans" :value="loan">{{loan.name}}: ${{loan.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}</option>
+                          </select>
+                        </div>
+                      
+                        <div class="form-group ">
+                          <label class="form-label" for="payment">Loan Payments:</label>
+                          <select v-model="payment" class="form-select form-control-strong-shadow" id="payment" name="payment">
+                            <option v-for="loan of selecterLoan.payment" :value="loan">{{loan}}</option>
+                          </select>
+                        </div>
+                      
+                        <div class="form-group ">
+                          <label class="form-label" for="amount">Loan Amount:</label>
+                          <input v-model="amount" type="text" id="amount" name="amount" class="form-control form-control-strong-shadow" />
+                        </div>
+                      
+                        <input type="submit" value="Enviar" @click="claimLoan()" class="btn btn-success mt-3 col-4 d-block mx-auto">
+                      </form>
+
+                      <form @submit.prevent class="d-lg-none">
 
                         <div class="form-group">
                             <label class="form-label" for="number">Destination Account</label>
-                            <select v-model="destinationAccount" class="form-select form-control-strong-shadow" id="number" name="number">
+                            <select v-model="destinationAccount" class="form-select  form-control-strong-shadow" id="number" name="number">
                               <option v-for="account of accounts" :value="account.number">{{account.number}}</option>
                             </select>
                         </div>
 
                       <div class="form-group">
-                        <label class="form-label" for="name">Loan Type</label>
+                        <label class="form-label" for="name">Loan Type / Max amount</label>
                         <select v-model="selecterLoan" class="form-select form-control-strong-shadow" id="name" name="name">
-                          <option v-for="loan of claimLoans" :value="loan">{{loan.name}}</option>
+                          <option v-for="loan of claimLoans" :value="loan">{{loan.name}}: ${{loan.amount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}</option>
                         </select>
                       </div>
                     
@@ -96,7 +127,6 @@
                           <option v-for="loan of selecterLoan.payment" :value="loan">{{loan}}</option>
                         </select>
                       </div>
-
 
                       <div class="form-group">
                         <label class="form-label" for="amount">Loan Amount:</label>

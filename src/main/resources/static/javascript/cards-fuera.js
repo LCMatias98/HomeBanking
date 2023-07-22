@@ -5,18 +5,8 @@ createApp({
     return {
       client: [],
       cards: [],
-      cardStatus: [],
-      selectedTypes: [],
-      selectedColors: []
+      cardStatus: []
     };
-  },
-  computed: {
-    filteredCards() {
-      const selectedTypes = this.selectedTypes.length > 0 ? this.selectedTypes : ['DEBIT', 'CREDIT'];
-      const selectedColors = this.selectedColors.length > 0 ? this.selectedColors : ['GOLD', 'SILVER', 'TITANIUM'];
-
-      return this.cardStatus.filter(card => selectedTypes.includes(card.type) && selectedColors.includes(card.color));
-    },
   },
   created() {
     this.loadData();
@@ -28,7 +18,7 @@ createApp({
           this.client = res.data;
           this.cards = this.client.cards.sort((a, b) => a.id - b.id);
           this.calculateCardStatus();
-          /* console.log(this.client); */
+          console.log(this.client);
           console.log(this.cardStatus);
         })
         .catch(error => {

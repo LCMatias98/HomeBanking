@@ -1,6 +1,8 @@
 body{
     min-height: 70vh;
- /*    background: #23242a!important; */
+    background-color: rgb(255, 251, 224);
+    
+/*     background-color:#dee8be; */
   }
   header{
     min-height: 15vh!important;
@@ -85,3 +87,20 @@ body{
   }
   
   
+  #fondoTarjetasDEBIT{
+  
+    border-radius: 45px!important;
+  
+  }
+
+  #fondoTarjetasCREDIT{
+    background-color:#b7d1a3;
+    border-radius: 45px!important;
+  
+  }
+
+  #checkboxCards{
+    background-color: #fcf7d3;
+    border-radius: 15px;
+    border: 2px solid #b7d1a3;
+  }

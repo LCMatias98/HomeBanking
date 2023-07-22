@@ -13,7 +13,7 @@ public class LoanDTO {
 
     private Double interest;
 
-//    public LoanDTO() {}
+    public LoanDTO() {}
 
 
     //Enviamos el Objeto ?

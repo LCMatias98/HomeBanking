@@ -22,7 +22,7 @@ public class WebAuthorization{
         http.authorizeRequests()
                 .antMatchers("/web/index.html","web/style/**","web/javascript/**","/api/login","/web/register.html").permitAll()
                 .antMatchers("/web/news.html","/web/aboutUs.html").permitAll()
-                .antMatchers("/api/accounts.html","/web/accounts.html","/web/pay-loan.html","/web/create-account.html","/web/disable-account.html","/web/disable-card.html","/web/transfer.html","/web/account.html","/web/loan-aplication.html","/web/cards.html","/web/create-cards.html","/web/news.html","/web/aboutUs.html","/api/clients/current","/api/client-loans/payment").hasAuthority("CLIENT")
+                .antMatchers("/api/accounts.html","/web/accounts.html","/web/prueba-cards.html","/web/pay-loan.html","/web/create-account.html","/web/disable-account.html","/web/disable-card.html","/web/transfer.html","/web/account.html","/web/loan-aplication.html","/web/cards.html","/web/create-cards.html","/web/news.html","/web/aboutUs.html","/api/clients/current","/api/client-loans/payment").hasAuthority("CLIENT")
                 .antMatchers("/h2-console/**","/rest/**","/web/**","/api/accounts.html").hasAuthority("ADMIN")
                 .antMatchers("/web/create-loan.html").hasAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST,"/api/clients/current/account","/api/loans","/api/clients/current/cards","api/transactions","/api/transactions/PDF").hasAuthority("CLIENT")

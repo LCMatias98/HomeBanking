@@ -139,7 +139,7 @@ public class LoanController {
             return new ResponseEntity<>("Enter Payments", HttpStatus.FORBIDDEN);
         }
 
-        if (loanDTO.getPayment().stream().anyMatch(payment -> payment <= 0 || !(payment instanceof Integer))) {
+        if (loanDTO.getPayment().stream().anyMatch(payment -> payment <= 0 )) {
             return new ResponseEntity<>("Invalid Payments", HttpStatus.FORBIDDEN);
         }
 

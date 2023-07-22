@@ -66,18 +66,22 @@
                   <img src="../images/FOTO_FINAL_PERFIL_ACCOUNTS.jpg" alt="Imagen Circular">
                 </div>
                     <div>
-                    <h2>{{clients.firstName}} {{clients.lastName}}</h2>
+                      <p v-cloak>
+                        <strong class="text-secondary font-size-40">
+                          <i class="fas fa-user mr-2"></i> {{clients.firstName}} {{clients.lastName}}
+                        </strong>
+                      </p>                      
                     <p v-cloak >
-                      <strong class="text-secondary">Email: </strong> {{clients.email}}
+                      <strong class="text-secondary far fa-envelope"> Email: </strong> {{clients.email}}
                     </p>
                     <p v-cloak>
-                      <strong class="text-secondary">Number of Accounts: </strong> {{accounts.length}}
+                      <strong class="text-secondary fas fa-briefcase">Number of Accounts: </strong> {{accounts.length}}
                     </p>
                     <p v-cloak>
-                      <strong class="text-secondary">Number of Cards: </strong> {{cards.length}}
+                      <strong class="text-secondary fas fa-credit-card"> Number of Cards: </strong> {{cards.length}}
                     </p>
                     <p v-cloak>
-                      <strong class="text-secondary">Requested loans: </strong>{{loans.length}}
+                      <strong class="text-secondary fas fa-money-bill-wave"> Requested loans: </strong>{{loans.length}}
                     </p>
                   </div>
               </div>
@@ -105,10 +109,10 @@
                           <p class="text-secondary">Details of Account:</p>
                           <ul class="list-unstyled">
                             <li :key="acc.number" class="mb-3">
-                              <strong class="text-secondary">Type of Account:</strong> {{ acc.accountType }}<br>
-                              <strong class="text-secondary">Account:</strong> {{ acc.number }}<br>
-                              <strong class="text-secondary">Created:</strong> {{ acc.creationDate }}<br>
-                              <strong class="text-secondary">Balance:</strong> {{ acc.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}
+                              <strong class="text-secondary fas fa-wallet"> Type of Account:</strong> {{ acc.accountType }}<br>
+                              <strong class="text-secondary fas fa-tag"> Account:</strong> {{ acc.number }}<br>
+                              <strong class="text-secondary far fa-calendar-alt"> Created:</strong> {{ acc.creationDate }}<br>
+                              <strong class="text-secondary fas fa-money-bill"> Balance:</strong>$ {{ acc.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}
                               <a v-cloak :href="'../web/account.html?id='+acc.id" class="btn btn-info btn-sm btn-block btn-card mt-4">Details Of Transactions</a>
                               <a v-cloak :href="'../web/disable-account.html?id='+acc.id" class="btn btn-danger btn-sm btn-block btn-card mt-4">Disable Account</a>
                             </li>
@@ -161,29 +165,29 @@
                         <a href="./loan-aplication.html" class="btn btn-success mt-5">Claim Loan</a>
                       </div>
                     </div>
+
+                    <!-- FORMULARIO DE DIVISA -->
+                    <div v-cloak class="d-flex justify-content-center col-md-12">
+                      <form v-cloak id="formulario" class="d-flex flex-column justify-content-between mt-4 col-md-8">
+                        <div v-cloak class="form-group">
+                          <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
+                          <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
+                        </div>
+                        <div v-cloak class="form-group">
+                          <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
+                          <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
+                        </div>
+                        <div v-cloak class="form-group">
+                          <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
+                          <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
+                        </div>
+                        <button v-cloak type="submit" id="calcular" class="btn btn-success col-6 d-block mx-auto mt-4">Calculate</button>
+                      </form>
+                    </div>
+
               </div>
             </div>
-        <!--    <div v-if="accounts.length < 3" v-cloak class="d-grid gap-2 col-12 d-flex align-items-center justify-content-center">
-                   <a href="create-account.html" class="btn btn-success mt-5">Create Account</a>
-                  </div> -->
-            <!-- FORMULARIO DE DIVISA -->
-            <div v-cloak class="d-flex justify-content-center col-md-12">
-              <form v-cloak id="formulario" class="d-flex flex-column justify-content-between mt-4 col-md-8">
-                <div v-cloak class="form-group">
-                  <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
-                  <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
-                </div>
-                <div v-cloak class="form-group">
-                  <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
-                  <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
-                </div>
-                <div v-cloak class="form-group">
-                  <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
-                  <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
-                </div>
-                <button v-cloak type="submit" id="calcular" class="btn btn-success col-6 d-block mx-auto mt-4">Calculate</button>
-              </form>
-            </div>
+
             
         
             <!-- MODAL DE CONFIRMACION -->
