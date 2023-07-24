@@ -19,64 +19,62 @@
   
           
 <!-- Section: Design Block -->
-<section class=" text-center text-lg-start">
-  <div class="card mb-3">
-    <div class="row g-0 d-flex align-items-center">
+<section class="text-center text-lg-start">
+  <div class="card mb-3 card-Form">
+    <div class="row g-0 align-items-center">
+      <!-- Hidden image on large screens -->
       <div class="col-lg-4 d-none d-lg-flex">
-        <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
-          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+        <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes" class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
       </div>
       <div class="col-lg-8">
         <div class="card-body py-5 px-md-5">
-
-          <form @submit="submitForm">
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-              <input v-model="firstName" type="text" id="firstName" name="firstName" class="form-control" />
-              <label class="form-label" for="firstName">First Name</label>
-            </div>
-
-            <!-- Password input -->
-            <div class="form-outline mb-4">
-              <input v-model="lastName" type="text" id="lastName" name="lastName" class="form-control" />
-              <label class="form-label" for="lastName">Last Name</label>
-            </div>
-            <div class="form-outline mb-4">
-              <input v-model="email" type="email" id="email" name="email" class="form-control" />
-              <label class="form-label" for="email">E-mail</label>
-            </div>
-            <div class="form-outline mb-4">
-              <input v-model="password" type="password" id="password" name="password" class="form-control" />
-              <label class="form-label" for="password">Password</label>
-            </div>
-
-            <!-- 2 column grid layout for inline styling -->
-            <div class="row mb-4">
-              <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                  <label class="form-check-label" for="form2Example31"> Remember me </label>
-                </div>
-                </div>
-
-              <div class="col">
-                <!-- Simple link -->
-                <a href="./index.html">Log In</a>
+          <div v-cloak class="form-container">
+            <form @submit="submitForm">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input v-model="firstName" type="text" id="firstName" name="firstName" class="form-control form-control-sm form-control-strong-shadow" />
+                <label class="form-label mb-4" for="firstName">First Name</label>
               </div>
-            </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+              <!-- Password input -->
+              <div class="form-outline mb-4 ">
+                <input v-model="lastName" type="text" id="lastName" name="lastName" class="form-control form-control-sm form-control-strong-shadow" />
+                <label class="form-label mb-4" for="lastName">Last Name</label>
+              </div>
+              <div class="form-outline mb-4 ">
+                <input v-model="email" type="email" id="email" name="email" class="form-control form-control-sm form-control-strong-shadow" />
+                <label class="form-label mb-4" for="email">E-mail</label>
+              </div>
+              <div class="form-outline mb-4 ">
+                <input v-model="password" type="password" id="password" name="password" class="form-control form-control-sm form-control-strong-shadow" />
+                <label class="form-label mb-4" for="password">Password</label>
+              </div>
 
+              <!-- 2 column grid layout for inline styling -->
+              <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                  <!-- Checkbox -->
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                    <label class="form-check-label" for="form2Example31"> Remember me </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <!-- Simple link -->
+                  <a href="./index.html">Log In</a>
+                </div>
+              </div>
 
-          </form>
-
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block btn-sm">Register</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 </main>
 <!-- Section: Design Block -->
 

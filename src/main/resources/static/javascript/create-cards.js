@@ -5,7 +5,8 @@ createApp({
     return {
       cardType: "",
       cardColor: "",
-      showConfirmation: false
+      showConfirmation: false,
+      err: ''
     }
   },
   methods: {
@@ -24,9 +25,15 @@ createApp({
             }, 700);
           }
         })
-        .catch((error) => {
-          console.error(error);
-        });
+      .catch(error => {
+        console.error(error);
+        this.err = error.response.data;
+        console.log(this.err)
+        if(this.err.status === 400){
+          this.showNotification("Please complete the form", 'error');
+
+        }
+      });
     },
     cancelCreateCard() {
       this.showConfirmation = false;

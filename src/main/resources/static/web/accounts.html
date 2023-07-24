@@ -58,9 +58,9 @@
             
         </header>
         <main>
-          <div class="container">
+          <div class="container ">
 
-            <div class="card mt-4 col-12">
+            <div class="card mt-4 col-12 form-control-strong-shadow">
               <div class="card-body  d-flex justify-content-around">
                 <div class="circular-image">
                   <img src="../images/FOTO_FINAL_PERFIL_ACCOUNTS.jpg" alt="Imagen Circular">
@@ -93,14 +93,14 @@
 
             <div class="row">
               <!-- Columna Izquierda - Cuentas -->
-              <div class="col-lg-6">
-                <div v-cloak class="d-flex flex-column flex-wrap justify-content-around col-12">
+              <div class="col-lg-6 ">
+                <div v-cloak class="d-flex flex-column flex-wrap justify-content-around col-12 ">
 
                  
-                  <div class="row row-cols-1 row-cols-md-2 g-4 mt-4" v-for="acc of accountsNotHidden">
-                    <div class="col w-100">
-                      <div class="card h-100">
-                        <div class="card-body">
+                  <div  class="row row-cols-1 row-cols-md-2 g-4 mt-4 " v-for="acc of accountsNotHidden">
+                    <div  class="col w-100 ">
+                      <div class="card h-100 form-control-strong-shadow">
+                        <div class="card-body ">
          <!--                  <h5 class="card-title">Account Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
                           <div class="mb-3">
                             <span class="text-secondary">E-mail: </span>
@@ -132,12 +132,10 @@
               <!-- Columna Derecha - Préstamos -->
               <div class="col-lg-6">
                 <div v-cloak class="d-flex flex-column flex-wrap col-12">
-
-        
                 <!-- TABLA DE PRESTAMOS -->
-                <table v-cloak class="table table-dark table-hover table-bordered table-responsive mt-5" id="table">
-                  <thead>
-                    <tr>
+                <table v-cloak class="table dark-table  table-hover table-bordered table-responsive mt-5" id="table">
+                  <thead id="colorT">
+                    <tr id="colorT">
                       <th v-cloak class="title-cell" colspan="5">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
                     </tr>
                     <tr>
@@ -149,7 +147,7 @@
                       <th>Pay Loan</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="colorT">
                     <tr v-cloak v-for="loan of loans">
                       <th v-cloak scope="col">{{ loan.name }}</th>
 <!--                       <th v-cloak scope="col">{{ loan.name }}</th> -->

@@ -30,5 +30,10 @@ public class CardServiceImplement implements CardService {
         return cardRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public Card findByNumber(String number) {
+        return cardRepository.findByNumber(number);
+    }
+
 
 }

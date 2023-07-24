@@ -12,3 +12,33 @@
       border-bottom-left-radius: 0.5rem;
     }
   }
+
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+  }
+  .card-Form{
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+  
+  }
+  .card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  .card {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+  }
+  
+
+
+  .form-control-strong-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+  }

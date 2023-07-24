@@ -15,13 +15,13 @@ footer {
 }
 
 #formulario {
-  background-color: #1c1c1c;
+  background-color: #b7d1a3;
   padding: 1rem;
   height: 55vh;
 }
 
 #labelFormDolar {
-  color: #45f3ff;
+  color: black;
 }
 
 .social-icons {
@@ -56,14 +56,7 @@ footer p {
   transform: scale(1.05);
 }
 
-#loanCard {
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  background: #1c1c1c;
-  color: #f0f0f0;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
+
 
 #FondoPerfil {
   background-image: url("../images/bandera_Argentina.avif");
@@ -134,7 +127,7 @@ footer p {
 #formulario {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  background: #1c1c1c;
+  background: #b7d1a3;
   color: #f0f0f0;
   padding: 1rem;
   margin-top: 1rem;
@@ -150,25 +143,56 @@ footer p {
 #table {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  background: #1c1c1c;
-  color: #f0f0f0;
   margin-top: 1rem;
   margin-top: 2rem;
-  background-color: #1c1c1c;
   width: 100%;
   font-size: 1rem;
+  z-index: 3;
+  color: black;
 }
 
+/* Estilo para la tabla dark */
+.dark-table {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto */
+}
+
+/* Estilo para el encabezado (thead) de la tabla dark */
+.dark-table thead {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en el encabezado */
+}
+
+/* Estilo para las celdas del encabezado (th) de la tabla dark */
+.dark-table th {
+  background-color: #b7d1a3;
+  /* Color de texto en las celdas del encabezado */
+}
+
+/* Estilo para las filas del cuerpo (tbody) de la tabla dark */
+.dark-table tbody {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en el cuerpo de la tabla */
+}
+
+/* Estilo para las celdas del cuerpo (td) de la tabla dark */
+.dark-table td {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en las celdas del cuerpo */
+}
+/*:#fcf7d3;
+  
+:#dee8be;
+
+#b7d1a3; 
+
+*/
 #table:hover {
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
   transform: scale(1.05);
 }
 
-.tr,
-th,
-td {
-  background-color: #1c1c1c;
-}
+
 
 .title-cell {
   text-align: center;
@@ -272,4 +296,9 @@ main .col-lg-6 {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ajusta la imagen para que cubra todo el círculo */
+}
+
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }

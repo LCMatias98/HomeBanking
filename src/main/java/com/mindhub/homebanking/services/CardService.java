@@ -11,4 +11,6 @@ public interface CardService {
     Card findByClientAndColorAndType(Client client, CardColor color, CardType type);
 
     Card findById(long id);
+
+    Card findByNumber(String number);
 }

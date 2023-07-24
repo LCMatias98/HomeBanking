@@ -24,7 +24,7 @@ createApp({
       const cantidad = parseFloat(cantidadPesos.value);
       const cambio = parseFloat(tipoCambio.value);
       const resultado = cantidad * cambio;
-      cantidadDolares.value = resultado.toFixed(2);
+      cantidadDolares.value = resultado.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     });
     axios.get('/api/clients/current')
       .then(res => {

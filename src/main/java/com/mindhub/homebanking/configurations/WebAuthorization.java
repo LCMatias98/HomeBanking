@@ -20,7 +20,7 @@ public class WebAuthorization{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-                .antMatchers("/web/index.html","web/style/**","web/javascript/**","/api/login","/web/register.html").permitAll()
+                .antMatchers("/web/index.html","web/style/**","web/javascript/**","/api/login","/web/register.html","api//clients/current/card/payment").permitAll()
                 .antMatchers("/web/news.html","/web/aboutUs.html").permitAll()
                 .antMatchers("/api/accounts.html","/web/accounts.html","/web/prueba-cards.html","/web/pay-loan.html","/web/create-account.html","/web/disable-account.html","/web/disable-card.html","/web/transfer.html","/web/account.html","/web/loan-aplication.html","/web/cards.html","/web/create-cards.html","/web/news.html","/web/aboutUs.html","/api/clients/current","/api/client-loans/payment").hasAuthority("CLIENT")
                 .antMatchers("/h2-console/**","/rest/**","/web/**","/api/accounts.html").hasAuthority("ADMIN")
@@ -33,6 +33,9 @@ public class WebAuthorization{
 // deniega cualquier peticion que no esten contempladas en el antMatchers
 //.anyRequest().denyAll(); /clients/current/accounts
 //"/web/account.html?id={id}"  "/web/accounts.html","/web/account.html","/web/account.html?id={id}",
+
+        http.cors();
+
         http.formLogin()
                 .usernameParameter("email")
                 .passwordParameter("password")
