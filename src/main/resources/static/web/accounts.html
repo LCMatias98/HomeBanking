@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homebanking | Home</title>
+
+   
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <link rel="stylesheet" href="../styles/toastify.css">
+    <link rel="stylesheet" href="../styles/accounts.css">
+
+
+</head>
+<body>
+<div id="app">
+        <header>
+            
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="../images/Logo_Banco.png" alt="logo" id="logoBank"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+<!--                             <li class="nav-item">
+                                <a class="nav-link" href="./index.html">Home</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="./transfer.html">Transfers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./news.html">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cards.html">Cards</a>
+                            </li>
+                            <li class="nav-item  ms-3">
+                                <a @click="logOut()" class="nav-link paddingIcon" href="#">
+                                  <i class="fas fa-power-off fa-2x"></i>
+                                </a>
+                            </li>
+                              
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+        <main>
+          <div class="container ">
+
+            <div class="card mt-4 col-12 form-control-strong-shadow">
+              <div class="card-body  d-flex justify-content-around">
+                <div class="circular-image">
+                  <img src="../images/FOTO_FINAL_PERFIL_ACCOUNTS.jpg" alt="Imagen Circular">
+                </div>
+                    <div>
+                      <p v-cloak>
+                        <strong class="text-secondary font-size-40">
+                          <i class="fas fa-user mr-2"></i> {{clients.firstName}} {{clients.lastName}}
+                        </strong>
+                      </p>                      
+                    <p v-cloak >
+                      <strong class="text-secondary far fa-envelope"> Email: </strong> {{clients.email}}
+                    </p>
+                    <p v-cloak>
+                      <strong class="text-secondary fas fa-briefcase">Number of Accounts: </strong> {{accounts.length}}
+                    </p>
+                    <p v-cloak>
+                      <strong class="text-secondary fas fa-credit-card"> Number of Cards: </strong> {{cards.length}}
+                    </p>
+                    <p v-cloak>
+                      <strong class="text-secondary fas fa-money-bill-wave"> Requested loans: </strong>{{loans.length}}
+                    </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+          
+
+          <div class="container">
+
+            <div class="row">
+              <!-- Columna Izquierda - Cuentas -->
+              <div class="col-lg-6 ">
+                <div v-cloak class="d-flex flex-column flex-wrap justify-content-around col-12 ">
+
+                 
+                  <div  class="row row-cols-1 row-cols-md-2 g-4 mt-4 " v-for="acc of accountsNotHidden">
+                    <div  class="col w-100 ">
+                      <div class="card h-100 form-control-strong-shadow">
+                        <div class="card-body ">
+         <!--                  <h5 class="card-title">Account Of: {{ clients.firstName }} {{ clients.lastName }}</h5>
+                          <div class="mb-3">
+                            <span class="text-secondary">E-mail: </span>
+                            <span v-cloak class="text-secondary">{{ clients.email }}</span>
+                          </div> -->
+                          <p class="text-secondary">Details of Account:</p>
+                          <ul class="list-unstyled">
+                            <li :key="acc.number" class="mb-3">
+                              <strong class="text-secondary fas fa-wallet"> Type of Account:</strong> {{ acc.accountType }}<br>
+                              <strong class="text-secondary fas fa-tag"> Account:</strong> {{ acc.number }}<br>
+                              <strong class="text-secondary far fa-calendar-alt"> Created:</strong> {{ acc.creationDate }}<br>
+                              <strong class="text-secondary fas fa-money-bill"> Balance:</strong>$ {{ acc.balance.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',') }}
+                              <a v-cloak :href="'../web/account.html?id='+acc.id" class="btn btn-info btn-sm btn-block btn-card mt-4">Details Of Transactions</a>
+                              <a v-cloak :href="'../web/disable-account.html?id='+acc.id" class="btn btn-danger btn-sm btn-block btn-card mt-4">Disable Account</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                                                                        <!-- d-grid gap-2 col-4 mx-auto align-self-center -->
+                        <!-- BOTON PARA CREAR CUENTAS --> <!--  v-if="accounts.length < 3" @click="crearAccount()" -->
+                        <div v-if="accounts.length < 3" v-cloak class="d-grid gap-2 col-12 mx-auto d-flex align-items-center justify-content-center">
+                          <a href="create-account.html" class="btn btn-success mt-5">Create Account</a>
+                        </div>
+                </div>
+              </div>
+        
+              <!-- Columna Derecha - Préstamos -->
+              <div class="col-lg-6">
+                <div v-cloak class="d-flex flex-column flex-wrap col-12">
+                <!-- TABLA DE PRESTAMOS -->
+                <table v-cloak class="table dark-table  table-hover table-bordered table-responsive mt-5" id="table">
+                  <thead id="colorT">
+                    <tr id="colorT">
+                      <th v-cloak class="title-cell" colspan="5">Loans of: {{ clients.firstName }} {{ clients.lastName }}</th>
+                    </tr>
+                    <tr>
+            
+                      <th>Name</th>
+<!--                       <th>Amount of loan</th> -->
+                      <th>Amount whit Interest</th>
+                      <th>Payments</th>
+                      <th>Pay Loan</th>
+                    </tr>
+                  </thead>
+                  <tbody id="colorT">
+                    <tr v-cloak v-for="loan of loans">
+                      <th v-cloak scope="col">{{ loan.name }}</th>
+<!--                       <th v-cloak scope="col">{{ loan.name }}</th> -->
+                      <th v-cloak scope="col">${{ loan.remainingAmount.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ',')  }}</th> <!-- Este tiene Interes -->
+                      <th v-cloak scope="col">{{ loan.remainingPayments }}</th>
+                      <th><a class="text-success no-underline" :href="'../web/pay-loan.html?id='+loan.id">Pay</a></th>
+                    </tr>
+                  </tbody>
+                </table>
+
+                      <!-- BOTON PARA SOLICITAR PRESTAMO -->
+                      <div class="d-grid gap-2 col-12  mx-auto  d-flex  justify-content-center">
+                        <a href="./loan-aplication.html" class="btn btn-success mt-5">Claim Loan</a>
+                      </div>
+                    </div>
+
+                    <!-- FORMULARIO DE DIVISA -->
+                    <div v-cloak class="d-flex justify-content-center col-md-12">
+                      <form v-cloak id="formulario" class="d-flex flex-column justify-content-between mt-4 col-md-8">
+                        <div v-cloak class="form-group">
+                          <label for="cantidad-pesos" id="labelFormDolar">Dollar amount:</label>
+                          <input type="text" class="form-control" id="cantidad-pesos" placeholder="Enter amount of dollars">
+                        </div>
+                        <div v-cloak class="form-group">
+                          <label for="tipo-cambio" id="labelFormDolar">Exchange rate: Official Dollar</label>
+                          <input type="text" class="form-control" id="tipo-cambio" v-model="dolarOficial" readonly>
+                        </div>
+                        <div v-cloak class="form-group">
+                          <label for="cantidad-dolares" id="labelFormDolar">Amount of Argentine pesos:</label>
+                          <input type="text" class="form-control" id="cantidad-dolares" placeholder="Resultado" readonly>
+                        </div>
+                        <button v-cloak type="submit" id="calcular" class="btn btn-success col-6 d-block mx-auto mt-4">Calculate</button>
+                      </form>
+                    </div>
+
+              </div>
+            </div>
+
+            
+        
+            <!-- MODAL DE CONFIRMACION -->
+            <div v-cloak v-if="showConfirmation" class="confirmation-message mt-3">
+              <p>¿Estás seguro de que deseas continuar?</p>
+              <div class="btn-wrapper">
+                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+              </div>
+            </div>
+            
+          </div>
+        </main>
+        
+          
+</div>        
+<footer class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center d-flex justify-content-between">
+        <div>
+          <h4>Follow us on social media</h4>
+          <p>
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+              <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+            </a>
+          </p>
+        </div>
+        <div class="text-center align-self-center">
+          <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+        </div>
+        <div>
+          <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+          <p>Phone: +1 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../javascript/accounts.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homebanking | Home</title>
+
+   
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <link rel="stylesheet" href="../styles/news.css">
+</head>
+<body id="app">
+  <header >
+            
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="../images/Logo_Banco.png" alt="logo" id="logoBank"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+<!--                             <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="./transfer.html">Transfers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./accounts.html">Accounts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./cards.html">Cards</a>
+                    </li>
+                    <li class="nav-item  ms-3">
+                        <a @Click="logOut()" class="nav-link paddingIcon" href="#">
+                          <i class="fas fa-power-off fa-2x "></i>
+                        </a>
+                    </li>
+                      
+                </ul>
+<!--                             <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-person-circle"></i> <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="iconPerfil">
+                        </a>
+                    </li> -->
+
+            </div>
+        </div>
+    </nav>
+    
+</header>
+
+
+        <main >
+
+            <section class="d-flex mt-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h2>Security Suggestions for Your Greater Security when Operating with Home Banking:</h2>
+                      <ul>
+                        <li>Do not enter the Bank through addresses or links that are received by e-mail.</li>
+                        <li>Verify in your browser that when entering the secure site the address is <strong>https://</strong> and the padlock of your browser appears closed.</li>
+                        <li>Do not save the key in e-mails or in any other type of file.</li>
+                        <li>Do not send sensitive information by email or physical means.</li>
+                        <li>Use antivirus and update them regularly.</li>
+                        <li>Use firewall and antispyware.</li>
+                        <li>Update the operating system every time a vulnerability is disclosed, or have the automatic update system activated.</li>
+                        <li>Use the virtual keyboard, even if you are not operating in public places.</li>
+                        <li>Report any anomaly to your Bank or Red Link by clicking <a href="#">HERE</a> and immediately call the number that appears on the list for "Complaints".</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6  mt-5" id="imgNews">
+                      <img src="../images/pishing.jpg" alt="escribiendo_Teclado" id="imgNews" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            <section class="d-flex  mt-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h2>Phishing Prevention</h2>
+                      <p>
+                        "Phishing" is a form of scam designed with the purpose of stealing identity.
+                        The crime consists of obtaining information such as credit card numbers, passwords, account information, or other personal data through deception.
+                        This type of fraud is usually received through email messages or pop-up windows.
+                      </p>
+                      <p>
+                        There are fake websites specifically designed to trick the user in order to extract personal information from them.
+                        These fake sites pretend to simulate the Home Banking site and are usually linked to emails that pretend to be sent by financial institutions or payment providers.
+                        For your security, we recommend that you always use known website addresses.
+                      </p>
+                    </div>
+                    <div class="col-md-6" id="imgNews">
+                      <img src="../images/escribiendo_Teclado.jpg" alt="escribiendo_Teclado" id="imgNews" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <section class="d-flex  mt-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h2>Password Compromise</h2>
+                      <p>
+                        Although it is a characteristic of Home Banking that it is widely accessible from any PC connected to the Internet, it is recommended to avoid public places or PCs with multiple operators (cyber cafes, telephone booths, libraries, etc.).
+                      </p>
+                    </div>
+                    <div class="col-md-6 " id="imgNews">
+                      <img src="../images/candado_Abierto.avif" alt="escribiendo_Teclado" id="imgNews" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="d-flex  mt-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h2>Virtual Keyboard</h2>
+                      <p>
+                        The "Virtual Keyboard" consists of an electronic keyboard that appears on the site's screen in order to prevent a third party from capturing the keys typed by the user.
+                        The keyboard also changes the position of the keys to prevent it from being used by robots to apply decryption methods for personal passwords.
+                      </p>
+                    </div>
+                    <div class="col-md-6" id="imgNews">
+                      <img src="../images/virtual_Keyboard.png" alt="escribiendo_Teclado" id="imgNews" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </section>
+          </main>
+          
+
+        <footer class="mt-5">
+            <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                <h4>Síguenos en nuestras redes sociales</h4>
+                <p>
+                    <a href="https://www.facebook.com/" target="_blank">
+                    <img id="iconSocial" src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+                    </a>
+                    <a href="https://www.instagram.com/" target="_blank">
+                    <img id="iconSocial" src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+                    <img id="iconSocial" src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+                    </a>
+                </p>              
+                <p>All rights reserved  &copy; 2023 HomeBanking</p>
+                </div>
+            </div>
+            </div>
+        </footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../javascript/news.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

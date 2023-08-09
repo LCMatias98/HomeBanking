@@ -1,0 +1,197 @@
+.section{
+    .rounded-t-5 {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+      }
+  
+      @media (min-width: 992px) {
+        .rounded-tr-lg-0 {
+          border-top-right-radius: 0;
+        }
+  
+        .rounded-bl-lg-5 {
+          border-bottom-left-radius: 0.5rem;
+        }
+    }
+}
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+
+main{
+  min-height: 19rem!important;
+}
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+  #formulario{
+    background-color: #1c1c1c!important;
+    padding: 1rem!important;
+    height: 55vh;
+  }
+  
+  #labelFormDolar{
+    color: #45f3ff!important;
+  }
+  .social-icons {
+    font-size: 20px!important;
+    margin-right: 10px!important;
+  }
+  
+  #iconSocial{
+    height: 30px!important;
+    width: 30px!important;
+  }
+  
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+  #divFooter{
+    background: #23242a!important;
+  }
+  #articleCard {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: #1c1c1c;
+    /*#333333*/
+    /*#1c1c1c*/
+    color: #f0f0f0;
+  }
+  
+  #articleCard:hover {
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  
+  #loanCard{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: #1c1c1c;
+    /*#333333*/
+    /*#1c1c1c*/
+    color: #f0f0f0;
+  }
+  #FondoPerfil{
+    background-image: url("../images/bandera_Argentina.avif");
+    object-fit: cover;
+    height: 180px!important;
+    background-position: center left;
+    opacity: 0.8;
+    background-repeat: no-repeat!important;
+  }
+
+  .paddingIcon {
+    padding: 0px;
+    padding-top: 2px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+  #iconPerfil {
+    height: 50px!important;
+    object-fit: contain!important;
+    border-radius:50px!important;
+    vertical-align:top!important;
+  }
+  #imgPerfil{
+    height: 130px!important;
+    border-radius:130px!important;
+  }
+  
+  #detallesCuenta{
+    color: #45f3ff!important;
+  }
+  
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+  
+  [v-cloak] {
+    display: none;
+    }
+    
+
+.border{
+  border: solid 2px black;
+  border-radius: 15px;
+}
+
+
+
+
+.form-container {
+  
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+.form-control-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 576px) {
+  .social-icons {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  /* Alineación de elementos en una sola columna */
+  .footer .row {
+    flex-direction: column;
+  }
+
+  .footer .col-md-12 {
+    text-align: center;
+  }
+
+  .rights-reserved {
+    font-size: 12px;
+  }
+}
+
+h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3)!important; /* Mayor sombra */
+}

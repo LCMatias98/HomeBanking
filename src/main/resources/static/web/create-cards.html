@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Homebanking | Home</title>
+
+   
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../styles/create-cards.css">
+
+    <link rel="stylesheet" href="../styles/toastify.css">
+</head>
+<body>
+<div id="app">
+        <header>
+            
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <div class="container">
+                    <a class="navbar-brand" href="#"><img src="../images/Logo_Banco.png" alt="logo" id="logoBank"></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+<!--                             <li class="nav-item">
+                                <a class="nav-link" href="./index.html">Home</a>
+                            </li> -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="./transfer.html">Transfers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./news.html">News</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="accounts.html">Accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./cards.html">Cards</a>
+                            </li>
+                            <li class="nav-item ms-3">
+                                <a @Click="logOut()" class="nav-link paddingIcon" href="#">
+                                  <i class="fas fa-power-off fa-2x"></i> Log Out
+                                </a>
+                            </li>
+                              
+                        </ul>
+<!--                             <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="bi bi-person-circle"></i> <img src="../images/guille_Con_Anteojos.png" alt="Imagen de perfil" id="iconPerfil">
+                                </a>
+                            </li> -->
+
+                    </div>
+                </div>
+            </nav>
+            
+        </header>
+        <main >
+            <h1 class="d-flex justify-content-center mt-3"> Card creation</h1>
+           
+            <section class=" text-center text-lg-start mt-3">
+
+                <div v-cloak class="card mb-3 card-Form">
+                  <div class="row g-0 d-flex align-items-center">
+                    <div class="col-lg-4 d-none d-lg-flex">
+                      <img src="../images/credit-cards-6462396_1280.webp" alt="Trendy Pants and Shoes"
+                        class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card-body py-5 px-md-5">
+                  
+                        <div class="form-container">
+                        <form v-cloak @submit.prevent="createCard">
+                          <div class="form-group">
+                            <label class="form-label text-secondary" for="payment-type"><strong> Card Type:</strong></label>
+                            <select v-cloak v-model="cardType" class="form-select form-control-strong-shadow" id="payment-type" name="payment-type">
+                              <option value="DEBIT">DEBIT</option>
+                              <option value="CREDIT">CREDIT</option>
+                            </select>
+                          </div>
+                        
+                          <div class="form-group">
+                            <label class="form-label text-secondary" for="card-color "><strong>Color Type:</strong> </label>
+                            <select v-cloak v-model="cardColor" class="form-select form-control-strong-shadow" id="card-color" name="card-color">
+                              <option value="GOLD">GOLD</option>
+                              <option value="TITANIUM">TITANIUM</option>
+                              <option value="SILVER">SILVER</option>
+                            </select>
+                          </div>
+                        
+                          <input type="submit" value="Enviar" class="btn btn-success col-6">
+                          
+                        </form>
+                      </div>
+                        
+              
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+
+               <!-- MODAL  -->
+              <div v-cloak v-if="showConfirmation" class="confirmation-message">
+                <p>¿Estás seguro de que deseas continuar?</p>
+                <div class="btn-wrapper">
+                  <button v-cloak @click="confirmCreateCard" class="btn confirm-btn">Confirmar</button>
+                  <button v-cloak @click="cancelCreateCard" class="btn cancel-btn">Cancelar</button>
+                </div>
+              </div>
+
+                   
+
+        </main>
+</div>
+<footer class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center d-flex justify-content-between">
+        <div>
+          <h4>Follow us on social media</h4>
+          <p>
+            <a href="https://www.facebook.com/" target="_blank">
+              <img src="../images/icono_Facebook.png" alt="Facebook" class="social-icons">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank">
+              <img src="../images/icono_Instagram.png" alt="Instagram" class="social-icons">
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=1234567890" target="_blank">
+              <img src="../images/icono_Whatsapp.png" alt="WhatsApp" class="social-icons">
+            </a>
+          </p>
+        </div>
+        <div class="text-center align-self-center">
+          <p class="rights-reserved">All rights reserved &copy; 2023 HomeBanking</p>
+        </div>
+        <div>
+          <p>Contact us: <a href="mailto:info@homebanking.com">info@homebanking.com</a></p>
+          <p>Phone: +1 (123) 456-7890</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="../javascript/create-cards.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

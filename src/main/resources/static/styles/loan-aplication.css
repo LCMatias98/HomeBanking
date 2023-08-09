@@ -1,0 +1,149 @@
+body{
+    min-height: 70vh;
+ 
+  }
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+
+
+  .phone-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons {
+    font-size: 20px!important;
+    margin-right: 10px!important;
+  }
+  
+  #iconSocial{
+    height: 30px!important;
+    width: 30px!important;
+  }
+  
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+  #divFooter{
+    background: #23242a!important;
+  }
+  
+  #iconPerfil{
+    height: 50px!important;
+    object-fit: contain!important;
+    border-radius:50px!important;
+  }
+  #imgPerfil{
+    height: 130px!important;
+    border-radius:130px!important;
+  }
+ 
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+  
+  .card-text, .card-title{
+    padding: 1rem!important;
+  }
+  
+  
+  .title {
+    font-size: 11px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .paddingIcon {
+    padding: 0px;
+    padding-top: 2px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+
+  .paddingText{
+    margin-bottom: 5px;
+  }
+
+  [v-cloak] {
+    display: none;
+    }
+    
+  .form-container {
+  
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+    }
+    .form-control-shadow {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .form-control-strong-shadow {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    h1 {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+    }
+    .card-Form{
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+    
+    }
+
+    .footer {
+      background-color: #1c1c1c!important;
+      padding: 20px 0;
+    }
+    
+    .social-icons {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+    }
+    
+    /* Ajustes para dispositivos pequeños */
+    @media (max-width: 576px) {
+      .social-icons {
+        width: 20px;
+        height: 20px;
+        margin: 5px;
+      }
+    
+      /* Alineación de elementos en una sola columna */
+      .footer .row {
+        flex-direction: column;
+      }
+    
+      .footer .col-md-12 {
+        text-align: center;
+      }
+    
+      .rights-reserved {
+        font-size: 12px;
+      }
+    }

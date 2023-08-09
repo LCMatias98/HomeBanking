@@ -1,0 +1,283 @@
+/* body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  background-color: #FFFFFF;
+}
+
+.login_form_container {
+  position: relative;
+  width: 400px;
+  height: 478px;
+  max-width: 400px;
+  max-height: 470px;
+  background: #040717;
+  border-radius: 50px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+}
+
+.login_form_container::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #0000ff00 20%, #0000ff00 80%);
+  animation: rotate_border 6s linear infinite;
+}
+
+.login_form_container::after {
+  position: absolute;
+  width: 170%;
+  height: 170%;
+  content: "";
+  background-image: conic-gradient(#0000ff00, #0000ff00, #00ccff);
+  animation: rotate_border 6s linear infinite;
+  animation-delay: -3s;
+}
+
+@keyframes rotate_border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.login_form {
+  position: absolute;
+  background-color: #0c1022;
+  border-radius: 50px 5px;
+  inset: 5px;
+  padding: 50px 40px;
+  z-index: 10;
+  color: #00ccff;
+}
+
+
+
+.input_group {
+  margin-top: 40px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.input_text {
+  width: 100%;
+  height: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #00ccff;
+  font-size: 20px;
+  padding-left: 10px;
+  color: #00ccff;
+}
+
+::placeholder {
+  font-size: 15px;
+  color: #00ccff52;
+  letter-spacing: 1px;
+}
+
+.fa {
+  font-size: 20px;
+}
+
+
+
+
+ .rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
+  }
+
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+
+/* .form-container {
+  max-width: 400px; 
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+ */
+ h1 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+/* Ajustamos la sombra del contenedor del texto e imagen */
+.card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Ajustamos la sombra del formulario */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+
+.card-Form{
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+
+}
+.card {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+
+.form-control-shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+.nav{
+  background-color: #1c1c1c!important;
+}
+.header {
+  background-color: #1c1c1c;
+  /* Alternatively, 
+  /* background-image: url("path/to/your/image.jpg"); */
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+}
+
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+main{
+  min-height: 20rem!important;
+}
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+
+  
+  .paddingIcon:hover {
+    background-color: #848484;
+  }
+  
+
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+
+  
+  
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  /*     background-color: #1c1c1c!important; */
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+/* 
+  #table{
+    margin-top: 2rem;
+    background-color:  #1c1c1c!important;
+  }
+
+
+  .tr, th, td{
+    background-color:  #1c1c1c!important;
+  } */
+
+  [v-cloak] {
+    display: none;
+    }
+    
+
+    .filter-container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+  }
+
+  .filter-container input {
+      width: 150px;
+  }
+
+  .filter-btn {
+      margin-top: 10px;
+  }
+
+  .header{
+    background-color: #1c1c1c!important;
+  }
+  
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}

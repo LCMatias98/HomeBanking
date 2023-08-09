@@ -1,0 +1,279 @@
+
+  header{
+    min-height: 15vh!important;
+  }
+  footer {
+    background-color: #1c1c1c!important;
+    color: #45f3ff!important;
+    padding: 20px 0!important;
+  }
+
+main{
+  min-height: 20rem!important;
+}
+  .phone-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+  .social-icons {
+    font-size: 20px!important;
+    margin-right: 10px!important;
+  }
+  
+  #iconSocial{
+    height: 30px!important;
+    width: 30px!important;
+  }
+  
+  footer p {
+    margin-bottom: 10px!important;
+  }
+  
+  #divFooter{
+    background: #23242a!important;
+  }
+  
+  #iconPerfil{
+    height: 50px!important;
+    object-fit: contain!important;
+    border-radius:50px!important;
+  }
+  #imgPerfil{
+    height: 130px!important;
+    border-radius:130px!important;
+  }
+ 
+  .navbar {
+    background-color: #1c1c1c!important;
+  }
+  
+  .navbar-brand,
+  .navbar-nav .nav-link {
+    color: #45f3ff!important;
+  }
+  
+  #logoBank{
+    height: 100px!important;
+  }
+  
+  .card-text, .card-title{
+    padding: 1rem!important;
+  }
+  
+  
+
+ .card{
+  border: none!important;
+ }
+  
+  .title {
+    font-size: 11px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+
+
+
+/* --------------------------CREDIT CARD-------------------------- */
+
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=josefin+Sans:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+
+.card {
+    width: 350px!important;
+    height: 250px!important;
+    color: #fff!important;
+    cursor: pointer!important;
+    perspective: 1000px!important;
+}
+
+.card-inner {
+    width: 100%!important;
+    height: 100%!important;
+    position: relative!important;
+    transition: transform 1s!important;
+    transform-style: preserve-3d!important;
+}
+
+.front, .back {
+    width: 100%!important;
+    height: 100%!important;
+    /* background-image: linear-gradient(45deg, #0045c7, #ff2c7d); */
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    padding: 20px 30px!important;
+    border-radius: 15px!important;
+    overflow: hidden!important;
+    z-index: 1!important;
+    backface-visibility: hidden!important;
+}
+
+.paddingIcon {
+  padding: 0px;
+  padding-top: 2px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.paddingIcon:hover {
+  background-color: #848484;
+}
+
+/* .row {
+    display: flex!important;
+    align-items: center!important;
+    justify-content: space-between!important;
+} */
+
+.map-img {
+    width: 100%!important;
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    opacity: 0.3!important;
+    z-index: -1!important;
+}
+
+.card-no {
+    font-size: 23px!important;
+    margin-top: 20px!important;
+}
+
+.card-holder {
+    font-size: 15px!important;
+    margin-top: 20px!important;
+}
+
+.name {
+    font-size: 22px!important;
+    margin-top: 20px!important;
+}
+
+.bar {
+    background: #222!important;
+    margin-left: -30px!important;
+    margin-right: -30px!important;
+    height: 60px!important;
+    margin-top: 10px!important;
+}
+
+.card-cvv {
+    margin-top: 20px!important;
+}
+
+.card-cvv div {
+    flex: 1!important;
+}
+
+.card-cvv img {
+    
+    display: block!important;
+    line-height: 0!important;
+}
+
+.card-cvv p {
+    background: #fff!important;
+    color: #000!important;
+    font-size: 18px!important;
+    padding: 10px 20px!important;
+}
+
+.card-text {
+    margin-top: 30px!important;
+    font-size: 14px!important;
+}
+
+.back {
+    transform: rotateY(180deg)!important;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(-180deg)!important;
+}
+
+.imgCard{
+    width: 60px!important;
+}
+
+.numerosCard{
+    width: 80%;
+}
+
+.imgBarraBack{
+    width: 100%!important;
+}
+
+[v-cloak] {
+  display: none;
+  }
+  
+
+.expirated {
+  margin-top: 10px;
+  border: 3px solid red;
+  box-shadow: 0px 0px 8px red;
+  transform: scale(0.97); /* Reducir el tamaño para dar un efecto visual */
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+/* :class="{ 'expirated': card.status === 'expirated' }" */
+/* .activated {
+    border: 2px solid yellow; 
+} */
+
+
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 576px) {
+  .social-icons {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  /* Alineación de elementos en una sola columna */
+  .footer .row {
+    flex-direction: column;
+  }
+
+  .footer .col-md-12 {
+    text-align: center;
+  }
+
+  .rights-reserved {
+    font-size: 12px;
+  }
+}
+
+h2 {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.3); /* Mayor sombra */
+}
+

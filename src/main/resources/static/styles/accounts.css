@@ -1,0 +1,304 @@
+body {
+  min-height: 70vh;
+  background-color: #f7f4de;
+/*   background: #23242a; */
+}
+
+header {
+  min-height: 15vh;
+}
+
+footer {
+  background-color: #1c1c1c;
+  color: #45f3ff;
+  padding: 20px 0;
+}
+
+#formulario {
+  background-color: #b7d1a3;
+  padding: 1rem;
+  height: 55vh;
+}
+
+#labelFormDolar {
+  color: black;
+}
+
+.social-icons {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+#iconSocial {
+  height: 30px;
+  width: 30px;
+}
+
+footer p {
+  margin-bottom: 10px;
+}
+
+#divFooter {
+  background: #23242a;
+}
+
+#articleCard {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #1c1c1c;
+  color: #f0f0f0;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+#articleCard:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+
+
+#FondoPerfil {
+  background-image: url("../images/bandera_Argentina.avif");
+  object-fit: cover;
+  height: 180px;
+  background-position: center left;
+  opacity: 0.8;
+  background-repeat: no-repeat;
+}
+
+.paddingIcon {
+  padding: 0px;
+  padding-top: 2px;
+ /*  background-color: #6c757d; */
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.paddingIcon:hover {
+  background-color: #848484;
+}
+
+#iconPerfil {
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50px;
+  vertical-align: top;
+}
+
+#imgPerfil {
+  height: 130px;
+  border-radius: 130px;
+}
+
+#detallesCuenta {
+  color: #45f3ff;
+}
+
+.navbar {
+  background-color: #1c1c1c;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #45f3ff;
+}
+
+#logoBank {
+  height: 100px;
+}
+
+.card-text,
+.card-title {
+  padding: 1rem;
+}
+
+.btn {
+  display: block;
+  padding: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+#formulario {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background: #b7d1a3;
+  color: #f0f0f0;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+#formulario:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+
+
+#table {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+  font-size: 1rem;
+  z-index: 3;
+  color: black;
+}
+
+/* Estilo para la tabla dark */
+.dark-table {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto */
+}
+
+/* Estilo para el encabezado (thead) de la tabla dark */
+.dark-table thead {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en el encabezado */
+}
+
+/* Estilo para las celdas del encabezado (th) de la tabla dark */
+.dark-table th {
+  background-color: #b7d1a3;
+  /* Color de texto en las celdas del encabezado */
+}
+
+/* Estilo para las filas del cuerpo (tbody) de la tabla dark */
+.dark-table tbody {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en el cuerpo de la tabla */
+}
+
+/* Estilo para las celdas del cuerpo (td) de la tabla dark */
+.dark-table td {
+  background-color: #b7d1a3;
+  color: black; /* Color de texto en las celdas del cuerpo */
+}
+/*:#fcf7d3;
+  
+:#dee8be;
+
+#b7d1a3; 
+
+*/
+#table:hover {
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+
+
+.title-cell {
+  text-align: center;
+}
+
+/* Ajustes adicionales */
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.articles {
+  flex: 1 1 45%;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .articles {
+    flex: 1 1 100%;
+  }
+}
+main {
+  padding: 20px;
+}
+/* Estilos para main */
+/* Estilos para main */
+main {
+  padding: 20px;
+}
+
+/* Estilos para las columnas de main */
+main .col-lg-6 {
+  padding: 10px;
+}
+
+/* Ajuste adicional para pantallas pequeñas */
+@media (max-width: 992px) {
+  main .col-lg-6 {
+    flex: 1 1 100%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+ 
+  #table {font-size: 8px;}
+  }
+
+
+.no-underline {
+  text-decoration: none;
+}
+
+.header {
+  background-color: #1c1c1c!important;
+}
+
+.footer {
+  background-color: #1c1c1c!important;
+  padding: 20px 0;
+}
+
+.social-icons {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+}
+
+/* Ajustes para dispositivos pequeños */
+@media (max-width: 576px) {
+  .social-icons {
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+  }
+
+  /* Alineación de elementos en una sola columna */
+  .footer .row {
+    flex-direction: column;
+  }
+
+  .footer .col-md-12 {
+    text-align: center;
+  }
+
+  .rights-reserved {
+    font-size: 12px;
+  }
+}
+
+.circular-image {
+  width: 20%; /* Ajusta el tamaño de la imagen circular según tus necesidades */
+  height: 20%;
+  border-radius: 50%; /* Aplica el borde circular */
+  overflow: hidden; /* Oculta cualquier parte de la imagen que se salga del círculo */
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen para que cubra todo el círculo */
+}
+
+
+.form-control-strong-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}

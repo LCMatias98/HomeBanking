@@ -1,0 +1,81 @@
+.toastify {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 9999;
+  }
+  
+  .toastify.show {
+    opacity: 1;
+  }
+  
+  .toastify.success {
+    background-color: #4caf50;
+    padding: 20px 30px; /* Ajusta el tamaño del padding según tus preferencias */
+    font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
+    width: 350px; /* Ajusta el ancho del elemento según tus preferencias */
+  }
+  
+  .toastify.error {
+    background-color: #f44336;
+    padding: 20px 30px; /* Ajusta el tamaño del padding según tus preferencias */
+    font-size: 20px; /* Ajusta el tamaño de la fuente según tus preferencias */
+    width: 350px; /* Ajusta el ancho del elemento según tus preferencias */
+  }
+  
+  .toastify.warning {
+    background-color: #ff9800;
+  }
+  
+
+/* ---------------------------   MODAL   --------------------------------------------- */
+.confirmation-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+}
+.confirmation-message .btn-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.confirmation-message .btn {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmation-message .confirm-btn {
+  background-color: #4caf50;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.confirmation-message .cancel-btn {
+  background-color: #e53935;
+  color: #fff;
+  margin-left: 10px;
+}
+
+
+[v-cloak] {
+display: none;
+}

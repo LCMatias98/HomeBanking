@@ -23,9 +23,9 @@ const { createApp } = Vue
 
     methods:{
         loadData(){
-            axios.get('http://localhost:8080/clients')
+            axios.get('/api/clients')
                 .then(res=> {
-                this.clients = res.data._embedded.clients;
+                this.clients = res.data;
                 this.clientRestResponse = res.data;
                 console.log(this.clients);
                 })
@@ -36,7 +36,7 @@ const { createApp } = Vue
         },
 
         postClient(){
-            axios.post('http://localhost:8080/clients', this.clientData)
+            axios.post('http://localhost:8080/rest/clients', this.clientData)
             .then(res=> {
                 this.loadData();
                 this.deleteInputs();
@@ -61,9 +61,9 @@ const { createApp } = Vue
          updateClients(id){
                   axios.patch(id, this.clientData)
                     .then(response =>{
-                     this.clientData.firstName = "";
-                     this.clientData.lastName = "";
-                     this.clientData.email = "";
+                     this.clientData.firstName = this.clientData.firstName;
+                     this.clientData.lastName = this.clientData.lastName;
+                     this.clientData.email = this.clientData.email;
                       this.loadData();
                   })
                   .catch(err=>{console.error(err)});
