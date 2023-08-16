@@ -2,6 +2,8 @@ package com.mindhub.homebanking.models;
 
 import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 import java.util.*;
@@ -23,12 +25,13 @@ public class Client {
 
     @OneToMany(mappedBy="client", fetch=FetchType.LAZY)
     private Set<Card> cards = new HashSet<>();
+
     public Client() { }
     public Client(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        this.password = passwordValidator(password);
     }
     @JsonIgnore
     public Set<Card> getCards() {
@@ -109,7 +112,14 @@ public class Client {
                 ", email='" + email + '\'' +
                 '}';
     }
+    public String passwordValidator(String password) throws IllegalArgumentException {
+        String pass = password;
 
+        if (!pass.matches("^(?=.*[!@#$%^&*()_+{}\\[\\]:;<>,.?~\\\\/|]).*(?=.*[0-9].*[0-9]).*(?=.*[A-Z]).{8,}$")) {
+            throw new IllegalArgumentException("Insecure password");
+        }
+        return pass;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

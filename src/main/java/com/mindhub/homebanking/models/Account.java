@@ -3,6 +3,7 @@ package com.mindhub.homebanking.models;
 import com.mindhub.homebanking.models.Enums.AccountType;
 import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.annotation.PersistenceConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,7 +24,6 @@ public class Account {
 
     private AccountType type;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="client_id")
     private Client client;
 
     @OneToMany(mappedBy="account", fetch=FetchType.EAGER)
@@ -38,7 +38,7 @@ public class Account {
         this.hidden = hidden;
         this.type = type;
     }
-
+//@PersistenceConstructor
     public AccountType getType() {
         return type;
     }
