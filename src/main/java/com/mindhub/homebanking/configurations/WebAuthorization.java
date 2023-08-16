@@ -32,7 +32,6 @@ public class WebAuthorization{
 
 // deniega cualquier peticion que no esten contempladas en el antMatchers
 //.anyRequest().denyAll(); /clients/current/accounts
-//"/web/account.html?id={id}"  "/web/accounts.html","/web/account.html","/web/account.html?id={id}",
 
         http.cors();
 

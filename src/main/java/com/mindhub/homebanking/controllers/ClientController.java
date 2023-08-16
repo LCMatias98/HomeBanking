@@ -69,19 +69,23 @@ public class ClientController {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
         }
 
-        Client client = new Client(firstName, lastName, email, passwordEncoder.encode(password));
-        clientService.saveClient(client);
+        try {
+            Client client = new Client(firstName, lastName, email, password);
+            client.setPassword(passwordEncoder.encode(client.getPassword()));
+            clientService.saveClient(client);
+            // Crear una nueva cuenta para el cliente
+            String numberRandom;
+            do {
+                Random random = new Random();
+                numberRandom = getNumberRandom(random);
+            } while (accountService.getAccountByNumber(numberRandom) != null);
 
-        // Crear una nueva cuenta para el cliente
-        String numberRandom;
-        do {
-            Random random = new Random();
-            numberRandom = getNumberRandom(random);
-        } while (accountService.getAccountByNumber(numberRandom) != null);
-
-        Account account = new Account(numberRandom, LocalDate.now(), 0.0,false, AccountType.CURRENT);
-        client.addAccount(account);
-        accountService.saveAccount(account);
+            Account account = new Account(numberRandom, LocalDate.now(), 0.0,false, AccountType.CURRENT);
+            client.addAccount(account);
+            accountService.saveAccount(account);
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(),HttpStatus.FORBIDDEN);
+        }
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
